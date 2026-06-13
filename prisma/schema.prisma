@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id          String     @id @default(cuid())
+  name        String
+  slug        String     @unique
+  description String?
+  sortOrder   Int        @default(0)
+  menuItems   MenuItem[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model WinePairing {
+  id          String     @id @default(cuid())
+  name        String
+  type        PairingType
+  description String
+  region      String?
+  year        Int?
+  menuItems   MenuItem[]
+}
+
+enum PairingType {
+  WINE
+  RAKI
+  COCKTAIL
+  BEER
+}
+
+model MenuItem {
+  id              String       @id @default(cuid())
+  name            String
+  description     String
+  price           Float
+  categoryId      String
+  category        Category     @relation(fields: [categoryId], references: [id])
+  imageUrl        String
+  ingredients     String[]
+  allergens       String[]
+  isSignature     Boolean      @default(false)
+  isFeatured      Boolean      @default(false)
+  pairingId       String?
+  pairing         WinePairing? @relation(fields: [pairingId], references: [id])
+  weight          String?
+  preparationTime String?
+  sortOrder       Int          @default(0)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}
+
+enum TableType {
+  OCAKBASI
+  CAM_KENARI
+  BAHCE
+  VIP
+}
+
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+model Reservation {
+  id          String            @id @default(cuid())
+  date        DateTime
+  time        String
+  guests      Int
+  tableType   TableType
+  firstName   String
+  lastName    String
+  email       String
+  phone       String
+  notes       String?
+  allergies   String?
+  status      ReservationStatus @default(PENDING)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  role      Role     @default(STAFF)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  STAFF
+}
