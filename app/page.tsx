@@ -6,6 +6,8 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowDown, Star, Clock, MapPin, Phone } from 'lucide-react'
 import { featuredItems } from '@/data/menu'
+import StorySystem from '@/components/ui/StorySystem'
+
 
 // ─── Fade-in wrapper ────────────────────────────────────────────────────────
 function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -26,7 +28,7 @@ function FadeIn({ children, delay = 0, className = '' }: { children: React.React
 function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-12"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-28 pb-12"
       style={{ background: 'var(--color-antracite)' }}
     >
       {/* Background gradient fire effect */}
@@ -43,6 +45,7 @@ function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-6" style={{ maxWidth: '1152px', margin: '0 auto', width: '100%' }}>
+        <StorySystem />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -96,12 +99,12 @@ function HeroSection() {
           transition={{ duration: 0.8, delay: 0.7 }}
         >
           {/* Row 1: Menüyü Keşfet & Yol Tarifi Al */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
-            <Link href="/menu">
+          <div className="flex flex-row gap-3 justify-center items-center w-full max-w-[380px] sm:max-w-none sm:w-auto">
+            <Link href="/menu" className="flex-1 sm:flex-initial">
               <motion.button
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
-                className="px-8 py-4 text-xs tracking-widest uppercase font-semibold min-w-[180px] cursor-pointer"
+                className="w-full whitespace-nowrap px-2 sm:px-8 py-4 text-xs tracking-widest uppercase font-semibold min-w-[140px] sm:min-w-[180px] cursor-pointer"
                 style={{
                   background: 'transparent',
                   color: 'var(--color-cream)',
@@ -118,12 +121,12 @@ function HeroSection() {
               href="https://maps.app.goo.gl/2vAwEAAYAtk6AncA7"
               target="_blank"
               rel="noreferrer"
-              className="w-full sm:w-auto"
+              className="flex-1 sm:flex-initial"
             >
               <motion.button
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
-                className="w-full px-8 py-4 text-xs tracking-widest uppercase font-semibold min-w-[180px]"
+                className="w-full whitespace-nowrap px-2 sm:px-8 py-4 text-xs tracking-widest uppercase font-semibold min-w-[140px] sm:min-w-[180px]"
                 style={{
                   background: 'transparent',
                   color: 'var(--color-cream)',
@@ -138,12 +141,12 @@ function HeroSection() {
             </a>
           </div>
 
-          {/* Row 2: Rezervasyon Yap (Centered Below) */}
+          {/* Row 2: Rezervasyon Yap (Centered Below, Matching Width on Mobile) */}
           <motion.a
             href="tel:+905331315401"
             whileHover={{ scale: 1.04, boxShadow: '0 8px 30px rgba(163,33,36,0.5)' }}
             whileTap={{ scale: 0.97 }}
-            className="px-8 py-4 text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 min-w-[180px] text-center"
+            className="w-full max-w-[380px] sm:w-auto px-8 py-4 text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 min-w-[180px] text-center"
             style={{
               background: 'linear-gradient(135deg, var(--color-terracotta), var(--color-copper))',
               color: 'white',
