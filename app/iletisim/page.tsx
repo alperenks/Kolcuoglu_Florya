@@ -83,7 +83,7 @@ export default function IletisimPage() {
                     <a href="https://yandex.com.tr/maps/-/CPd7bWPN" target="_blank" rel="noreferrer" className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors hover:bg-[var(--color-card-inner-bg)]/80" style={{ background: 'var(--color-card-inner-bg)', color: 'var(--color-gold)', border: '1px solid rgba(163,33,36,0.2)' }}>
                       <Navigation size={10} /> Yandex Maps
                     </a>
-                    <a href="https://maps.apple.com/p/2WWEUIYPiLE.kL" target="_blank" rel="noreferrer" className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors hover:bg-[var(--color-card-inner-bg)]/80" style={{ background: 'var(--color-card-inner-bg)', color: 'var(--color-gold)', border: '1px solid rgba(163,33,36,0.2)' }}>
+                    <a href="https://maps.apple/p/2WWEUIYPiLE.kL" target="_blank" rel="noreferrer" className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors hover:bg-[var(--color-card-inner-bg)]/80" style={{ background: 'var(--color-card-inner-bg)', color: 'var(--color-gold)', border: '1px solid rgba(163,33,36,0.2)' }}>
                       <Navigation size={10} /> Apple Maps
                     </a>
                   </div>

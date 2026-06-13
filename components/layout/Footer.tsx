@@ -128,7 +128,7 @@ export default function Footer() {
         <div className="gold-line my-10" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs" style={{ color: 'var(--color-muted)' }}>
-          <p>© 2024 Kolcuoğlu Kebap & Gastronomi. Tüm hakları saklıdır.</p>
+          <p>© Kolcuoğlu Kebap & Gastronomi. Tüm hakları saklıdır.</p>
           <p>Kolcuoğlu, Herkes için.</p>
         </div>
       </div>

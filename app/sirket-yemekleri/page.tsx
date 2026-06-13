@@ -62,14 +62,14 @@ export default function SirketYemekleriPage() {
                 Profesyonel ve Şık Toplantılar
               </h2>
               <p className="text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
-                Motivasyon yemekleri, bayi toplantıları ya da sadece ekibinizi ödüllendirmek için... Size özel fix menü seçenekleri ve misafir kapasitemizle isteklerinizi en üst düzeyde karşılıyoruz.
+                Motivasyon yemekleri, bayi toplantıları ya da sadece ekibinizi ödüllendirmek için... Size özel menü seçenekleri ve misafir kapasitemizle isteklerinizi en üst düzeyde karşılıyoruz.
               </p>
             </div>
 
             <ul className="space-y-4">
               {[
                 'Özel Masa Düzeni',
-                'Ekiplere Özel Fix Menü Seçenekleri',
+                'Ekiplere Özel Menü Seçenekleri',
                 'Öncelikli Vale ve Otopark Hizmeti',
                 'Profesyonel Servis ve Misafir Karşılama'
               ].map((item, idx) => (
