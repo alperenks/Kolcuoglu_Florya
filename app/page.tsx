@@ -58,7 +58,7 @@ function HeroSection() {
               letterSpacing: '0.3em',
             }}
           >
-            Est. 1910 · İstanbul
+            Kuruluş 1910 · Adana
           </span>
         </motion.div>
 
