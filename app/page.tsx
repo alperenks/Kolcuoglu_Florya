@@ -240,11 +240,14 @@ function AboutSection() {
             <div className="gold-line mb-8" style={{ width: '80px' }} />
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="text-base leading-relaxed mb-6" style={{ color: 'var(--color-text-desc)' }}>
-              Kolcuoğlu ismi, 1910 yılından bu yana değişmeyen kalitenin ve nesilden nesile aktarılan kebap ustalığının simgesidir. 5. nesil Hasan Kolcuoğlu’nun 1974’te yarattığı efsanevi "Metrelik Kebap", bugün 6. ve 7. neslin omuzlarında geleceğe taşınıyor.
+            <p className="text-base leading-relaxed mb-6" style={{ color: 'var(--color-text-desc)',textAlign: 'justify'  }}>
+              1910'dan Bugüne: 7 Kuşaklık Lezzet Efsanesi
+Her şey 1910 yılında, Adana eski sebze halinde açılan küçük bir dükkânla başladı. Tam yedi kuşaktır, ateşin ve etin sırrını kuşaktan kuşağa aktararak aynı tutkuyla yaşatıyoruz.
+Hikayemizin en büyük dönüm noktası 1974 yılıydı. 5. kuşak temsilcimiz Hasan Kolcuoğlu’nun icat ettiği Metrelik Kebap, Türkiye’nin gastronomi tarihine altın harflerle kazındı. Bu benzersiz lezzet, 6. kuşak temsilcimiz Tarkan Kolcuoğlu’nun vizyonuyla markalaşarak Adana sınırlarını aştı ve metrelik kebap efsanesini tüm Türkiye ile buluşturdu.
             </p>
-            <p className="text-base leading-relaxed" style={{ color: 'var(--color-text-desc)' }}>
-              Tarkan ve Hasan Kolcuoğlu'nun titizlikle sürdürdüğü bu asırlık aile geleneği, Florya sahilindeki görkemli masalarda, misafirlerine yalnızca bir yemek değil, denize nazır kusursuz bir gastronomi deneyimi vadediyor.
+            <p className="text-base leading-relaxed" style={{ color: 'var(--color-text-desc)',textAlign: 'justify'  }}>
+              Bugün ise 7. kuşak olarak bu asırlık ateşi Florya Kolcuoğlu’nda harlıyoruz. Dedelerimizden ve babamızdan miras kalan ustalığı modern mutfağın dinamikleriyle harmanlıyor; o eşsiz, bereketli sofraları şimdi sizin için kuruyoruz.
+Tarihin, ustalığın ve lezzetin metrelerce uzandığı bu serüvene hoş geldiniz!
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>

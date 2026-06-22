@@ -23,45 +23,39 @@ interface StoryGroup {
 
 const STORIES_DATA: StoryGroup[] = [
   {
+    id: 'yedi-nesil',
+    title: 'Yedi Nesil',
+    thumbnail: '/images/florya-eniyi-kebapci.png',
+    items: [
+      {
+        id: 'yn-1',
+        type: 'video',
+        url: '/videos/Kolcuoğlu-herkes-için.mp4',
+        duration: 15000,
+      },
+      {
+        id: 'yn-2',
+        type: 'video',
+        url: '/videos/Kolcuoğlu-Floryada.mp4',
+        duration: 15000,
+      },
+    ],
+  },
+  {
     id: 'metrelik-kebap',
     title: 'Metrelik Kebap',
-    thumbnail: '/images/kolcuoglu-florya-metrelik-kebap.jpg',
+    thumbnail: '/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg',
     items: [
       {
         id: 'mk-1',
         type: 'image',
-        url: '/images/kolcuoglu-florya-metrelik-kebap.jpg',
+        url: '/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg',
         duration: 5000,
       },
       {
         id: 'mk-2',
         type: 'image',
-        url: '/images/kolcuoglu-florya-kebap-sunumu.jpg',
-        duration: 5000,
-      },
-    ],
-  },
-  {
-    id: 'mezelerimiz',
-    title: 'Mezelerimiz',
-    thumbnail: '/images/kolcuoglu-florya-meze-cesitleri.jpg',
-    items: [
-      {
-        id: 'mz-1',
-        type: 'image',
-        url: '/images/kolcuoglu-florya-meze-cesitleri.jpg',
-        duration: 5000,
-      },
-      {
-        id: 'mz-2',
-        type: 'image',
-        url: '/images/kolcuoglu-florya-soguk-mezeler.jpg',
-        duration: 5000,
-      },
-      {
-        id: 'mz-3',
-        type: 'image',
-        url: '/images/kolcuoglu-florya-sicak-mezeler.jpg',
+        url: '/images/kolcuoglu-florya-adana-kebap.jpg',
         duration: 5000,
       },
     ],
@@ -81,56 +75,6 @@ const STORIES_DATA: StoryGroup[] = [
         id: 'tr-2',
         type: 'image',
         url: '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg',
-        duration: 5000,
-      },
-      {
-        id: 'tr-3',
-        type: 'image',
-        url: '/images/kolcuoglu-florya-deniz-manzarasi.jpg',
-        duration: 5000,
-      },
-    ],
-  },
-  {
-    id: 'ocakbasi',
-    title: 'Ocakbaşı',
-    thumbnail: '/images/kolcuoglu-florya-ocakbasi-keyfi.jpg',
-    items: [
-      {
-        id: 'ob-1',
-        type: 'video',
-        url: '/images/video.mp4',
-        duration: 8000,
-      },
-      {
-        id: 'ob-2',
-        type: 'image',
-        url: '/images/kolcuoglu-florya-ocakbasi-ustasi.jpg',
-        duration: 5000,
-      },
-    ],
-  },
-  {
-    id: 'tatlilar',
-    title: 'Tatlılarımız',
-    thumbnail: '/images/kolcuoglu-florya-kunefe-tatlisi.jpg',
-    items: [
-      {
-        id: 'tl-1',
-        type: 'image',
-        url: '/images/kolcuoglu-florya-kunefe-tatlisi.jpg',
-        duration: 5000,
-      },
-      {
-        id: 'tl-2',
-        type: 'image',
-        url: '/images/kolcuoglu-florya-katmer-tatlisi.jpg',
-        duration: 5000,
-      },
-      {
-        id: 'tl-3',
-        type: 'image',
-        url: '/images/kolcuoglu-florya-tatli-ikrami.jpg',
         duration: 5000,
       },
     ],
@@ -490,7 +434,7 @@ export default function StorySystem() {
                     alt="Story image content"
                     fill
                     sizes="100vw"
-                    className={`object-contain transition-opacity duration-300 ${
+                    className={`object-cover transition-opacity duration-300 ${
                       isLoading ? 'opacity-0' : 'opacity-100'
                     }`}
                     onLoadingComplete={() => setIsLoading(false)}
@@ -505,7 +449,7 @@ export default function StorySystem() {
                   <video
                     ref={videoRef}
                     src={currentSlide.url}
-                    className={`w-full h-full object-contain transition-opacity duration-300 ${
+                    className={`w-full h-full object-cover transition-opacity duration-300 ${
                       isLoading ? 'opacity-0' : 'opacity-100'
                     }`}
                     playsInline

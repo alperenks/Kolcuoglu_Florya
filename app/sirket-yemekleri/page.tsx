@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Mail, CheckCircle2, MessageSquare } from 'lucide-react'
+import { CheckCircle2, MessageSquare } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Şirket Yemekleri & Gruplar',
@@ -38,82 +38,86 @@ export default function SirketYemekleriPage() {
       </section>
 
       {/* Content */}
-      <section className="py-16 px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center" style={{ maxWidth: '1152px', margin: '0 auto', width: '100%' }}>
-
-          {/* Image Placeholder */}
-          <div
-            className="aspect-[4/3] rounded-lg relative overflow-hidden flex items-center justify-center transition-all duration-300"
-            style={{
-              background: 'var(--color-card-inner-bg)',
-              border: '1px solid rgba(163,33,36,0.2)'
-            }}
-          >
-            <p className="text-sm tracking-widest uppercase opacity-50 text-center px-4" style={{ color: 'var(--color-gold)' }}>
-              [ Şirket Yemeği Görseli Buraya Gelecek ]<br />
-              <span className="text-xs text-[var(--color-muted)] lowercase tracking-normal">Görsel eklendiğinde bu kutuyu tam kaplayacaktır.</span>
-            </p>
+      <section className="pb-24 px-6 animate-fade-in">
+        <div 
+          className="flex flex-col items-center space-y-12 animate-fade-in" 
+          style={{ maxWidth: '1152px', margin: '0 auto', width: '100%' }}
+        >
+          {/* Title - Remains Centered */}
+          <div className="text-center max-w-2xl">
+            <h2 
+              className="font-serif text-3xl md:text-4xl leading-tight" 
+              style={{ color: 'var(--color-cream)', fontFamily: 'var(--font-serif)' }}
+            >
+              Profesyonel ve Şık Toplantılar
+            </h2>
           </div>
 
-          {/* Details */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="font-serif text-3xl mb-4" style={{ color: 'var(--color-cream)', fontFamily: 'var(--font-serif)' }}>
-                Profesyonel ve Şık Toplantılar
-              </h2>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
-                Motivasyon yemekleri, bayi toplantıları ya da sadece ekibinizi ödüllendirmek için... Size özel menü seçenekleri ve misafir kapasitemizle isteklerinizi en üst düzeyde karşılıyoruz.
+          {/* 2-Column Layout (Paragraph Left, Checklist Right on Desktop) */}
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 w-full items-start text-left">
+            {/* Left Column: Paragraph (With left alignment) */}
+            <div className="space-y-4">
+              <p className="text-base leading-relaxed" style={{ color: 'var(--color-text-desc)', textAlign: 'justify' }}>
+                Kolcuoğlu Florya olarak, şirket yemekleriniz ve kurumsal organizasyonlarınızda tüm detayları sizin yerinize biz üstleniyoruz. Masaların özenli tasarımından, nesillerdir aktarılan lezzetlerin zamanlamasına ve misafirlerinizin kusursuz şekilde karşılanmasına kadar her şeyi profesyonel ekibimize bırakın. Siz sadece işinize ve ekibinizle geçireceğiniz keyifli anlara odaklanın; geriye kalan her detayı biz sizin için düşünüp mükemmel şekilde organize edelim.
               </p>
             </div>
 
-            <ul className="space-y-4">
-              {[
-                'Özel Masa Düzeni',
-                'Ekiplere Özel Menü Seçenekleri',
-                'Öncelikli Vale ve Otopark Hizmeti',
-                'Profesyonel Servis ve Misafir Karşılama'
-              ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-sm" style={{ color: 'var(--color-muted)' }}>
-                  <CheckCircle2 size={18} style={{ color: 'var(--color-copper)' }} />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            {/* Right Column: Benefits List */}
+            <div className="w-full bg-white/2 p-6 rounded-sm border border-white/5">
+              <ul className="space-y-4">
+                {[
+                  'Özel Masa Düzeni ve Süsleme Seçenekleri',
+                  'Tercihinize Göre Alkollü veya Alkolsüz Menü Teklifleri',
+                  'Vale ve Servis Ücreti Yok',
+                  'Şirket/Grup Yemeklerinde Yılların Deneyimi'
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-sm" style={{ color: 'var(--color-muted)' }}>
+                    <CheckCircle2 size={18} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--color-copper)' }} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
-            <div className="pt-6 border-t space-y-4" style={{ borderColor: 'var(--color-border-strong)' }}>
-              <p className="text-xs uppercase tracking-wider mb-2" style={{ color: 'var(--color-gold)' }}>Talepleriniz İçin Bize Ulaşın</p>
+          {/* Call to Action Container */}
+          <div className="pt-8 border-t w-full max-w-lg mx-auto text-center space-y-6" style={{ borderColor: 'var(--color-border)' }}>
+            <p className="text-xs uppercase tracking-widest font-semibold" style={{ color: 'var(--color-gold)' }}>
+              Talepleriniz İçin Bize Ulaşın
+            </p>
 
-              <div className="flex flex-col gap-4">
-                <a
-                  href="/rezervasyon"
-                  className="w-full flex justify-center items-center gap-2 py-4 px-6 text-sm tracking-widest uppercase font-semibold transition-transform hover:scale-[1.01]"
-                  style={{
-                    background: 'linear-gradient(135deg, var(--color-terracotta), var(--color-copper))',
-                    color: 'white',
-                    borderRadius: '2px',
-                    border: 'none',
-                    boxShadow: '0 4px 20px rgba(196, 75, 59, 0.3)',
-                  }}
-                >
-                  <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1" />
-                  Online Grup Rezervasyonu Yap
-                </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
+              <a
+                href="/rezervasyon"
+                className="w-full sm:w-[240px] flex justify-center items-center gap-2 py-4 px-6 text-sm tracking-widest uppercase font-semibold transition-transform hover:scale-[1.01] whitespace-nowrap text-center"
+                style={{
+                  background: 'linear-gradient(135deg, var(--color-terracotta), var(--color-copper))',
+                  color: 'white',
+                  borderRadius: '2px',
+                  border: 'none',
+                  boxShadow: '0 4px 20px rgba(196, 75, 59, 0.3)',
+                  height: '56px',
+                }}
+              >
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1" />
+                Online Rezervasyon
+              </a>
 
-                <a
-                  href="https://wa.me/905331315401"
-                  target="_blank" rel="noreferrer"
-                  className="w-full flex justify-center items-center gap-2 py-4 px-6 text-sm tracking-widest uppercase font-semibold transition-all hover:bg-[var(--color-card-inner-bg)]/80"
-                  style={{
-                    background: 'var(--color-card-inner-bg)',
-                    color: 'var(--color-cream)',
-                    borderRadius: '2px',
-                    border: '1px solid rgba(163,33,36,0.2)',
-                  }}
-                >
-                  <MessageSquare size={16} />
-                  WhatsApp Destek
-                </a>
-              </div>
+              <a
+                href="https://wa.me/905331315401"
+                target="_blank" rel="noreferrer"
+                className="w-full sm:w-[240px] flex justify-center items-center gap-2 py-4 px-6 text-sm tracking-widest uppercase font-semibold transition-all hover:bg-[var(--color-card-inner-bg)]/80 whitespace-nowrap text-center"
+                style={{
+                  background: 'var(--color-card-inner-bg)',
+                  color: 'var(--color-cream)',
+                  borderRadius: '2px',
+                  border: '1px solid rgba(163,33,36,0.2)',
+                  height: '56px',
+                }}
+              >
+                <MessageSquare size={16} />
+                WhatsApp Destek
+              </a>
             </div>
           </div>
         </div>
