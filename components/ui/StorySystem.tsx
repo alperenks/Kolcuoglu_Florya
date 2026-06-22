@@ -93,6 +93,8 @@ export default function StorySystem() {
   const [mounted, setMounted] = useState(false)
   const [resetKey, setResetKey] = useState(0)
 
+  const [shouldPreload, setShouldPreload] = useState(false)
+
   const videoRef = useRef<HTMLVideoElement>(null)
   const pointerDownTime = useRef(0)
 
@@ -107,6 +109,13 @@ export default function StorySystem() {
     } catch (e) {
       console.error('Failed to parse read stories', e)
     }
+
+    // Start preloading videos 2.5 seconds after mounting to let critical assets load first
+    const timer = setTimeout(() => {
+      setShouldPreload(true)
+    }, 2500)
+
+    return () => clearTimeout(timer)
   }, [])
 
   // Lock body scroll when stories viewer is open
@@ -477,6 +486,13 @@ export default function StorySystem() {
           )}
         </AnimatePresence>,
         document.body
+      )}
+      {/* Background preloader for stories videos (delayed 2.5s) */}
+      {shouldPreload && (
+        <div style={{ display: 'none' }} aria-hidden="true">
+          <video preload="auto" src="/videos/Kolcuoğlu-herkes-için.mp4" muted playsInline />
+          <video preload="auto" src="/videos/Kolcuoğlu-Floryada.mp4" muted playsInline />
+        </div>
       )}
     </div>
   )
