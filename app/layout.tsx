@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const kolcuogluBrand = localFont({
   src: '../public/fonts/kolcuoglu-brand.ttf',
