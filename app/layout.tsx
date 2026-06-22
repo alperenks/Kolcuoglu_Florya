@@ -3,7 +3,7 @@ import localFont from 'next/font/local'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const kolcuogluBrand = localFont({
   src: '../public/fonts/kolcuoglu-brand.ttf',
@@ -95,6 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main style={{ flex: 1 }} className="w-full overflow-x-hidden">
           {children}
         </main>
+        <SpeedInsights />
         <Footer />
       </body>
     </html>
