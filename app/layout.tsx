@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/next'
 
 const kolcuogluBrand = localFont({
   src: '../public/fonts/kolcuoglu-brand.ttf',
@@ -96,6 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <SpeedInsights />
+        <Analytics />
         <Footer />
       </body>
     </html>
