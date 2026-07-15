@@ -5,42 +5,35 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
 
-// Gerçek restoran görselleri (SEO uyumlu adlandırılmış)
+// Gerçek restoran görselleri (SEO uyumlu adlandırılmış + betimleyici alt metinler)
 const allImages = [
-  '/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg',
-  '/images/hasan-kolcuoglu-metrelik-kebap-mucidi.jpeg',
-  '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg',
-  '/images/kolcuoglu-florya-restoran-salonu.jpeg',
-  '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg',
-  '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg',
-  '/images/kolcuoglu-florya-adana-kebap.jpg',
-  '/images/kolcuoglu-florya-kebap-sofrasi.jpg',
-  '/images/kolcuoglu-florya-ocakbasi-keyfi.jpg',
-  '/images/florya-en-iyi-kebapci.jpg',
-  '/images/istanbul-metrelik-kebap-kolcuoglu.jpg',
-  '/images/kolcuoglu-kebap-florya-istanbul.jpg',
-  
-  '/images/kolcuoglu-florya-geleneksel-lezzetler.jpg',
-  
-  
-  '/images/kolcuoglu-florya-sicak-mezeler.jpg',
-  
-  '/images/kolcuoglu-florya-kuzu-sis.jpg',
- 
-  
-  '/images/kolcuoglu-florya-kunefe-tatlisi.jpg',
-  '/images/kolcuoglu-florya-katmer-tatlisi.jpg',
-  '/images/kolcuoglu-florya-ayran-salgam.jpg',
-  '/images/kolcuoglu-florya-lahmacun-pide.jpg',
-
-  '/images/kolcuoglu-florya-vip-salon.jpg',
-  '/images/kolcuoglu-florya-ocakbasi-ustasi.jpg',
-  '/images/kolcuoglu-florya-lezzet-duragi.jpg',
-  '/images/kolcuoglu-florya-ozel-davetler.jpg',
-  '/images/kolcuoglu-florya-denize-sifir-kebap.jpg',
-  '/images/kolcuoglu-florya-kuzu-pirzola.jpg',
-  '/images/kolcuoglu-florya-soguk-mezeler.jpg',
-  '/images/kolcuoglu-florya-sofra-duzeni.jpg'
+  { src: '/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg', alt: 'Kolcuoğlu Florya özel menü – metrelik kebap sunumu' },
+  { src: '/images/hasan-kolcuoglu-metrelik-kebap-mucidi.jpeg', alt: 'Metrelik kebabın mucidi Hasan Kolcuoğlu' },
+  { src: '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg', alt: 'Kolcuoğlu Florya deniz manzaralı teras' },
+  { src: '/images/kolcuoglu-florya-restoran-salonu.jpeg', alt: 'Kolcuoğlu Florya restoran salonu' },
+  { src: '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg', alt: 'Kolcuoğlu Florya deniz manzaralı yemek salonu' },
+  { src: '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg', alt: 'Kolcuoğlu Florya iç mekan tasarımı' },
+  { src: '/images/kolcuoglu-florya-adana-kebap.jpg', alt: 'Kolcuoğlu Florya Adana kebap' },
+  { src: '/images/kolcuoglu-florya-kebap-sofrasi.jpg', alt: 'Kolcuoğlu Florya kebap sofrası ve mezeler' },
+  { src: '/images/kolcuoglu-florya-ocakbasi-keyfi.jpg', alt: 'Kolcuoğlu Florya ocakbaşı keyfi' },
+  { src: '/images/florya-en-iyi-kebapci.jpg', alt: "Florya'nın en iyi kebapçısı Kolcuoğlu'nda kebap sofrası" },
+  { src: '/images/istanbul-metrelik-kebap-kolcuoglu.jpg', alt: "İstanbul'da metrelik kebap – Kolcuoğlu Florya" },
+  { src: '/images/kolcuoglu-kebap-florya-istanbul.jpg', alt: 'Kolcuoğlu kebap – Florya, İstanbul' },
+  { src: '/images/kolcuoglu-florya-geleneksel-lezzetler.jpg', alt: 'Kolcuoğlu Florya geleneksel Türk lezzetleri' },
+  { src: '/images/kolcuoglu-florya-sicak-mezeler.jpg', alt: 'Kolcuoğlu Florya sıcak mezeler' },
+  { src: '/images/kolcuoglu-florya-kuzu-sis.jpg', alt: 'Kolcuoğlu Florya kuzu şiş' },
+  { src: '/images/kolcuoglu-florya-kunefe-tatlisi.jpg', alt: 'Kolcuoğlu Florya künefe tatlısı' },
+  { src: '/images/kolcuoglu-florya-katmer-tatlisi.jpg', alt: 'Kolcuoğlu Florya katmer tatlısı' },
+  { src: '/images/kolcuoglu-florya-ayran-salgam.jpg', alt: 'Kolcuoğlu Florya ayran ve şalgam' },
+  { src: '/images/kolcuoglu-florya-lahmacun-pide.jpg', alt: 'Kolcuoğlu Florya lahmacun ve pide' },
+  { src: '/images/kolcuoglu-florya-vip-salon.jpg', alt: 'Kolcuoğlu Florya VIP salon' },
+  { src: '/images/kolcuoglu-florya-ocakbasi-ustasi.jpg', alt: 'Kolcuoğlu Florya ocakbaşı ustası kebap pişirirken' },
+  { src: '/images/kolcuoglu-florya-lezzet-duragi.jpg', alt: 'Kolcuoğlu Florya lezzet durağı' },
+  { src: '/images/kolcuoglu-florya-ozel-davetler.jpg', alt: 'Kolcuoğlu Florya özel davet ve organizasyonlar' },
+  { src: '/images/kolcuoglu-florya-denize-sifir-kebap.jpg', alt: 'Denize sıfır kebap keyfi – Kolcuoğlu Florya' },
+  { src: '/images/kolcuoglu-florya-kuzu-pirzola.jpg', alt: 'Kolcuoğlu Florya kuzu pirzola' },
+  { src: '/images/kolcuoglu-florya-soguk-mezeler.jpg', alt: 'Kolcuoğlu Florya soğuk mezeler' },
+  { src: '/images/kolcuoglu-florya-sofra-duzeni.jpg', alt: 'Kolcuoğlu Florya sofra düzeni' },
 ]
 
 export default function GalleryClient() {
@@ -67,21 +60,21 @@ export default function GalleryClient() {
       <section className="py-16 px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" style={{ maxWidth: '1280px', margin: '0 auto', width: '100%' }}>
           <AnimatePresence>
-            {visibleImages.map((src, i) => (
+            {visibleImages.map((img, i) => (
               <motion.div
-                key={src + i}
+                key={img.src + i}
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, delay: (isAdmin(i) ? (i % 4) : 0) * 0.1 }}
+                transition={{ duration: 0.4, delay: (i % 4) * 0.1 }}
                 layout
-                onClick={() => setSelectedImage(src)}
+                onClick={() => setSelectedImage(img.src)}
                 className="aspect-square relative overflow-hidden rounded-sm group cursor-pointer"
                 style={{ border: '1px solid var(--color-border)' }}
               >
                 <Image
-                  src={src}
-                  alt={`Kolcuoğlu Galeri Görseli ${i + 1}`}
+                  src={img.src}
+                  alt={img.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -144,7 +137,7 @@ export default function GalleryClient() {
             >
               <Image
                 src={selectedImage}
-                alt="Büyük Galeri Görseli"
+                alt={allImages.find((img) => img.src === selectedImage)?.alt ?? 'Kolcuoğlu Florya galeri görseli'}
                 fill
                 sizes="100vw"
                 className="object-contain"
@@ -159,6 +152,3 @@ export default function GalleryClient() {
   )
 }
 
-function isAdmin(i: number) {
-   return true;
-}

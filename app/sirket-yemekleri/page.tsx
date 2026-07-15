@@ -3,7 +3,9 @@ import { CheckCircle2, MessageSquare } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Şirket Yemekleri & Gruplar',
-  description: 'Şirket organizasyonları, toplantılar ve özel grup yemekleri için Kolcuoğlu Florya ayrıcalığı.',
+  description:
+    "İstanbul Florya'da şirket yemekleri, kurumsal davetler ve grup organizasyonları. Deniz manzaralı salonlarda metrelik kebap eşliğinde toplu yemek.",
+  alternates: { canonical: '/sirket-yemekleri' },
 }
 
 export default function SirketYemekleriPage() {

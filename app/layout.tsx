@@ -13,26 +13,43 @@ const kolcuogluBrand = localFont({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://kolcuogluflorya.com'),
   title: {
-    default: "Kolcuoğlu | İstanbul'un İmza Kebap & Gastronomi Deneyimi",
-    template: '%s | Kolcuoğlu',
+    default: 'Kolcuoğlu Florya | Metrelik Kebap ve Ocakbaşı Restoranı – İstanbul',
+    template: '%s | Kolcuoğlu Florya',
   },
   description:
-    "Est. 1910 'dan bu yana, kor ateşinde ustalıkla pişirilen kebaplar ve geleneksel Türk meze kültürü. İstanbul Florya'da lüks bir gastronomi deneyimi.",
-  keywords: ['kebap', 'türk mutfağı', 'istanbul restoran', 'gastronomi', 'meze', 'ocakbaşı', 'adana kebap', 'kolcuoğlu'],
+    "1910'dan bu yana kor ateşinde pişen metrelik kebap, Adana kebap ve geleneksel mezeler. İstanbul Florya'da deniz manzaralı kebap restoranı. Rezervasyon: 0533 131 54 01",
+  keywords: ['kolcuoğlu', 'kolcuoğlu florya', 'kebap', 'metrelik kebap', 'adana kebap', 'florya restoran', 'istanbul kebapçı', 'ocakbaşı', 'meze', 'türk mutfağı'],
+  // NOTE: canonical is per-route; every route must set its own alternates.canonical
+  alternates: { canonical: '/' },
   openGraph: {
-    title: 'Kolcuoğlu | Premium Kebap & Gastronomi',
-    description: "1910'dan bu yana İstanbul'un en köklü kebap geleneği.",
+    title: 'Kolcuoğlu Florya | Metrelik Kebap ve Ocakbaşı Restoranı',
+    description: "1910'dan bu yana İstanbul'un en köklü kebap geleneği, Florya'da.",
+    url: '/',
+    siteName: 'Kolcuoğlu Florya',
     locale: 'tr_TR',
     type: 'website',
+    images: [
+      {
+        url: '/images/og-kolcuoglu-florya.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Kolcuoğlu Florya metrelik kebap',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kolcuoğlu Florya | Metrelik Kebap ve Ocakbaşı Restoranı',
+    description: "İstanbul Florya'da deniz manzaralı kebap restoranı.",
+    images: ['/images/og-kolcuoglu-florya.jpg'],
   },
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -51,10 +68,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Restaurant',
+              '@id': 'https://kolcuogluflorya.com/#restaurant',
               name: 'Kolcuoğlu Florya',
               description: "İstanbul Florya'da premium kebap ve gastronomi restoranı.",
               foundingDate: '1910',
               url: 'https://kolcuogluflorya.com',
+              image: [
+                'https://kolcuogluflorya.com/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg',
+                'https://kolcuogluflorya.com/images/kolcuoglu-florya-restoran-salonu.jpeg',
+                'https://kolcuogluflorya.com/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg',
+              ],
+              hasMap: 'https://maps.app.goo.gl/2vAwEAAYAtk6AncA7',
+              sameAs: [
+                'https://www.instagram.com/kolcuoglu.florya',
+                'https://maps.app.goo.gl/2vAwEAAYAtk6AncA7',
+              ],
               telephone: '+90-533-131-54-01',
               address: {
                 '@type': 'PostalAddress',
@@ -66,8 +94,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               },
               geo: {
                 '@type': 'GeoCoordinates',
-                latitude: 40.9723,
-                longitude: 28.7981,
+                latitude: 40.9772531,
+                longitude: 28.775728,
               },
               openingHoursSpecification: [
                 {
@@ -85,7 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               ],
               servesCuisine: ['Turkish', 'Kebap', 'Mediterranean'],
               priceRange: '₺₺₺',
-              menu: 'https://kolcuoglu.com.tr/menu',
+              menu: 'https://kolcuogluflorya.com/menu',
               acceptsReservations: 'True',
             }),
           }}

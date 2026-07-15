@@ -3,7 +3,9 @@ import GalleryClient from '@/components/GalleryClient'
 
 export const metadata: Metadata = {
   title: 'Galeri',
-  description: 'Kolcuoğlu Florya restoranımızdan en özel kareler. Lezzetlerimiz, ambiyansımız ve unutulmaz anlar.',
+  description:
+    "Kolcuoğlu Florya'dan kareler: metrelik kebap, Adana kebap, ocakbaşı, deniz manzaralı teras ve salonlarımız. İstanbul Florya'da kebap restoranı.",
+  alternates: { canonical: '/galeri' },
 }
 
 export default function GaleriPage() {

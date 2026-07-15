@@ -277,9 +277,9 @@ Tarihin, ustalığın ve lezzetin metrelerce uzandığı bu serüvene hoş geldi
                 className="w-full h-full flex items-center justify-center relative"
                 style={{ background: 'var(--color-surface)' }}
               >
-                <Image 
-                  src="/images/hasan-kolcuoglu-metrelik-kebap-mucidi.jpeg" 
-                  alt="Ocakbaşı" 
+                <Image
+                  src="/images/hasan-kolcuoglu-metrelik-kebap-mucidi.jpeg"
+                  alt="Metrelik kebabın mucidi Hasan Kolcuoğlu"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
@@ -454,10 +454,10 @@ function AtmosphereSection() {
   const y = useTransform(scrollYProgress, [0, 1], ['-10%', '10%'])
 
   const galleryImages = [
-    '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg',
-    '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg',
-    '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg',
-    '/images/kolcuoglu-florya-tatli-ikrami.jpg',
+    { src: '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg', alt: 'Kolcuoğlu Florya deniz manzaralı teras' },
+    { src: '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg', alt: 'Kolcuoğlu Florya deniz manzaralı yemek salonu' },
+    { src: '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg', alt: 'Kolcuoğlu Florya iç mekan tasarımı' },
+    { src: '/images/kolcuoglu-florya-tatli-ikrami.jpg', alt: 'Kolcuoğlu Florya tatlı ikramı' },
   ]
 
   return (
@@ -488,8 +488,8 @@ function AtmosphereSection() {
         </FadeIn>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {galleryImages.map((src, i) => (
-            <FadeIn key={src} delay={i * 0.1}>
+          {galleryImages.map((img, i) => (
+            <FadeIn key={img.src} delay={i * 0.1}>
               <motion.div
                 className="aspect-[3/4] rounded-sm flex flex-col justify-end relative overflow-hidden group cursor-pointer"
                 style={{
@@ -498,9 +498,9 @@ function AtmosphereSection() {
                 whileHover={{ scale: 1.02 }}
               >
                 <div className="absolute inset-0">
-                  <Image 
-                    src={src}
-                    alt={`Galeri Görseli ${i + 1}`}
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
                     fill
                     sizes="(max-width: 768px) 50vw, 25vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-110"

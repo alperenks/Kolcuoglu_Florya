@@ -3,11 +3,14 @@ import { MapPin, Phone, Mail, Clock, Navigation } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'İletişim',
-  description: 'Kolcuoğlu Restoran iletişim bilgileri, konum ve çalışma saatleri. İstanbul Florya\'da bulunuyoruz.',
+  description:
+    'Kolcuoğlu Florya iletişim: Çekmece İstanbul Cd. 39, Bakırköy/İstanbul. Tel: 0533 131 54 01. Konum, çalışma saatleri ve yol tarifi.',
+  alternates: { canonical: '/iletisim' },
 }
 
 const workingHours = [
-  { day: 'Her Gün', hours: '11:00 – 00:00' },
+  { day: 'Pazar – Perşembe', hours: '12:00 – 00:00' },
+  { day: 'Cuma – Cumartesi', hours: '12:00 – 01:00' },
 ]
 
 export default function IletisimPage() {
@@ -47,7 +50,7 @@ export default function IletisimPage() {
           {/* Map */}
           <div className="lg:col-span-3 rounded overflow-hidden" style={{ height: '480px', border: '1px solid var(--color-border-strong)' }}>
             <iframe
-              src="https://maps.google.com/maps?q=Kolcuo%C4%9Flu%20Restaurant%20Florya&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1503.5!2d28.775728!3d40.9772531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa3001659d297%3A0xb2cce0d4520e43c6!2sKolcuo%C4%9Flu%20Restaurant%20Florya!5e0!3m2!1str!2str!4v1752600000000"
               width="100%"
               height="100%"
               className="map-iframe"
