@@ -5,41 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { menuItems } from '@/data/menu'
 import { ChevronDown } from 'lucide-react'
 import Image from 'next/image'
-import { FloatingFoodHero } from '@/components/ui/FloatingFoodHero'
-
-// Floating images around the "Lezzet Menümüz" heading
-const heroImages = [
-  {
-    src: '/images/floating/metrelik-kebap.png',
-    alt: 'Metrelik kebap',
-    className: 'w-32 sm:w-56 md:w-56 lg:w-60 top-6 left-2 sm:top-10 sm:left-10 md:top-28 md:left-10 lg:left-10/18 lg:-translate-x-[530px]',
-  },
-  {
-    src: '/images/floating/cilek.png',
-    alt: 'Çilek tabağı',
-    className: 'w-28 sm:w-36 md:w-48 top-10 right-4 sm:right-10 md:top-16 md:right-36',
-  },
-  {
-    src: '/images/floating/izgara-kanat.png',
-    alt: 'Izgara kanat',
-    className: 'w-32 sm:w-40 md:w-56 rotate-45 bottom-8 right-8 sm:right-14 md:bottom-16 md:right-80',
-  },
-  {
-    src: 'https://b.zmtcdn.com/data/o2_assets/70b50e1a48a82437bfa2bed925b862701742892555.png',
-    alt: 'Fesleğen yaprağı',
-    className: 'w-8 sm:w-12 top-1/4 left-1/3',
-  },
-  {
-    src: 'https://b.zmtcdn.com/data/o2_assets/9ef1cc6ecf1d92798507ffad71e9492d1742892584.png',
-    alt: 'Domates dilimi',
-    className: 'w-8 sm:w-10 top-1/2 right-1/3',
-  },
-  {
-    src: 'https://b.zmtcdn.com/data/o2_assets/9ef1cc6ecf1d92798507ffad71e9492d1742892584.png',
-    alt: 'Domates dilimi',
-    className: 'w-8 sm:w-10 top-3/4 left-1/4',
-  },
-]
 
 export default function MenuPage() {
   // All categories are closed by default
@@ -372,13 +337,34 @@ export default function MenuPage() {
   return (
     <div style={{ background: 'var(--color-antracite)', paddingTop: '80px', minHeight: '100vh' }}>
       {/* Header */}
-      <FloatingFoodHero
-        label="Geleneksel Ustaların Eliyle"
-        title="Lezzet Menümüz"
-        description="116 yılı aşkın tecrübe ve kömür ateşi ustalığıyla harmanlanan, özenle seçilmiş ürünlerimiz."
-        images={heroImages}
-      />
-
+      <section
+        className="py-20 px-6 text-center relative overflow-hidden"
+        style={{ background: 'var(--color-antracite)' }}
+      >
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            background: 'radial-gradient(ellipse at center, rgba(196,75,59,0.25) 0%, transparent 65%)',
+          }}
+        />
+        <div className="relative z-10">
+          <p className="section-label mb-4">Geleneksel Ustaların Eliyle</p>
+          <h1
+            className="font-serif mb-4"
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+              color: 'var(--color-cream)',
+            }}
+          >
+            Lezzet Menümüz
+          </h1>
+          <p className="text-base leading-relaxed text-[var(--color-text-desc)] max-w-xl mx-auto">
+            116 yılı aşkın tecrübe ve kömür ateşi ustalığıyla harmanlanan, özenle seçilmiş ürünlerimiz.
+          </p>
+          <div className="gold-line mt-8 mx-auto" style={{ width: '60px' }} />
+        </div>
+      </section>
 
       {/* Main Menu Layout Container */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto pb-24">
