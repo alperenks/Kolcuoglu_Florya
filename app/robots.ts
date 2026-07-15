@@ -3,6 +3,6 @@ import type { MetadataRoute } from 'next'
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: '*', allow: '/' },
-    sitemap: 'https://kolcuogluflorya.com/sitemap.xml',
+    sitemap: 'https://www.kolcuogluflorya.com/sitemap.xml',
   }
 }

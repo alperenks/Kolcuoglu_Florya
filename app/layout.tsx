@@ -13,7 +13,7 @@ const kolcuogluBrand = localFont({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://kolcuogluflorya.com'),
+  metadataBase: new URL('https://www.kolcuogluflorya.com'),
   title: {
     default: 'Kolcuoğlu Florya | Metrelik Kebap ve Ocakbaşı Restoranı – İstanbul',
     template: '%s | Kolcuoğlu Florya',
@@ -68,15 +68,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Restaurant',
-              '@id': 'https://kolcuogluflorya.com/#restaurant',
+              '@id': 'https://www.kolcuogluflorya.com/#restaurant',
               name: 'Kolcuoğlu Florya',
               description: "İstanbul Florya'da premium kebap ve gastronomi restoranı.",
               foundingDate: '1910',
-              url: 'https://kolcuogluflorya.com',
+              url: 'https://www.kolcuogluflorya.com',
               image: [
-                'https://kolcuogluflorya.com/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg',
-                'https://kolcuogluflorya.com/images/kolcuoglu-florya-restoran-salonu.jpeg',
-                'https://kolcuogluflorya.com/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg',
+                'https://www.kolcuogluflorya.com/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg',
+                'https://www.kolcuogluflorya.com/images/kolcuoglu-florya-restoran-salonu.jpeg',
+                'https://www.kolcuogluflorya.com/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg',
               ],
               hasMap: 'https://maps.app.goo.gl/2vAwEAAYAtk6AncA7',
               sameAs: [
@@ -113,7 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               ],
               servesCuisine: ['Turkish', 'Kebap', 'Mediterranean'],
               priceRange: '₺₺₺',
-              menu: 'https://kolcuogluflorya.com/menu',
+              menu: 'https://www.kolcuogluflorya.com/menu',
               acceptsReservations: 'True',
             }),
           }}

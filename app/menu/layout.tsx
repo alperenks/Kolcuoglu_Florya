@@ -15,7 +15,7 @@ const BOILERPLATE = 'taze günlük ürünleriyle'
 const menuJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Menu',
-  '@id': 'https://kolcuogluflorya.com/menu#menu',
+  '@id': 'https://www.kolcuogluflorya.com/menu#menu',
   name: 'Kolcuoğlu Florya Menü',
   inLanguage: 'tr',
   hasMenuSection: categories.map((cat) => ({
