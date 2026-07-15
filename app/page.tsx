@@ -28,7 +28,7 @@ function FadeIn({ children, delay = 0, className = '' }: { children: React.React
 function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-28 pb-12"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-28 pb-20"
       style={{ background: 'var(--color-antracite)' }}
     >
       {/* Background gradient fire effect */}
@@ -189,7 +189,7 @@ function HeroSection() {
 
       {/* Scroll arrow */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer p-4"
+        className="absolute bottom-3 left-1/2 -translate-x-1/2 cursor-pointer p-2"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         style={{ color: 'var(--color-gold)' }}

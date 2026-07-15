@@ -172,6 +172,42 @@ iframe.map-iframe {
   filter: none;
 }
 
+/* Floating food images (FloatingFoodHero) */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+}
+
+@keyframes food-fade-in {
+  from {
+    opacity: 0;
+    scale: 0.9;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.animate-float {
+  opacity: 0;
+  animation:
+    food-fade-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    float 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 /* Original Premium Crimson Brand Logo Style */
 .brand-logo-neon {
   background: rgba(163, 33, 36, 1.0);
