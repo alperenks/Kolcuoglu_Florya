@@ -3,8 +3,28 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { menuItems } from '@/data/menu'
+import { MenuItem } from '@/types'
 import { ChevronDown } from 'lucide-react'
 import Image from 'next/image'
+
+// Groups items by their printed sub-heading (e.g. Viski, Kırmızı), keeping the
+// data order. Items without a subCategory stay in a single unlabelled group.
+function groupBySubCategory(items: MenuItem[]) {
+  const groups: { title: string | null; items: MenuItem[] }[] = []
+
+  items.forEach((item) => {
+    const title = item.subCategory ?? null
+    const last = groups[groups.length - 1]
+
+    if (last && last.title === title) {
+      last.items.push(item)
+    } else {
+      groups.push({ title, items: [item] })
+    }
+  })
+
+  return groups
+}
 
 export default function MenuPage() {
   // All categories are closed by default
@@ -16,7 +36,11 @@ export default function MenuPage() {
     'lahmacun-pide': false,
     'tatlilar': false,
     'mesrubatlar': false,
+    'sicak-icecekler': false,
+    'soguk-kahveler': false,
     'alkollu-icecekler': false,
+    'saraplar': false,
+    'kokteyller': false,
   })
 
   // State to track expanded sub-accordions for individual drink items with variants
@@ -33,6 +57,104 @@ export default function MenuPage() {
   // Get items for a specific category
   const getCategoryItems = (slug: string) => {
     return menuItems.filter(item => item.categorySlug === slug)
+  }
+
+  // Helper to render a single menu line (name · weight · price · variants)
+  const renderItem = (item: MenuItem, slug: string) => {
+    const hasVariants = item.variants && item.variants.length > 0
+    const isItemOpen = expandedItems[item.id]
+
+    return (
+      <div key={item.id} className="group">
+        {hasVariants && slug === 'alkollu-icecekler' ? (
+          /* Sub-accordion for alcoholic items with variants */
+          <button
+            onClick={() => toggleItem(item.id)}
+            className="w-full text-left focus:outline-none block"
+          >
+            <div className="flex items-end justify-between py-1 text-sm cursor-pointer hover:text-amber-400 transition-colors duration-200">
+              <span className="text-[var(--color-cream)] font-medium flex items-center gap-1.5">
+                {item.name}
+                <motion.span
+                  animate={{ rotate: isItemOpen ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="inline-block text-gold/60"
+                >
+                  <ChevronDown size={12} />
+                </motion.span>
+              </span>
+              <span className="flex-1 border-b border-dotted border-[var(--color-border-strong)] mx-3 mb-1" />
+              <span className="text-gold font-mono font-medium">
+                ₺{item.price}+
+              </span>
+            </div>
+          </button>
+        ) : (
+          /* Standard menu item layout */
+          <div className="flex items-end justify-between py-1 text-sm">
+            <span
+              className="text-[var(--color-cream)] font-medium group-hover:text-amber-400 transition-colors duration-200"
+              style={{ fontFamily: 'var(--font-sans)' }}
+            >
+              {item.name}
+            </span>
+            <span className="flex-1 border-b border-dotted border-[var(--color-border-strong)] mx-3 mb-1" />
+            {item.weight && (
+              <span className="text-xs text-[var(--color-muted)] mr-4 font-mono whitespace-nowrap">{item.weight}</span>
+            )}
+            <span className="text-gold font-mono font-medium whitespace-nowrap">
+              ₺{item.price}{hasVariants ? '+' : ''}
+            </span>
+          </div>
+        )}
+
+        {/* Description if any */}
+        {item.description && item.description.length > 0 && !item.description.includes('taze günlük ürünleriyle') && (
+          <p className="text-xs text-[var(--color-text-desc)] mt-0.5 pl-1 leading-relaxed">
+            {item.description}
+          </p>
+        )}
+
+        {/* Variants Display */}
+        {hasVariants && (
+          slug !== 'alkollu-icecekler' ? (
+            /* Non-alcoholic variants are always expanded */
+            <div className="pl-4 mt-2 space-y-1.5 border-l border-[var(--color-border)]">
+              {item.variants?.map((v, idx) => (
+                <div key={idx} className="flex items-end justify-between py-0.5 text-xs">
+                  <span className="text-[var(--color-muted)]">{v.name}</span>
+                  <span className="flex-1 border-b border-dotted border-[var(--color-border)] mx-2 mb-1" />
+                  <span className="text-gold font-mono">₺{v.price}</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            /* Alcoholic variants are collapsible */
+            <AnimatePresence initial={false}>
+              {isItemOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2, ease: 'easeInOut' }}
+                  className="overflow-hidden"
+                >
+                  <div className="pl-4 pr-1 py-1.5 space-y-1.5 border-l border-[var(--color-gold)]/20 bg-[var(--color-card-inner-bg)] my-1 rounded-r-sm">
+                    {item.variants?.map((v, idx) => (
+                      <div key={idx} className="flex items-end justify-between py-0.5 text-xs">
+                        <span className="text-[var(--color-muted)]">{v.name}</span>
+                        <span className="flex-1 border-b border-dotted border-[var(--color-border)] mx-2 mb-1" />
+                        <span className="text-[var(--color-gold)] font-mono">₺{v.price}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          )
+        )}
+      </div>
+    )
   }
 
   // Helper to render accordion category block
@@ -82,103 +204,23 @@ export default function MenuPage() {
               transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
               <div className="p-6 space-y-4">
-                {items.map((item) => {
-                  const hasVariants = item.variants && item.variants.length > 0
-                  const isItemOpen = expandedItems[item.id]
-
-                  return (
-                    <div key={item.id} className="group">
-                      {hasVariants && slug === 'alkollu-icecekler' ? (
-                        /* Sub-accordion for alcoholic items with variants */
-                        <button
-                          onClick={() => toggleItem(item.id)}
-                          className="w-full text-left focus:outline-none block"
+                {groupBySubCategory(items).map((group, gi) => (
+                  <div key={group.title ?? `_${gi}`} className="space-y-4">
+                    {group.title && (
+                      <div className={`flex items-center gap-3 ${gi > 0 ? 'pt-3' : ''}`}>
+                        <span
+                          className="text-[11px] uppercase font-semibold whitespace-nowrap"
+                          style={{ color: 'var(--color-gold)', letterSpacing: '0.18em' }}
                         >
-                          <div className="flex items-end justify-between py-1 text-sm cursor-pointer hover:text-amber-400 transition-colors duration-200">
-                            <span className="text-[var(--color-cream)] font-medium flex items-center gap-1.5">
-                              {item.name}
-                              <motion.span
-                                animate={{ rotate: isItemOpen ? 180 : 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="inline-block text-gold/60"
-                              >
-                                <ChevronDown size={12} />
-                              </motion.span>
-                            </span>
-                            <span className="flex-1 border-b border-dotted border-[var(--color-border-strong)] mx-3 mb-1" />
-                            <span className="text-gold font-mono font-medium">
-                              ₺{item.price}+
-                            </span>
-                          </div>
-                        </button>
-                      ) : (
-                        /* Standard menu item layout */
-                        <div className="flex items-end justify-between py-1 text-sm">
-                          <span 
-                            className="text-[var(--color-cream)] font-medium group-hover:text-amber-400 transition-colors duration-200"
-                            style={{ fontFamily: 'var(--font-sans)' }}
-                          >
-                            {item.name}
-                          </span>
-                          <span className="flex-1 border-b border-dotted border-[var(--color-border-strong)] mx-3 mb-1" />
-                          {item.weight && (
-                            <span className="text-xs text-[var(--color-muted)] mr-4 font-mono whitespace-nowrap">{item.weight}</span>
-                          )}
-                          <span className="text-gold font-mono font-medium whitespace-nowrap">
-                            ₺{item.price}{hasVariants ? '+' : ''}
-                          </span>
-                        </div>
-                      )}
+                          {group.title}
+                        </span>
+                        <span className="flex-1 h-px bg-[var(--color-border-strong)]" />
+                      </div>
+                    )}
+                    {group.items.map((item) => renderItem(item, slug))}
+                  </div>
+                ))}
 
-                      {/* Description if any */}
-                      {item.description && item.description.length > 0 && !item.description.includes('taze günlük ürünleriyle') && (
-                        <p className="text-xs text-[var(--color-text-desc)] mt-0.5 pl-1 leading-relaxed">
-                          {item.description}
-                        </p>
-                      )}
-
-                      {/* Variants Display */}
-                      {hasVariants && (
-                        slug !== 'alkollu-icecekler' ? (
-                          /* Non-alcoholic variants are always expanded */
-                          <div className="pl-4 mt-2 space-y-1.5 border-l border-[var(--color-border)]">
-                            {item.variants?.map((v, idx) => (
-                              <div key={idx} className="flex items-end justify-between py-0.5 text-xs">
-                                <span className="text-[var(--color-muted)]">{v.name}</span>
-                                <span className="flex-1 border-b border-dotted border-[var(--color-border)] mx-2 mb-1" />
-                                <span className="text-gold font-mono">₺{v.price}</span>
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          /* Alcoholic variants are collapsible */
-                          <AnimatePresence initial={false}>
-                            {isItemOpen && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: 'auto', opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.2, ease: 'easeInOut' }}
-                                className="overflow-hidden"
-                              >
-                                <div className="pl-4 pr-1 py-1.5 space-y-1.5 border-l border-[var(--color-gold)]/20 bg-[var(--color-card-inner-bg)] my-1 rounded-r-sm">
-                                  {item.variants?.map((v, idx) => (
-                                    <div key={idx} className="flex items-end justify-between py-0.5 text-xs">
-                                      <span className="text-[var(--color-muted)]">{v.name}</span>
-                                      <span className="flex-1 border-b border-dotted border-[var(--color-border)] mx-2 mb-1" />
-                                      <span className="text-[var(--color-gold)] font-mono">₺{v.price}</span>
-                                    </div>
-                                  ))}
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        )
-                      )}
-                    </div>
-                  )
-                })}
-                
                 {items.length === 0 && (
                   <p className="text-xs text-[var(--color-muted)] opacity-60 text-center py-4 italic">
                     Bu kategoriye ait ürün bulunmamaktadır.
@@ -280,7 +322,7 @@ export default function MenuPage() {
           >
             Ara Sıcaklar
           </p>
-          <p className="text-[var(--color-cream)] opacity-80 font-medium">Pastırmalı Humus · Mantarlı Tavuk Sote · Fındık Lahmacun</p>
+          <p className="text-[var(--color-cream)] opacity-80 font-medium">Pastırmalı Humus · Mantarlı Tavuk Sote · Fındık Lahmacun · Patlıcan Söğürme</p>
         </div>
 
         <div>
@@ -292,7 +334,7 @@ export default function MenuPage() {
           </p>
           <p className="text-[var(--color-cream)] opacity-80 font-medium">Metrelik Kebap</p>
           <p className="text-xs text-[var(--color-text-desc)] mt-0.5 leading-relaxed">
-            (Adana, Sarma Beyti, Kanat, Tavuk Şiş, Külbastı)
+            (Adana, Sarma Beyti, Kanat, Tavuk Şiş, Kaburga)
           </p>
         </div>
 
@@ -303,7 +345,7 @@ export default function MenuPage() {
           >
             Meyve ve Tatlılar
           </p>
-          <p className="text-[var(--color-cream)] opacity-80 font-medium">Serpme Meyve (5 çeşit) · Tatlı (3 çeşit)</p>
+          <p className="text-[var(--color-cream)] opacity-80 font-medium">Serpme Meyve (6 çeşit) · Tatlı (3 çeşit)</p>
         </div>
 
         <div>
@@ -323,13 +365,18 @@ export default function MenuPage() {
 
         <div className="py-3 px-4 rounded-sm bg-[var(--color-card-inner-bg)] border border-[var(--color-border-strong)] mt-6">
           <span className="text-xs uppercase tracking-widest text-[var(--color-muted)] block mb-1">Kişi Başı Fiyat</span>
-          <span 
+          <span
             className="text-2xl font-serif font-bold"
             style={{ color: 'var(--color-gold)', fontFamily: 'var(--font-serif)' }}
           >
             ₺1.800
           </span>
         </div>
+
+        <p className="text-[11px] text-[var(--color-muted)] leading-relaxed uppercase tracking-wider mt-4">
+          Kişi sayısı kadar sipariş verilebilir<br />
+          En az 2 kişilik sipariş alınır
+        </p>
       </div>
     </div>
   )
@@ -372,11 +419,13 @@ export default function MenuPage() {
         {/* DESKTOP LAYOUT (visible on desktop) */}
         <div className="hidden lg:grid grid-cols-3 gap-8 items-start">
           
-          {/* LEFT COLUMN: Mezeler, Salatalar, Ara Sıcaklar */}
+          {/* LEFT COLUMN: food starters, then every other new category */}
           <div className="space-y-6">
             {renderAccordion('mezeler', 'MEZELER')}
             {renderAccordion('salatalar', 'SALATALAR')}
             {renderAccordion('ara-sicaklar', 'ARA SICAKLAR')}
+            {renderAccordion('sicak-icecekler', 'SICAK İÇECEKLER')}
+            {renderAccordion('saraplar', 'ŞARAPLAR')}
           </div>
 
           {/* CENTER COLUMN: Kolcuoğlu Özel Menü Showcase & Meşrubatlar/Alkollüler */}
@@ -388,11 +437,13 @@ export default function MenuPage() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Kebaplar ve Izgaralar, Lahmacun ve Pide, Tatlılar */}
+          {/* RIGHT COLUMN: mains, then the alternating new categories */}
           <div className="space-y-6">
             {renderAccordion('kebaplar-izgaralar', 'KEBAPLAR VE IZGARALAR')}
             {renderAccordion('lahmacun-pide', 'LAHMACUN VE PİDE')}
             {renderAccordion('tatlilar', 'TATLILAR')}
+            {renderAccordion('soguk-kahveler', 'SOĞUK KAHVELER')}
+            {renderAccordion('kokteyller', 'KOKTEYLLER')}
           </div>
 
         </div>
@@ -423,10 +474,22 @@ export default function MenuPage() {
           
           {/* 8. Meşrubatlar */}
           {renderAccordion('mesrubatlar', 'MEŞRUBATLAR')}
-          
-          {/* 9. Alkollü İçecekler (en altta) */}
+
+          {/* 9. Sıcak İçecekler */}
+          {renderAccordion('sicak-icecekler', 'SICAK İÇECEKLER')}
+
+          {/* 10. Soğuk Kahveler */}
+          {renderAccordion('soguk-kahveler', 'SOĞUK KAHVELER')}
+
+          {/* 11. Alkollü İçecekler */}
           {renderAccordion('alkollu-icecekler', 'ALKOLLÜ İÇECEKLER')}
-          
+
+          {/* 12. Şaraplar */}
+          {renderAccordion('saraplar', 'ŞARAPLAR')}
+
+          {/* 13. Kokteyller (en altta) */}
+          {renderAccordion('kokteyller', 'KOKTEYLLER')}
+
         </div>
 
       </section>

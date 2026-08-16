@@ -9,6 +9,8 @@ export interface MenuItem {
   description: string
   price: number
   categorySlug: string
+  /** Printed-menu sub-heading inside a category (e.g. 'Viski', 'Kırmızı') */
+  subCategory?: string
   imageUrl: string
   ingredients?: string[]
   allergens?: string[]
