@@ -5,6 +5,11 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/next'
+import Script from 'next/script'
+import GoogleTag, { GTAG_CONSENT_DEFAULT_SNIPPET } from '@/components/analytics/GoogleTag'
+import ConversionTracker from '@/components/analytics/ConversionTracker'
+import ConsentBanner from '@/components/analytics/ConsentBanner'
+import StickyCallBar from '@/components/ui/StickyCallBar'
 
 const kolcuogluBrand = localFont({
   src: '../public/fonts/kolcuoglu-brand.ttf',
@@ -127,6 +132,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SpeedInsights />
         <Analytics />
         <Footer />
+        <StickyCallBar />
+        {/* İzin varsayılanı etiket yüklenmeden önce ayarlanmalı (Consent Mode v2) */}
+        <Script
+          id="gtag-consent-default"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: GTAG_CONSENT_DEFAULT_SNIPPET }}
+        />
+        <GoogleTag />
+        <ConversionTracker />
+        <ConsentBanner />
       </body>
     </html>
   )
