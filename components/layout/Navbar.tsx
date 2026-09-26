@@ -60,9 +60,8 @@ export default function Navbar() {
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
           borderBottom: scrolled ? '1px solid rgba(163, 33, 36, 0.15)' : 'none',
         }}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        // No entrance animation: logo and menu must be visible in the server HTML
+        initial={false}
       >
         <div className="px-6 lg:px-8" style={{ maxWidth: '1280px', margin: '0 auto', width: '100%' }}>
           <div className="flex items-center justify-between h-20">
