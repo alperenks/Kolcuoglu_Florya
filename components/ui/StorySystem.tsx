@@ -93,8 +93,6 @@ export default function StorySystem() {
   const [mounted, setMounted] = useState(false)
   const [resetKey, setResetKey] = useState(0)
 
-  const [shouldPreload, setShouldPreload] = useState(false)
-
   const videoRef = useRef<HTMLVideoElement>(null)
   const pointerDownTime = useRef(0)
 
@@ -109,13 +107,6 @@ export default function StorySystem() {
     } catch (e) {
       console.error('Failed to parse read stories', e)
     }
-
-    // Start preloading videos 2.5 seconds after mounting to let critical assets load first
-    const timer = setTimeout(() => {
-      setShouldPreload(true)
-    }, 2500)
-
-    return () => clearTimeout(timer)
   }, [])
 
   // Lock body scroll when stories viewer is open
@@ -243,6 +234,15 @@ export default function StorySystem() {
 
   const currentStory = activeStoryIndex !== null ? STORIES_DATA[activeStoryIndex] : null
   const currentSlide = currentStory ? currentStory.items[activeSlideIndex] : null
+
+  // Next slide (same story or first slide of next story) — its video is preloaded
+  // only while the viewer is open, so page visitors who never open stories download nothing
+  const nextSlide =
+    activeStoryIndex === null
+      ? null
+      : currentStory && activeSlideIndex < currentStory.items.length - 1
+        ? currentStory.items[activeSlideIndex + 1]
+        : STORIES_DATA[activeStoryIndex + 1]?.items[0] ?? null
 
   // Determine slide duration
   const duration = currentSlide
@@ -487,11 +487,10 @@ export default function StorySystem() {
         </AnimatePresence>,
         document.body
       )}
-      {/* Background preloader for stories videos (delayed 2.5s) */}
-      {shouldPreload && (
+      {/* Preload the next story video only while the viewer is open */}
+      {isViewerOpen && nextSlide?.type === 'video' && (
         <div style={{ display: 'none' }} aria-hidden="true">
-          <video preload="auto" src="/videos/Kolcuoğlu-herkes-için.mp4" muted playsInline />
-          <video preload="auto" src="/videos/Kolcuoğlu-Floryada.mp4" muted playsInline />
+          <video key={nextSlide.id} preload="auto" src={nextSlide.url} muted playsInline />
         </div>
       )}
     </div>
