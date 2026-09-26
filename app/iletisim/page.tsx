@@ -4,13 +4,13 @@ import { MapPin, Phone, Mail, Clock, Navigation } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'İletişim',
   description:
-    'Kolcuoğlu Florya iletişim: Çekmece İstanbul Cd. 39, Bakırköy/İstanbul. Tel: 0533 131 54 01. Konum, çalışma saatleri ve yol tarifi.',
+    'Kolcuoğlu Florya iletişim: Basınköy, Çekmece İstanbul Cd. No:39, Bakırköy/İstanbul. Her gün 11:00 – 00:00. Tel: 0533 131 54 01. Konum ve yol tarifi.',
   alternates: { canonical: '/iletisim' },
 }
 
+// Must match the Google Business Profile and the JSON-LD in app/layout.tsx
 const workingHours = [
-  { day: 'Pazar – Perşembe', hours: '12:00 – 00:00' },
-  { day: 'Cuma – Cumartesi', hours: '12:00 – 01:00' },
+  { day: 'Her Gün', hours: '11:00 – 00:00' },
 ]
 
 export default function IletisimPage() {
@@ -76,8 +76,8 @@ export default function IletisimPage() {
                 <div>
                   <p className="text-xs uppercase tracking-wider mb-1" style={{ color: 'var(--color-gold)' }}>Adres</p>
                   <p className="text-sm leading-relaxed mb-3" style={{ color: 'var(--color-muted)' }}>
-                    Çekmece İstanbul Cd. 39<br />
-                    34153 Bakırköy / İstanbul
+                    Çekmece İstanbul Cd. No:39<br />
+                    Basınköy, 34153 Bakırköy / İstanbul
                   </p>
                   <div className="flex flex-wrap gap-2 mt-2">
                     <a href="https://maps.app.goo.gl/2vAwEAAYAtk6AncA7" target="_blank" rel="noreferrer" className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors hover:bg-[var(--color-card-inner-bg)]/80" style={{ background: 'var(--color-card-inner-bg)', color: 'var(--color-gold)', border: '1px solid rgba(163,33,36,0.2)' }}>

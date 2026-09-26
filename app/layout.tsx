@@ -102,7 +102,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               telephone: '+90-533-131-54-01',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: 'Çekmece İstanbul Cd. 39',
+                streetAddress: 'Basınköy, Çekmece İstanbul Cd. No:39',
                 addressLocality: 'Bakırköy',
                 addressRegion: 'İstanbul',
                 postalCode: '34153',
@@ -113,18 +113,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 latitude: 40.9772531,
                 longitude: 28.775728,
               },
+              // Must match the Google Business Profile (every day 11:00–00:00) and /iletisim
               openingHoursSpecification: [
                 {
                   '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Sunday'],
-                  opens: '12:00',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                  opens: '11:00',
                   closes: '00:00',
-                },
-                {
-                  '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: ['Friday', 'Saturday'],
-                  opens: '12:00',
-                  closes: '01:00',
                 },
               ],
               servesCuisine: ['Turkish', 'Kebap', 'Mediterranean'],
