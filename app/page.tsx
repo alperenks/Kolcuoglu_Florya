@@ -232,15 +232,33 @@ Tarihin, ustalığın ve lezzetin metrelerce uzandığı bu serüvene hoş geldi
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
-          <div className="flex flex-col sm:flex-row gap-6 mt-10">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-6 mt-10">
             {[
               { icon: Star, text: 'Metrelik Kebabın Mucidi' },
               { icon: Clock, text: '7 Nesillik Aile Geleneği' },
-              { icon: MapPin, text: 'Florya, İstanbul Denize Sıfır Konum' },
-            ].map(({ icon: Icon, text }) => (
-              <div key={text} className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-gold)' }}>
+              {
+                icon: MapPin,
+                text: 'Florya Sahili, Denize Sıfır',
+                // One line each when the badges sit side by side (sm+), a single "·" line on mobile
+                detail: ['Yeşilköy 10 dk', 'Ataköy ve Bakırköy 15 dk'],
+              },
+            ].map(({ icon: Icon, text, detail }) => (
+              // Badges never break mid-line on sm+; the row wraps a whole badge to the next line instead
+              <div key={text} className="flex items-center gap-2 text-xs sm:whitespace-nowrap" style={{ color: 'var(--color-gold)' }}>
                 <Icon size={14} className="flex-shrink-0" />
-                <span style={{ color: 'var(--color-muted)' }}>{text}</span>
+                <span style={{ color: 'var(--color-muted)' }}>
+                  {text}
+                  {detail && (
+                    <span className="block mt-0.5">
+                      {detail.map((d, i) => (
+                        <span key={d} className="sm:block">
+                          {i > 0 && <span className="sm:hidden"> · </span>}
+                          {d}
+                        </span>
+                      ))}
+                    </span>
+                  )}
+                </span>
               </div>
             ))}
           </div>
