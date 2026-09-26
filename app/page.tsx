@@ -46,12 +46,9 @@ function HeroSection() {
       {/* Content */}
       <div className="relative z-10 text-center px-6" style={{ maxWidth: '1152px', margin: '0 auto', width: '100%' }}>
         <StorySystem />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-0 mb-2"
-        >
+        {/* Above-the-fold hero is rendered visible in the server HTML (no opacity:0 entrance
+            animation): the h1 is the page's LCP element and must paint without waiting for JS */}
+        <div className="mt-0 mb-2">
           <span
             className="inline-block px-4 py-1.5 text-xs tracking-widest uppercase border"
             style={{
@@ -63,9 +60,9 @@ function HeroSection() {
           >
             Kuruluş 1910 · Adana
           </span>
-        </motion.div>
+        </div>
 
-        <motion.h1
+        <h1
           className="font-serif mb-6 leading-none"
           style={{
             fontFamily: 'var(--font-serif)',
@@ -74,30 +71,19 @@ function HeroSection() {
             fontWeight: 700,
             fontVariantNumeric: 'lining-nums',
           }}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
           116 Yıllık Gelenek,<br />
           <span className="text-gradient italic">Herkes için.</span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
+        <p
           className="mb-10 text-lg leading-relaxed mx-auto"
           style={{ color: 'var(--color-text-desc)', fontFamily: 'var(--font-sans)', maxWidth: '672px' }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
         >
           Adana’nın asırlık ateşi, Florya sahilinde yanıyor. Denize sıfır masalarımızda, meşhur metrelik kebabımızla eşsiz bir ziyafete davetlisiniz.
-        </motion.p>
+        </p>
 
-        <motion.div
-          className="flex flex-col items-center gap-4 justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-        >
+        <div className="flex flex-col items-center gap-4 justify-center">
           {/* Row 1: Menüyü Keşfet & Yol Tarifi Al */}
           <div className="flex flex-row gap-3 justify-center items-center w-full max-w-[380px] sm:max-w-none sm:w-auto">
             <Link href="/menu" className="flex-1 sm:flex-initial">
@@ -158,15 +144,10 @@ function HeroSection() {
           >
             <Phone size={14} /> Rezervasyon Yap
           </motion.a>
-        </motion.div>
+        </div>
 
         {/* Stats */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-8 mt- pt-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-        >
+        <div className="flex flex-wrap justify-center gap-8 mt- pt-10">
           {[
             { value: '116', label: 'Yıllık Gelenek' },
             { value: '150+', label: 'Lezzet Çeşidi' },
@@ -184,7 +165,7 @@ function HeroSection() {
               </p>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll arrow */}
