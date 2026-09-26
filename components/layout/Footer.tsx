@@ -107,7 +107,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex gap-3 text-sm" style={{ color: 'var(--color-muted)' }}>
                 <MapPin size={16} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--color-gold)' }} />
-                <span>Çekmece İstanbul Cd. 39, 34153 İstanbul, Bakırköy Türkiye</span>
+                <span>Basınköy, Çekmece İstanbul Cd.&nbsp;No:39, 34153 Bakırköy/İstanbul</span>
               </li>
               <li className="flex gap-3 text-sm" style={{ color: 'var(--color-muted)' }}>
                 <Phone size={16} className="flex-shrink-0" style={{ color: 'var(--color-gold)' }} />
