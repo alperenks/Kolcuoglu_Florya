@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
+import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -14,6 +15,21 @@ import StickyCallBar from '@/components/ui/StickyCallBar'
 const kolcuogluBrand = localFont({
   src: '../public/fonts/kolcuoglu-brand.ttf',
   variable: '--font-brand',
+  display: 'swap',
+})
+
+// Self-hosted at build time (no render-blocking request to fonts.googleapis.com).
+// Variable fonts cover every weight in one file; latin-ext is needed for ı, ş, ğ, İ.
+const playfair = Playfair_Display({
+  subsets: ['latin', 'latin-ext'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin', 'latin-ext'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -59,14 +75,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr">
+    // Font variables live on <html> so :root's --font-serif / --font-sans can resolve them
+    <html lang="tr" className={`${playfair.variable} ${inter.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Pacifico&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
