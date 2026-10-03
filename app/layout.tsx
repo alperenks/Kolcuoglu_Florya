@@ -19,18 +19,39 @@ const kolcuogluBrand = localFont({
 })
 
 // Self-hosted at build time (no render-blocking request to fonts.googleapis.com).
-// Variable fonts cover every weight in one file; latin-ext is needed for ı, ş, ğ, İ.
+// Variable fonts cover every weight in one file. Turkish needs latin-ext (ğ, ş, İ), but the
+// above-the-fold h1 ("116 Yıllık Gelenek, Herkes için.") only uses the latin subset (ı is in
+// latin). Each family is therefore split into a small preloaded latin file and a latin-ext /
+// file that is NOT preloaded (browser fetches it only when a glyph needs it), so ~250 KB
+// of font preloads no longer compete with CSS/JS on slow mobile connections.
+// Stack order matters: the ext family comes first and has no size-adjusted fallback of its own;
+// the latin family (with its fallback) follows, so a glyph missing from both lands in the fallback.
 const playfair = Playfair_Display({
-  subsets: ['latin', 'latin-ext'],
+  subsets: ['latin'],
   style: ['normal', 'italic'],
   variable: '--font-playfair',
   display: 'swap',
 })
+const playfairExt = Playfair_Display({
+  subsets: ['latin-ext'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair-ext',
+  display: 'swap',
+  preload: false,
+  adjustFontFallback: false,
+})
 
 const inter = Inter({
-  subsets: ['latin', 'latin-ext'],
+  subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+})
+const interExt = Inter({
+  subsets: ['latin-ext'],
+  variable: '--font-inter-ext',
+  display: 'swap',
+  preload: false,
+  adjustFontFallback: false,
 })
 
 export const metadata: Metadata = {
@@ -76,7 +97,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     // Font variables live on <html> so :root's --font-serif / --font-sans can resolve them
-    <html lang="tr" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="tr" className={`${playfair.variable} ${playfairExt.variable} ${inter.variable} ${interExt.variable}`}>
       <head>
         <script
           type="application/ld+json"

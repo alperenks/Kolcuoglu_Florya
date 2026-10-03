@@ -365,13 +365,14 @@ function FeaturedMenuSection() {
                   className="relative aspect-[16/9] w-full flex items-center justify-center overflow-hidden"
                   style={{ background: 'var(--color-surface)' }}
                 >
+                  {/* Below the fold: no `priority` (it added a high-priority <link rel="preload"> to
+                      the head that competed with the h1's CSS/fonts on slow mobile connections) */}
                   <Image 
                     src="/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg" 
                     alt="Kolcuoğlu Özel Menü" 
                     fill
                     sizes="(max-width: 768px) 100vw, 80vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   
