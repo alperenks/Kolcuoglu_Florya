@@ -7,6 +7,8 @@ import Image from 'next/image'
 import { ArrowDown, Star, Clock, MapPin, Phone } from 'lucide-react'
 import { featuredItems } from '@/data/menu'
 import StorySystem from '@/components/ui/StorySystem'
+import WhyUsSection from '@/components/sections/WhyUsSection'
+import FaqSection from '@/components/sections/FaqSection'
 
 
 // ─── Fade-in wrapper ────────────────────────────────────────────────────────
@@ -544,9 +546,11 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <WhyUsSection />
       <AboutSection />
       <FeaturedMenuSection />
       <AtmosphereSection />
+      <FaqSection />
     </>
   )
 }
