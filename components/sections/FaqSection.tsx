@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     q: 'Şirket yemeği yapıyor musunuz?',
-    a: 'Evet. Kurumsal yemekler için 500 kişiye kadar organizasyon yapıyoruz; kişi sayısı ve tarihe göre kurumsal menü ve teklif hazırlıyoruz. Fakir, MÜSİAD, Türk Telekom, İpekyol, Trendyol gibi büyük markalar şirket yemekleri için bizi tercih etmiştir.',
+    a: 'Evet. Kurumsal yemekler için 500 kişiye kadar organizasyon yapıyoruz; kişi sayısı ve tarihe göre kurumsal menü ve teklif hazırlıyoruz. Fakir, MESİAD, Türk Telekom, İpekyol, Trendyol gibi büyük markalar şirket yemekleri için bizi tercih etmiştir.',
     extra: 'corporate',
   },
   {
