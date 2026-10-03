@@ -11,6 +11,10 @@ const faqs = [
     a: 'Evet, burası Kolcuoğlu markasının kendi restoranıdır ve franchise veya bir başka marka değildir.',
   },
   {
+    q: 'Restoran alkollü mü?',
+    a: 'Evet, restoranımız alkollüdür.',
+  },
+  {
     q: 'Kolcuoğlu Özel Menü nasıl işliyor?',
     a: 'Menümüz minimum iki kişiliktir ve fiyatımız kişi başı 1.800 TL\'dir.',
   },
@@ -19,8 +23,8 @@ const faqs = [
     a: 'Hayır, vale hizmetimiz ücretsizdir. Ayrıca otoparkımız bulunmaktadır.',
   },
   {
-    q: 'Kışın da deniz manzarasıyla yemek yiyebilir miyiz?',
-    a: 'Evet. Kapalı ve ısıtmalı alanımızda hava koşullarından bağımsız oturabilirsiniz ve her masadan denizi görebilirsiniz.',
+    q: 'Deniz manzaralı masa istiyorum, mümkün mü?',
+    a: 'Restoranımız denize sıfırdır ve boydan boya panoramik cam ve masa düzenimiz sayesinde her masamızdan denize hakimdir.',
   },
   {
     q: 'Rezervasyon nasıl yapılır?',
@@ -28,8 +32,13 @@ const faqs = [
     extra: 'reservation',
   },
   {
-    q: 'Grup ve şirket yemeği yapıyor musunuz?',
-    a: "Evet. Aile buluşmaları, kurumsal yemekler ve özel günler için 500 kişiye kadar organizasyon yapıyoruz; kişi sayısı ve tarihe göre kurumsal menü ve teklif hazırlıyoruz.",
+    q: 'Aile buluşmaları ve özel günler için organizasyon yapıyor musunuz?',
+    a: 'Evet. Aile buluşmaları ve özel günler için kişi sayısına ve tarihe göre menü ve teklif hazırlıyoruz.',
+    extra: 'call',
+  },
+  {
+    q: 'Şirket yemeği yapıyor musunuz?',
+    a: 'Evet. Kurumsal yemekler için 500 kişiye kadar organizasyon yapıyoruz; kişi sayısı ve tarihe göre kurumsal menü ve teklif hazırlıyoruz. Fakir, MÜSİAD, Türk Telekom, İpekyol, Trendyol gibi büyük markalar şirket yemekleri için bizi tercih etmiştir.',
     extra: 'corporate',
   },
   {
@@ -47,10 +56,6 @@ const faqs = [
   {
     q: 'Engelli erişimi var mı?',
     a: 'Restoranımızda iki tane asansör bulunmaktadır. Engelli misafirlerimiz de restoranımızı rahatça deneyimleyebilirler.',
-  },
-  {
-    q: 'Restoran alkollü mü?',
-    a: 'Evet, restoranımız alkollüdür.',
   },
 ] as const
 
@@ -95,6 +100,11 @@ export default function FaqSection() {
                     <a href={PHONE_TEL}>{PHONE_TEXT}</a>
                     <span aria-hidden="true"> · </span>
                     <Link href="/rezervasyon">Rezervasyon formu</Link>
+                  </p>
+                )}
+                {'extra' in f && f.extra === 'call' && (
+                  <p className="faq-links">
+                    <a href={PHONE_TEL}>Teklif için arayın · {PHONE_TEXT}</a>
                   </p>
                 )}
                 {'extra' in f && f.extra === 'corporate' && (
