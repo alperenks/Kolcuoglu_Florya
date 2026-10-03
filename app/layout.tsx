@@ -24,6 +24,8 @@ const kolcuogluBrand = localFont({
 // latin). Each family is therefore split into a small preloaded latin file and a latin-ext /
 // file that is NOT preloaded (browser fetches it only when a glyph needs it), so ~250 KB
 // of font preloads no longer compete with CSS/JS on slow mobile connections.
+// preload:false everywhere: with Next 16.2.1 (Turbopack) every preloaded font gets two identical @font-face rules
+// (a '.p.' file and a normal one), so each preloaded file was downloaded twice (~125 KB wasted).
 // Stack order matters: the ext family comes first and has no size-adjusted fallback of its own;
 // the latin family (with its fallback) follows, so a glyph missing from both lands in the fallback.
 const playfair = Playfair_Display({
@@ -31,6 +33,7 @@ const playfair = Playfair_Display({
   style: ['normal', 'italic'],
   variable: '--font-playfair',
   display: 'swap',
+  preload: false,
 })
 const playfairExt = Playfair_Display({
   subsets: ['latin-ext'],
@@ -45,6 +48,7 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+  preload: false,
 })
 const interExt = Inter({
   subsets: ['latin-ext'],
