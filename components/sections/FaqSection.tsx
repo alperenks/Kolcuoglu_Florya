@@ -7,12 +7,20 @@ const PHONE_TEXT = '0533 131 54 01'
 
 const faqs = [
   {
+    q: 'Burası gerçek Kolcuoğlu mu?',
+    a: 'Evet, burası Kolcuoğlu markasının kendi restoranıdır ve franchise veya bir başka marka değildir.',
+  },
+  {
+    q: 'Kolcuoğlu Özel Menü nasıl işliyor?',
+    a: 'Menümüz minimum iki kişiliktir ve fiyatımız kişi başı 1.800 TL\'dir.',
+  },
+  {
     q: 'Vale ücretli mi?',
     a: 'Hayır, vale hizmetimiz ücretsizdir. Ayrıca otoparkımız bulunmaktadır.',
   },
   {
     q: 'Kışın da deniz manzarasıyla yemek yiyebilir miyiz?',
-    a: 'Evet. Kapalı ve ısıtmalı manzaralı alanımızda hava koşullarından bağımsız oturabilirsiniz.',
+    a: 'Evet. Kapalı ve ısıtmalı alanımızda hava koşullarından bağımsız oturabilirsiniz ve her masadan denizi görebilirsiniz.',
   },
   {
     q: 'Rezervasyon nasıl yapılır?',
@@ -31,6 +39,18 @@ const faqs = [
   {
     q: 'Çalışma saatleriniz nedir?',
     a: 'Her gün 11:00 – 00:00 arası hizmet veriyoruz.',
+  },
+  {
+    q: 'Çocuk oyun alanı var mı?',
+    a: 'Hayır, çocuk oyun alanımız bulunmamaktadır.',
+  },
+  {
+    q: 'Engelli erişimi var mı?',
+    a: 'Restoranımızda iki tane asansör bulunmaktadır. Engelli misafirlerimiz de restoranımızı rahatça deneyimleyebilirler.',
+  },
+  {
+    q: 'Restoran alkollü mü?',
+    a: 'Evet, restoranımız alkollüdür.',
   },
 ] as const
 
