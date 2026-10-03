@@ -3,13 +3,13 @@
 // metrelik kebabın mucidi, grup yemekleri, ulaşım) ana sayfada düz metin olarak göstermek.
 // Animasyon/JS yok: ilk boyamayı geciktirmez.
 import Link from 'next/link'
-import { Waves, Car, Sun, Flame, Users, MapPin } from 'lucide-react'
+import { Waves, Car, Flame, Users, MapPin, Beef } from 'lucide-react'
 
 const items = [
   {
     icon: Waves,
     title: 'Denize Sıfır, Her Masadan Manzara',
-    text: 'Florya sahilinde deniz manzaralı salon ve teras. Akşam yemeğini deniz kenarında, gün batımına karşı yiyin.',
+    text: 'Restoranımız denize sıfırdır; boydan boya panoramik cam ve masa düzenimiz sayesinde her masamızdan denize hakimsiniz.',
   },
   {
     icon: Car,
@@ -17,9 +17,10 @@ const items = [
     text: 'Arabanızı bırakın, doğrudan masanıza geçin. Vale hizmetimiz ücretsiz, otoparkımız hizmetinizde.',
   },
   {
-    icon: Sun,
-    title: 'Kış da Yaz Gibi',
-    text: 'Kapalı ve ısıtmalı manzaralı alanımızda hava koşullarından bağımsız, deniz manzarasıyla yemek yiyebilirsiniz.',
+    icon: MapPin,
+    title: 'Kolay Ulaşım',
+    text: "Yeşilköy'den 10, Ataköy ve Bakırköy'den 15 dakika. Basınköy, Çekmece İstanbul Cd. No:39.",
+    link: { href: '/iletisim', label: 'Yol tarifi' },
   },
   {
     icon: Flame,
@@ -27,16 +28,15 @@ const items = [
     text: "1910'dan beri Adana mutfağı. Metrelik kebabı icat eden ailenin 7. kuşağı, aynı kor ateşte.",
   },
   {
-    icon: Users,
-    title: 'Grup ve Şirket Yemekleri',
-    text: 'Aile buluşmaları, kurumsal yemekler ve özel günler için 500 kişiye kadar organizasyon.',
-    link: { href: '/sirket-yemekleri', label: 'Kurumsal teklif' },
+    icon: Beef,
+    title: "Adana'dan Gelen Et, Orijinal Zırh Kıyması",
+    text: "Etimiz Adana'dan gelir; kebabımız orijinal zırh kıymasıdır. Adana mutfağının asıl lezzeti, kor ateşte pişer.",
   },
   {
-    icon: MapPin,
-    title: 'Kolay Ulaşım',
-    text: "Yeşilköy'den 10, Ataköy ve Bakırköy'den 15 dakika. Basınköy, Çekmece İstanbul Cd. No:39.",
-    link: { href: '/iletisim', label: 'Yol tarifi' },
+    icon: Users,
+    title: 'Şirket Yemekleri',
+    text: 'Kurumsal yemekler için 500 kişiye kadar organizasyon. Fakir, MESİAD, Türk Telekom, İpekyol, Trendyol gibi büyük markalar şirket yemekleri için bizi tercih etmiştir.',
+    link: { href: '/sirket-yemekleri', label: 'Kurumsal teklif' },
   },
 ] as const
 
