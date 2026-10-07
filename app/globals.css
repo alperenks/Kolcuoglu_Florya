@@ -233,3 +233,16 @@ iframe.map-iframe {
 .faq-links a {
   color: var(--color-gold);
 }
+
+/* Çerez bandı (components/analytics/ConsentBanner.tsx): alttan yumuşak giriş */
+@keyframes cerez-bandi-giris {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.cerez-bandi { animation: cerez-bandi-giris 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+/* bağlantı: koyu temada açık terrakota (koyu zeminde okunur), açık temada sitenin kırmızısı */
+.cerez-bandi-link { color: var(--color-terracotta-light); }
+.theme-light .cerez-bandi-link { color: var(--color-gold); }
+@media (prefers-reduced-motion: reduce) {
+  .cerez-bandi { animation: none; }
+}
