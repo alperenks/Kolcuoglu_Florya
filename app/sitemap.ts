@@ -10,5 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/iletisim`, priority: 0.7, changeFrequency: 'yearly' },
     { url: `${BASE}/galeri`, priority: 0.6, changeFrequency: 'monthly' },
     { url: `${BASE}/sirket-yemekleri`, priority: 0.6, changeFrequency: 'yearly' },
+    { url: `${BASE}/gizlilik`, priority: 0.2, changeFrequency: 'yearly' },
   ]
 }

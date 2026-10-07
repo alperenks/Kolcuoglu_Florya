@@ -4,6 +4,7 @@
 // Konum: components/analytics/ConsentBanner.tsx
 
 import { useEffect, useSyncExternalStore } from 'react'
+import Link from 'next/link'
 
 type Choice = 'granted' | 'denied'
 
@@ -73,7 +74,10 @@ export default function ConsentBanner() {
       <div className="mx-auto max-w-3xl rounded-2xl bg-neutral-900 text-neutral-100 shadow-2xl p-4 md:p-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-5">
         <p className="text-sm leading-snug flex-1">
           Rezervasyon aramalarını ve reklam performansını ölçmek için çerez kullanıyoruz. Kabul
-          etmezseniz site aynı şekilde çalışır, yalnızca ölçüm çerezleri yazılmaz.
+          etmezseniz site aynı şekilde çalışır, yalnızca ölçüm çerezleri yazılmaz.{' '}
+          <Link href="/gizlilik" className="underline underline-offset-2 hover:text-white">
+            Ayrıntılar
+          </Link>
         </p>
         <div className="flex gap-2 shrink-0">
           <button

@@ -113,11 +113,11 @@ export default function IletisimPage() {
                 <div>
                   <p className="text-xs uppercase tracking-wider mb-1" style={{ color: 'var(--color-gold)' }}>E-posta</p>
                   <a
-                    href="mailto:info@kolcuogluflorya.com"
+                    href="mailto:kolcuogluflorya@gmail.com"
                     className="text-sm transition-colors hover:text-[var(--color-gold)]"
                     style={{ color: 'var(--color-muted)' }}
                   >
-                    info@kolcuogluflorya.com
+                    kolcuogluflorya@gmail.com
                   </a>
                 </div>
               </div>

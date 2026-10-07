@@ -129,6 +129,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs" style={{ color: 'var(--color-muted)' }}>
           <p>© Kolcuoğlu Kebap & Gastronomi. Tüm hakları saklıdır.</p>
+          <Link href="/gizlilik" className="transition-opacity hover:opacity-80">Gizlilik ve KVKK</Link>
           <p>Kolcuoğlu, Herkes için.</p>
         </div>
       </div>
