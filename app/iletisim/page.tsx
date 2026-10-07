@@ -99,6 +99,7 @@ export default function IletisimPage() {
                   <p className="text-xs uppercase tracking-wider mb-1" style={{ color: 'var(--color-gold)' }}>Telefon & WhatsApp</p>
                   <a
                     href="https://wa.me/905331315401"
+                    data-konum="iletisim"
                     target="_blank" rel="noreferrer"
                     className="text-sm transition-colors hover:text-[var(--color-gold)]"
                     style={{ color: 'var(--color-muted)' }}
@@ -160,6 +161,7 @@ export default function IletisimPage() {
         </p>
         <a
           href="tel:+905331315401"
+          data-konum="iletisim"
           className="px-10 py-4 text-sm tracking-widest uppercase font-semibold inline-block text-center"
           style={{
             background: 'linear-gradient(135deg, var(--color-terracotta), var(--color-copper))',

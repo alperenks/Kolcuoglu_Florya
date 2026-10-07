@@ -130,6 +130,7 @@ export default function Navbar() {
               </motion.button>
               <motion.a
                 href="tel:+905331315401"
+                data-konum="ust_menu"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 className="px-6 py-2.5 text-xs tracking-widest uppercase font-semibold transition-all duration-300 flex items-center justify-center gap-1.5 text-center"
@@ -222,6 +223,7 @@ export default function Navbar() {
               >
                 <a
                   href="tel:+905331315401"
+                  data-konum="mobil_menu"
                   onClick={() => setMenuOpen(false)}
                   className="w-full py-4 text-sm tracking-widest uppercase font-semibold flex items-center justify-center gap-2 text-center"
                   style={{

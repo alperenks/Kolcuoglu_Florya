@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { ga4Event } from '@/components/analytics/ga4'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -432,7 +433,7 @@ export default function RezervasYonPage() {
                     {step === 1 && (
                       <Step1
                         data={formData}
-                        onNext={(d) => { updateData(d); setStep(2) }}
+                        onNext={(d) => { updateData(d); setStep(2); ga4Event('reservation_step', { step: 1 }) }}
                       />
                     )}
                     {step === 2 && (
@@ -442,13 +443,16 @@ export default function RezervasYonPage() {
                           const updated = { ...formData, ...d }
                           updateData(d)
                           try {
-                            await fetch('/api/reservations', {
+                            const res = await fetch('/api/reservations', {
                               method: 'POST',
                               headers: { 'Content-Type': 'application/json' },
                               body: JSON.stringify(updated),
                             })
+                            if (res.ok) ga4Event('generate_lead', { form_name: 'rezervasyon', party_size: Number(updated.guests) || 0 })
+                            else ga4Event('reservation_error', { form_name: 'rezervasyon', error_type: `http_${res.status}` })
                           } catch (err) {
                             console.error('Submission error:', err)
+                            ga4Event('reservation_error', { form_name: 'rezervasyon', error_type: 'network' })
                           }
                           setCompleted(true)
                         }}

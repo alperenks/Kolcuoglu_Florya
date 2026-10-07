@@ -101,6 +101,14 @@ export default function GizlilikPage() {
               cihaz türü gibi toplu bilgiler görürüz.
             </li>
             <li>
+              <Vurgu>Site kullanım analizi (Google Analytics):</Vurgu>{' '}çerez bildiriminde{' '}
+              <Vurgu>Kabul et</Vurgu>{' '}derseniz Google Analytics 4 ile hangi sayfalara baktığınızı, Ara ve WhatsApp
+              düğmelerine ve rezervasyon formunun adımlarına dokunmanızı, siteye nereden geldiğinizi (Google araması,
+              Instagram, reklam gibi), cihaz türünüzü ve yaklaşık konumunuzu (şehir) ölçeriz; tarayıcınıza _ga ve
+              _ga_ ile başlayan çerezler yazılır (KVKK m.5/1, açık rıza). Formda yazdığınız ad, telefon, e-posta gibi
+              bilgiler Google Analytics&apos;e gönderilmez.{' '}<Vurgu>Reddet</Vurgu>{' '}derseniz bu çerezler yazılmaz.
+            </li>
+            <li>
               <Vurgu>Reklam ölçümü:</Vurgu>{' '}Google Ads etiketi, &quot;Ara&quot; veya &quot;WhatsApp&quot;
               bağlantılarına tıklanmasını bir rezervasyon sinyali olarak sayar. Çerez bildiriminde{' '}
               <Vurgu>Kabul et</Vurgu> derseniz Google ölçüm çerezleri yazılır (KVKK m.5/1, açık rıza);{' '}
@@ -114,7 +122,7 @@ export default function GizlilikPage() {
           <p>Verilerinizi satmayız ve reklam amacıyla başkalarına vermeyiz. Hizmeti sunabilmek için şu sağlayıcıları kullanırız:</p>
           <Liste>
             <li><Vurgu>Vercel Inc.</Vurgu> (sitenin barındırılması ve kullanım ölçümü)</li>
-            <li><Vurgu>Google LLC</Vurgu> (e-posta altyapısı, reklam ölçümü, Google Haritalar)</li>
+            <li><Vurgu>Google LLC</Vurgu> (e-posta altyapısı, site analizi, reklam ölçümü, Google Haritalar)</li>
             <li><Vurgu>Meta Platforms</Vurgu> (WhatsApp, Instagram ve Facebook üzerinden bize yazdığınızda)</li>
           </Liste>
           <p>
@@ -127,7 +135,8 @@ export default function GizlilikPage() {
           <p>
             Rezervasyon ve iletişim bilgilerinizi talebiniz sonuçlandıktan sonra en fazla 1 yıl saklarız; yasal
             saklama yükümlülüğü olan kayıtlar (ör. fatura) ilgili mevzuattaki süre boyunca tutulur. Süre dolunca
-            veriler silinir veya anonim hâle getirilir.
+            veriler silinir veya anonim hâle getirilir. Google Analytics verileri Google&apos;da en fazla 14 ay
+            saklanır.
           </p>
         </Bolum>
 
@@ -138,16 +147,21 @@ export default function GizlilikPage() {
               kullanabilmeniz için gereklidir, kimseyle paylaşılmaz.
             </li>
             <li>
+              <Vurgu>Site analizi (Google Analytics):</Vurgu>{' '}_ga ve _ga_ ile başlayan çerezler; yalnızca onay
+              verirseniz yazılır, en fazla 2 yıl tarayıcınızda kalır.
+            </li>
+            <li>
               <Vurgu>Reklam ölçümü (Google):</Vurgu> yalnızca onay verirseniz yazılır.
             </li>
           </Liste>
-          <p>Tercihinizi istediğiniz zaman değiştirebilirsiniz:</p>
+          <p>Tercihinizi istediğiniz zaman değiştirebilirsiniz; onayı geri alırsanız bu çerezler silinir:</p>
           <CerezTercihi />
         </Bolum>
 
         <Bolum baslik="Kolcuoğlu Panel (iç yönetim aracımız)">
           <p>
-            Kolcuoğlu Panel, işletme yöneticilerimizin kendi Google Ads hesabımızın, Google İşletme Profilimizin,
+            Kolcuoğlu Panel, işletme yöneticilerimizin kendi Google Ads hesabımızın, Google Analytics
+            mülkümüzün, Google İşletme Profilimizin,
             Facebook sayfamızın, Instagram hesabımızın ve Meta reklam hesabımızın istatistiklerini tek yerde
             görmek için kullandığı bir iç araçtır. Herkese açık değildir.
           </p>

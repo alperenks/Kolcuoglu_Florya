@@ -1,5 +1,6 @@
 'use client'
-// Sitedeki telefon ve WhatsApp bağlantılarına dokunmayı Google Ads dönüşümü olarak gönderir.
+// Sitedeki telefon ve WhatsApp bağlantılarına dokunmayı Google Ads dönüşümü olarak gönderir;
+// aynı dokunuş GA4'e phone_click / whatsapp_click olarak (bağlantının konumuyla) gider.
 // Konum: components/analytics/ConversionTracker.tsx
 //
 // Tek bir global dinleyici: Navbar'daki, hero'daki, footer'daki ve ileride eklenecek her
@@ -10,6 +11,7 @@
 //   Site - WhatsApp tıklaması (wa.me) → AW-18226411285/Ma8LCIH0uv0cEJXug_ND
 
 import { useEffect } from 'react'
+import { ga4Event, linkLocation } from './ga4'
 
 const SEND_TO = {
   tel: 'AW-18226411285/2VnMCP7zuv0cEJXug_ND',
@@ -45,6 +47,7 @@ export default function ConversionTracker() {
       if (now - lastFired < 800) return
       lastFired = now
       trackConversion(key)
+      ga4Event(key === 'tel' ? 'phone_click' : 'whatsapp_click', { link_location: linkLocation(anchor) })
     }
     // capture: true → tel: linki tarayıcıyı arama ekranına götürmeden önce yakalar
     document.addEventListener('click', onClick, { capture: true })

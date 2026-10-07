@@ -97,14 +97,14 @@ export default function FaqSection() {
                 <p>{f.a}</p>
                 {'extra' in f && f.extra === 'reservation' && (
                   <p className="faq-links">
-                    <a href={PHONE_TEL}>{PHONE_TEXT}</a>
+                    <a href={PHONE_TEL} data-konum="sss">{PHONE_TEXT}</a>
                     <span aria-hidden="true"> · </span>
                     <Link href="/rezervasyon">Rezervasyon formu</Link>
                   </p>
                 )}
                 {'extra' in f && f.extra === 'call' && (
                   <p className="faq-links">
-                    <a href={PHONE_TEL}>Teklif için arayın · {PHONE_TEXT}</a>
+                    <a href={PHONE_TEL} data-konum="sss">Teklif için arayın · {PHONE_TEXT}</a>
                   </p>
                 )}
                 {'extra' in f && f.extra === 'corporate' && (

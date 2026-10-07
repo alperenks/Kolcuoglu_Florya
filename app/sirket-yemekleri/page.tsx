@@ -107,6 +107,7 @@ export default function SirketYemekleriPage() {
 
               <a
                 href="https://wa.me/905331315401"
+                data-konum="sirket_yemekleri"
                 target="_blank" rel="noreferrer"
                 className="w-full sm:w-[240px] flex justify-center items-center gap-2 py-4 px-6 text-sm tracking-widest uppercase font-semibold transition-all hover:bg-[var(--color-card-inner-bg)]/80 whitespace-nowrap text-center"
                 style={{

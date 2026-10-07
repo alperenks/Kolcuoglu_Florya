@@ -57,6 +57,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://wa.me/905331315401"
+                data-konum="footer"
                 target="_blank"
                 rel="noreferrer"
                 className="p-2 transition-colors duration-300 hover:opacity-100"
@@ -111,7 +112,7 @@ export default function Footer() {
               </li>
               <li className="flex gap-3 text-sm" style={{ color: 'var(--color-muted)' }}>
                 <Phone size={16} className="flex-shrink-0" style={{ color: 'var(--color-gold)' }} />
-                <a href="https://wa.me/905331315401" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
+                <a href="https://wa.me/905331315401" data-konum="footer" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
                   +90 533 131 54 01
                 </a>
               </li>

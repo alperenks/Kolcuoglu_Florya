@@ -2,7 +2,7 @@
 // "Çerez tercihimi değiştir": clears the saved choice and reloads, so the cookie notice
 // (components/analytics/ConsentBanner.tsx) asks again. Used on /gizlilik.
 
-const STORAGE_KEY = 'kf-cookie-consent' // same key as ConsentBanner
+import { CONSENT_STORAGE_KEY as STORAGE_KEY } from '@/components/analytics/GoogleTag'
 
 export default function CerezTercihi() {
   return (

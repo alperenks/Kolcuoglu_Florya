@@ -27,6 +27,7 @@ export default function StickyCallBar() {
       >
         <a
           href={PHONE_TEL}
+          data-konum="alt_cubuk"
           className="flex items-center justify-center gap-2 bg-white py-3.5 text-sm font-semibold text-neutral-900 active:bg-neutral-100"
         >
           <Phone className="h-4 w-4" aria-hidden />
@@ -34,6 +35,7 @@ export default function StickyCallBar() {
         </a>
         <a
           href={WHATSAPP}
+          data-konum="alt_cubuk"
           target="_blank"
           rel="noreferrer"
           className="flex items-center justify-center gap-2 bg-[#25D366] py-3.5 text-sm font-semibold text-white active:opacity-90"

@@ -132,6 +132,7 @@ function HeroSection() {
           {/* Row 2: Rezervasyon Yap (Centered Below, Matching Width on Mobile) */}
           <motion.a
             href="tel:+905331315401"
+            data-konum="hero"
             whileHover={{ scale: 1.04, boxShadow: '0 8px 30px rgba(163,33,36,0.5)' }}
             whileTap={{ scale: 0.97 }}
             className="w-full max-w-[380px] sm:w-auto px-8 py-4 text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 min-w-[180px] text-center"
