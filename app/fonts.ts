@@ -37,8 +37,11 @@ const inter = Inter({
 // --layout-features='*' --flavor=woff2); outlines, widths and weight axis are unchanged (~9 KB total).
 // Their family comes first in --font-sans / --font-serif; any other latin-ext character falls through
 // to the full Google family behind it, which then fetches its latin-ext file as before.
-// Playfair has no ₺ glyph, so its files leave it out and ₺ keeps falling back as it always did.
-// To regenerate, take the latin-ext files from .next/static/media (unicode-range U+0100-02BA, …).
+// Playfair Display has no ₺, so the playfair*-tr files also carry the ₺ of the newer Playfair family
+// (same designer), matched to Display's proportions and weights by scripts/fonts/add-lira.py; before
+// that, ₺ in serif text fell back to a system font (Helvetica on macOS) and pulled in Display's latin-ext.
+// To regenerate, take the latin-ext files from .next/static/media (unicode-range U+0100-02BA, …),
+// subset them as above, then run add-lira.py on the two Playfair files.
 // next/font needs literal option values, so the range is written out in both calls below.
 
 const playfairTr = localFont({
