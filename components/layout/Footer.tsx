@@ -1,14 +1,12 @@
 import Link from 'next/link'
 import { Instagram, MapPin, Phone, Clock, MessageCircle } from 'lucide-react'
+import { getDictionary, path, type Locale, type PageKey } from '@/i18n'
 
-const footerLinks = [
-  { href: '/menu', label: 'Menü' },
-  { href: '/galeri', label: 'Galeri' },
-  { href: '/sirket-yemekleri', label: 'Şirket Yemekleri' },
-  { href: '/iletisim', label: 'İletişim' },
-]
+const FOOTER_PAGES: PageKey[] = ['menu', 'gallery', 'corporate', 'contact']
 
-export default function Footer() {
+export default function Footer({ lang }: { lang: Locale }) {
+  const t = getDictionary(lang)
+  const footerLinks = FOOTER_PAGES.map((page) => ({ href: path(lang, page), label: t.nav[page] }))
   return (
     <footer
       className="relative mt-auto"
@@ -37,7 +35,7 @@ export default function Footer() {
               FLORYA
             </p>
             <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--color-muted)' }}>
-              116 yıllık ustalık geleneğini, modern gastronomi anlayışıyla buluşturan sofra teki İstanbul'un eşsiz kebap deneyimi.
+              {t.footer.blurb}
             </p>
             <div className="flex gap-4">
               <a
@@ -80,7 +78,7 @@ export default function Footer() {
               className="text-xs tracking-widest uppercase mb-6 font-semibold"
               style={{ color: 'var(--color-gold)', letterSpacing: '0.2em' }}
             >
-              Hızlı Erişim
+              {t.footer.quickLinks}
             </h3>
             <ul className="space-y-3">
               {footerLinks.map((link) => (
@@ -103,7 +101,7 @@ export default function Footer() {
               className="text-xs tracking-widest uppercase mb-6 font-semibold"
               style={{ color: 'var(--color-gold)' }}
             >
-              İletişim
+              {t.footer.contact}
             </h3>
             <ul className="space-y-4">
               <li className="flex gap-3 text-sm" style={{ color: 'var(--color-muted)' }}>
@@ -119,7 +117,7 @@ export default function Footer() {
               <li className="flex gap-3 text-sm" style={{ color: 'var(--color-muted)' }}>
                 <Clock size={16} className="flex-shrink-0" style={{ color: 'var(--color-gold)' }} />
                 <div>
-                  <p>Her Gün: 11:00 – 00:00</p>
+                  <p>{t.footer.hours}</p>
                 </div>
               </li>
             </ul>
@@ -129,9 +127,9 @@ export default function Footer() {
         <div className="gold-line my-10" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs" style={{ color: 'var(--color-muted)' }}>
-          <p>© Kolcuoğlu Kebap & Gastronomi. Tüm hakları saklıdır.</p>
-          <Link href="/gizlilik" className="transition-opacity hover:opacity-80">Gizlilik ve KVKK</Link>
-          <p>Kolcuoğlu, Herkes için.</p>
+          <p>{t.footer.rights}</p>
+          <Link href={path(lang, 'privacy')} className="transition-opacity hover:opacity-80">{t.footer.privacy}</Link>
+          <p>{t.footer.tagline}</p>
         </div>
       </div>
     </footer>

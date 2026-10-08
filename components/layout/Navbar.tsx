@@ -2,18 +2,41 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sun, Moon, Phone } from 'lucide-react'
+import { LOCALES, LOCALE_NAMES, pageFromPathname, path, type Locale, type PageKey } from '@/i18n/config'
+import type { Dictionary } from '@/i18n/dictionaries/tr'
 
-const navLinks = [
-  { href: '/', label: 'Ana Sayfa' },
-  { href: '/menu', label: 'Menü' },
-  { href: '/galeri', label: 'Galeri' },
-  { href: '/sirket-yemekleri', label: 'Şirket Yemekleri' },
-  { href: '/iletisim', label: 'İletişim' },
-]
+const NAV_PAGES: PageKey[] = ['home', 'menu', 'gallery', 'corporate', 'contact']
 
-export default function Navbar() {
+// Links to the same page in the other languages. A plain <a> (not next/link): each language has its
+// own root layout, so the switch is a full page load anyway, and next/link would prefetch the other
+// language on every page view. With more than two or three languages this should become a dropdown.
+function LanguageLinks({ lang, label, className, style }: { lang: Locale; label: string; className: string; style: React.CSSProperties }) {
+  const page = pageFromPathname(usePathname() ?? '/') ?? 'home'
+  return (
+    <nav aria-label={label} className="flex items-center gap-2">
+      {LOCALES.filter((l) => l !== lang).map((l) => (
+        <a key={l} href={path(l, page)} hrefLang={l} lang={l} aria-label={LOCALE_NAMES[l]} className={className} style={style}>
+          {l.toUpperCase()}
+        </a>
+      ))}
+    </nav>
+  )
+}
+
+export default function Navbar({ lang, t }: { lang: Locale; t: Dictionary['nav'] }) {
+  const navLinks = NAV_PAGES.map((page) => ({ href: path(lang, page), label: t[page] }))
+  const languageLinkStyle: React.CSSProperties = {
+    background: 'var(--color-card-inner-bg)',
+    borderColor: 'var(--color-border-strong)',
+    color: 'var(--color-cream)',
+    fontFamily: 'var(--font-sans)',
+    fontSize: '12px',
+    fontWeight: 600,
+    letterSpacing: '0.1em',
+  }
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [isLight, setIsLight] = useState(false)
@@ -66,7 +89,7 @@ export default function Navbar() {
         <div className="px-6 lg:px-8" style={{ maxWidth: '1280px', margin: '0 auto', width: '100%' }}>
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-           <Link href="/" className="flex flex-col items-start group">
+           <Link href={path(lang, 'home')} className="flex flex-col items-start group">
               <span
                 className="leading-none tracking-normal font-brand"
                 style={{
@@ -113,6 +136,12 @@ export default function Navbar() {
 
             {/* CTA Button */}
             <div className="hidden md:flex items-center gap-4">
+              <LanguageLinks
+                lang={lang}
+                label={t.language}
+                className="h-[40px] min-w-[40px] px-2 rounded-sm border flex items-center justify-center transition-opacity duration-300 hover:opacity-80"
+                style={languageLinkStyle}
+              />
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -124,7 +153,7 @@ export default function Navbar() {
                   color: isLight ? 'rgba(163, 33, 36, 1.0)' : 'var(--color-gold)',
                   cursor: 'pointer',
                 }}
-                aria-label="Temayı Değiştir"
+                aria-label={t.themeToggle}
               >
                 {isLight ? <Moon size={18} /> : <Sun size={18} />}
               </motion.button>
@@ -143,12 +172,18 @@ export default function Navbar() {
                   boxShadow: '0 4px 20px rgba(196, 75, 59, 0.3)',
                 }}
               >
-                <Phone size={12} /> Rezervasyon Yap
+                <Phone size={12} /> {t.book}
               </motion.a>
             </div>
 
             {/* Mobile Actions */}
             <div className="flex md:hidden items-center gap-2">
+              <LanguageLinks
+                lang={lang}
+                label={t.language}
+                className="h-[36px] min-w-[36px] px-1.5 rounded-sm border flex items-center justify-center"
+                style={languageLinkStyle}
+              />
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -160,7 +195,7 @@ export default function Navbar() {
                   color: isLight ? 'rgba(163, 33, 36, 1.0)' : 'var(--color-gold)',
                   cursor: 'pointer',
                 }}
-                aria-label="Temayı Değiştir"
+                aria-label={t.themeToggle}
               >
                 {isLight ? <Moon size={18} /> : <Sun size={18} />}
               </motion.button>
@@ -168,7 +203,7 @@ export default function Navbar() {
                 className="p-2"
                 onClick={() => setMenuOpen(!menuOpen)}
                 style={{ color: 'var(--color-cream)' }}
-                aria-label="Menüyü aç"
+                aria-label={t.openMenu}
               >
                 {menuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -234,7 +269,7 @@ export default function Navbar() {
                     borderRadius: '2px',
                   }}
                 >
-                  <Phone size={14} /> Rezervasyon Yap
+                  <Phone size={14} /> {t.book}
                 </a>
               </motion.div>
             </motion.nav>

@@ -7,6 +7,7 @@ import { useEffect, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 import { CONSENT_STORAGE_KEY } from './GoogleTag'
 import { ga4Event } from './ga4'
+import type { Dictionary } from '@/i18n/dictionaries/tr'
 
 type Choice = 'granted' | 'denied'
 
@@ -60,7 +61,7 @@ function applyConsent(value: Choice) {
   })
 }
 
-export default function ConsentBanner() {
+export default function ConsentBanner({ t, privacyHref }: { t: Dictionary['consent']; privacyHref: string }) {
   // Sunucuda 'pending' → bildirim HTML'e basılmaz, yalnızca tarayıcıda karar verilir
   const choice = useSyncExternalStore(subscribe, readChoice, () => 'pending' as const)
 
@@ -107,20 +108,19 @@ export default function ConsentBanner() {
         <div className="flex flex-col gap-4 px-5 pt-5 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)] md:flex-row md:items-center md:gap-8 md:p-6">
           <div className="flex-1">
             <p id="cerez-bandi-baslik" className="section-label mb-2">
-              Çerez Tercihi
+              {t.title}
             </p>
             <p
               id="cerez-bandi-metin"
               className="text-[0.85rem] leading-relaxed"
               style={{ color: 'var(--color-text-desc)', fontFamily: 'var(--font-sans)' }}
             >
-              Site kullanımını, rezervasyon aramalarını ve reklam performansını ölçmek için çerez
-              kullanıyoruz. Kabul etmezseniz site aynı şekilde çalışır; yalnızca ölçüm çerezleri yazılmaz.{' '}
+              {t.text}{' '}
               <Link
-                href="/gizlilik"
+                href={privacyHref}
                 className="cerez-bandi-link underline underline-offset-2 whitespace-nowrap"
               >
-                Gizlilik ve KVKK
+                {t.privacy}
               </Link>
             </p>
           </div>
@@ -139,7 +139,7 @@ export default function ConsentBanner() {
                 outlineColor: 'var(--color-gold)',
               }}
             >
-              Reddet
+              {t.decline}
             </button>
             <button
               type="button"
@@ -155,7 +155,7 @@ export default function ConsentBanner() {
                 outlineColor: 'var(--color-gold)',
               }}
             >
-              Kabul et
+              {t.accept}
             </button>
           </div>
         </div>

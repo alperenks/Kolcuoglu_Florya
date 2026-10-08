@@ -4,7 +4,7 @@
 
 import { CONSENT_STORAGE_KEY as STORAGE_KEY } from '@/components/analytics/GoogleTag'
 
-export default function CerezTercihi() {
+export default function CerezTercihi({ label }: { label: string }) {
   return (
     <button
       type="button"
@@ -24,7 +24,7 @@ export default function CerezTercihi() {
         letterSpacing: '0.15em',
       }}
     >
-      Çerez tercihimi değiştir
+      {label}
     </button>
   )
 }

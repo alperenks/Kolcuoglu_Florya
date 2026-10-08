@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { X, Volume2, VolumeX, Loader2 } from 'lucide-react'
+import type { Dictionary } from '@/i18n/dictionaries/tr'
 
 // ─── Stories Data ────────────────────────────────────────────────────────────
 interface StoryItem {
@@ -15,8 +16,7 @@ interface StoryItem {
 }
 
 interface StoryGroup {
-  id: string
-  title: string
+  id: keyof Dictionary['stories']['titles']
   thumbnail: string
   items: StoryItem[]
 }
@@ -24,7 +24,6 @@ interface StoryGroup {
 const STORIES_DATA: StoryGroup[] = [
   {
     id: 'yedi-nesil',
-    title: 'Yedi Nesil',
     thumbnail: '/images/florya-eniyi-kebapci.png',
     items: [
       {
@@ -43,7 +42,6 @@ const STORIES_DATA: StoryGroup[] = [
   },
   {
     id: 'metrelik-kebap',
-    title: 'Metrelik Kebap',
     thumbnail: '/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg',
     items: [
       {
@@ -62,7 +60,6 @@ const STORIES_DATA: StoryGroup[] = [
   },
   {
     id: 'teras',
-    title: 'Mekan & Teras',
     thumbnail: '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg',
     items: [
       {
@@ -81,7 +78,7 @@ const STORIES_DATA: StoryGroup[] = [
   },
 ]
 
-export default function StorySystem() {
+export default function StorySystem({ t }: { t: Dictionary['stories'] }) {
   const [isViewerOpen, setIsViewerOpen] = useState(false)
   const [activeStoryIndex, setActiveStoryIndex] = useState<number | null>(null)
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
@@ -277,7 +274,7 @@ export default function StorySystem() {
               key={story.id}
               onClick={() => openStory(idx)}
               className="flex flex-col items-center flex-shrink-0 focus:outline-none cursor-pointer snap-start"
-              aria-label={`${story.title} hikayesini izle`}
+              aria-label={t.watch.replace('{title}', t.titles[story.id])}
             >
               {/* Outer circle with gradient or gray border */}
               <div
@@ -291,7 +288,7 @@ export default function StorySystem() {
                 <div className="w-full h-full rounded-full bg-[#111111] p-[2px] relative overflow-hidden">
                   <Image
                     src={story.thumbnail}
-                    alt={story.title}
+                    alt={t.titles[story.id]}
                     fill
                     sizes="72px"
                     className="rounded-full object-cover"
@@ -307,7 +304,7 @@ export default function StorySystem() {
                   opacity: isRead ? 0.6 : 0.9
                 }}
               >
-                {story.title}
+                {t.titles[story.id]}
               </span>
             </button>
           )
@@ -378,7 +375,7 @@ export default function StorySystem() {
                     <div className="relative w-8 h-8 rounded-full border border-white/20 overflow-hidden">
                       <Image
                         src={currentStory.thumbnail}
-                        alt={currentStory.title}
+                        alt={t.titles[currentStory.id]}
                         fill
                         sizes="32px"
                         className="object-cover"
@@ -386,7 +383,7 @@ export default function StorySystem() {
                     </div>
                     <div>
                       <h4 className="text-xs font-semibold tracking-wide text-white drop-shadow-md">
-                        {currentStory.title}
+                        {t.titles[currentStory.id]}
                       </h4>
                     </div>
                   </div>
@@ -400,7 +397,7 @@ export default function StorySystem() {
                           setIsMuted(!isMuted)
                         }}
                         className="p-1.5 bg-black/35 backdrop-blur-md rounded-full border border-white/10 text-white focus:outline-none"
-                        aria-label={isMuted ? 'Sesi aç' : 'Sesi kapat'}
+                        aria-label={isMuted ? t.unmute : t.mute}
                       >
                         {isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
                       </button>
@@ -413,7 +410,7 @@ export default function StorySystem() {
                         closeViewer()
                       }}
                       className="p-1.5 bg-black/35 backdrop-blur-md rounded-full border border-white/10 text-white focus:outline-none"
-                      aria-label="Kapat"
+                      aria-label={t.close}
                     >
                       <X size={15} />
                     </button>
@@ -440,7 +437,7 @@ export default function StorySystem() {
                 {currentSlide.type === 'image' && (
                   <Image
                     src={currentSlide.url}
-                    alt="Story image content"
+                    alt={t.imageAlt}
                     fill
                     sizes="100vw"
                     className={`object-cover transition-opacity duration-300 ${
@@ -478,7 +475,7 @@ export default function StorySystem() {
                 <div className="absolute bottom-6 inset-x-0 flex flex-col items-center justify-center gap-1 opacity-40 text-center select-none pointer-events-none">
                   <div className="w-8 h-1 rounded-full bg-white/40 mb-1" />
                   <span className="text-[10px] uppercase tracking-widest font-semibold text-white/70">
-                    Kapatmak için kaydırın
+                    {t.swipeToClose}
                   </span>
                 </div>
               </div>

@@ -1,14 +1,16 @@
 'use client'
+// Animated homepage sections (Framer Motion). Text comes in as props from components/home/HomePage.tsx,
+// so each language's page carries only its own copy.
 
 import { useRef } from 'react'
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowDown, Star, Clock, MapPin, Phone } from 'lucide-react'
-import { featuredItems } from '@/data/menu'
 import StorySystem from '@/components/ui/StorySystem'
-import WhyUsSection from '@/components/sections/WhyUsSection'
-import FaqSection from '@/components/sections/FaqSection'
+import type { Dictionary } from '@/i18n/dictionaries/tr'
+
+type HomeText = Dictionary['home']
 
 
 // ─── Fade-in wrapper ────────────────────────────────────────────────────────
@@ -27,7 +29,7 @@ function FadeIn({ children, delay = 0, className = '' }: { children: React.React
 }
 
 // ─── Hero Section ────────────────────────────────────────────────────────────
-function HeroSection() {
+export function HeroSection({ t, stories, menuHref }: { t: HomeText['hero']; stories: Dictionary['stories']; menuHref: string }) {
   return (
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-28 pb-20"
@@ -47,7 +49,7 @@ function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-6" style={{ maxWidth: '1152px', margin: '0 auto', width: '100%' }}>
-        <StorySystem />
+        <StorySystem t={stories} />
         {/* Above-the-fold hero is rendered visible in the server HTML (no opacity:0 entrance
             animation): the h1 is the page's LCP element and must paint without waiting for JS */}
         <div className="mt-0 mb-2">
@@ -60,7 +62,7 @@ function HeroSection() {
               letterSpacing: '0.3em',
             }}
           >
-            Kuruluş 1910 · Adana
+            {t.badge}
           </span>
         </div>
 
@@ -74,21 +76,21 @@ function HeroSection() {
             fontVariantNumeric: 'lining-nums',
           }}
         >
-          116 Yıllık Gelenek,<br />
-          <span className="text-gradient italic">Herkes için.</span>
+          {t.titleLine1}<br />
+          <span className="text-gradient italic">{t.titleLine2}</span>
         </h1>
 
         <p
           className="mb-10 text-lg leading-relaxed mx-auto"
           style={{ color: 'var(--color-text-desc)', fontFamily: 'var(--font-sans)', maxWidth: '672px' }}
         >
-          Adana’nın asırlık ateşi, Florya sahilinde yanıyor. Denize sıfır masalarımızda, meşhur metrelik kebabımızla eşsiz bir ziyafete davetlisiniz.
+          {t.intro}
         </p>
 
         <div className="flex flex-col items-center gap-4 justify-center">
           {/* Row 1: Menüyü Keşfet & Yol Tarifi Al */}
           <div className="flex flex-row gap-3 justify-center items-center w-full max-w-[380px] sm:max-w-none sm:w-auto">
-            <Link href="/menu" className="flex-1 sm:flex-initial">
+            <Link href={menuHref} className="flex-1 sm:flex-initial">
               <motion.button
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
@@ -102,7 +104,7 @@ function HeroSection() {
                   borderRadius: '2px',
                 }}
               >
-                Menüyü Keşfet
+                {t.exploreMenu}
               </motion.button>
             </Link>
             <a
@@ -124,7 +126,7 @@ function HeroSection() {
                   borderRadius: '2px',
                 }}
               >
-                Yol Tarifi Al
+                {t.directions}
               </motion.button>
             </a>
           </div>
@@ -145,17 +147,13 @@ function HeroSection() {
               boxShadow: '0 4px 20px rgba(163, 33, 36, 0.35)',
             }}
           >
-            <Phone size={14} /> Rezervasyon Yap
+            <Phone size={14} /> {t.book}
           </motion.a>
         </div>
 
         {/* Stats */}
         <div className="flex flex-wrap justify-center gap-8 mt- pt-10">
-          {[
-            { value: '116', label: 'Yıllık Gelenek' },
-            { value: '150+', label: 'Lezzet Çeşidi' },
-            { value: '1910', label: 'Kuruluş Yılı' },
-          ].map((stat) => (
+          {t.stats.map((stat) => (
             <div key={stat.value} className="text-center">
               <p
                 className="font-serif text-3xl mb-1"
@@ -180,7 +178,7 @@ function HeroSection() {
         onClick={() => {
           document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' })
         }}
-        aria-label="Hakkımızda bölümüne in"
+        aria-label={t.scrollDown}
       >
         <ArrowDown size={20} />
       </motion.div>
@@ -191,7 +189,7 @@ function HeroSection() {
 }
 
 // ─── About Section ───────────────────────────────────────────────────────────
-function AboutSection() {
+export function AboutSection({ t, portraitAlt }: { t: HomeText['about']; portraitAlt: string }) {
   return (
     <section id="about-section" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-charcoal)' }}>
       {/* Background gradient fire effect */}
@@ -209,7 +207,7 @@ function AboutSection() {
         {/* Text */}
         <div>
           <FadeIn>
-            <p className="section-label mb-6">Hikayemiz</p>
+            <p className="section-label mb-6">{t.label}</p>
             <h2
               className="font-serif mb-6 leading-tight"
               style={{
@@ -218,32 +216,29 @@ function AboutSection() {
                 color: 'var(--color-cream)',
               }}
             >
-              Bir Aile, Bir Ateş,<br />
-              <span className="text-gradient italic">116 Yıllık Aşk</span>
+              {t.titleLine1}<br />
+              <span className="text-gradient italic">{t.titleLine2}</span>
             </h2>
             <div className="gold-line mb-8" style={{ width: '80px' }} />
           </FadeIn>
           <FadeIn delay={0.1}>
             <p className="text-base leading-relaxed mb-6" style={{ color: 'var(--color-text-desc)',textAlign: 'justify'  }}>
-              1910'dan Bugüne: 7 Kuşaklık Lezzet Efsanesi
-Her şey 1910 yılında, Adana eski sebze halinde açılan küçük bir dükkânla başladı. Tam yedi kuşaktır, ateşin ve etin sırrını kuşaktan kuşağa aktararak aynı tutkuyla yaşatıyoruz.
-Hikayemizin en büyük dönüm noktası 1974 yılıydı. 5. kuşak temsilcimiz Hasan Kolcuoğlu’nun icat ettiği Metrelik Kebap, Türkiye’nin gastronomi tarihine altın harflerle kazındı. Bu benzersiz lezzet, 6. kuşak temsilcimiz Tarkan Kolcuoğlu’nun vizyonuyla markalaşarak Adana sınırlarını aştı ve metrelik kebap efsanesini tüm Türkiye ile buluşturdu.
+              {t.paragraph1}
             </p>
             <p className="text-base leading-relaxed" style={{ color: 'var(--color-text-desc)',textAlign: 'justify'  }}>
-              Bugün ise 7. kuşak olarak bu asırlık ateşi Florya Kolcuoğlu’nda harlıyoruz. Dedelerimizden ve babamızdan miras kalan ustalığı modern mutfağın dinamikleriyle harmanlıyor; o eşsiz, bereketli sofraları şimdi sizin için kuruyoruz.
-Tarihin, ustalığın ve lezzetin metrelerce uzandığı bu serüvene hoş geldiniz!
+              {t.paragraph2}
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
           <div className="flex flex-col sm:flex-row sm:flex-wrap gap-6 mt-10">
             {[
-              { icon: Star, text: 'Metrelik Kebabın Mucidi' },
-              { icon: Clock, text: '7 Nesillik Aile Geleneği' },
+              { icon: Star, text: t.badges.inventor },
+              { icon: Clock, text: t.badges.family },
               {
                 icon: MapPin,
-                text: 'Florya Sahili, Denize Sıfır',
+                text: t.badges.location,
                 // One line each when the badges sit side by side (sm+), a single "·" line on mobile
-                detail: ['Yeşilköy 10 dk', 'Ataköy ve Bakırköy 15 dk'],
+                detail: t.badges.locationDetail,
               },
             ].map(({ icon: Icon, text, detail }) => (
               // Badges never break mid-line on sm+; the row wraps a whole badge to the next line instead
@@ -281,7 +276,7 @@ Tarihin, ustalığın ve lezzetin metrelerce uzandığı bu serüvene hoş geldi
               >
                 <Image
                   src="/images/hasan-kolcuoglu-metrelik-kebap-mucidi.jpeg"
-                  alt="Metrelik kebabın mucidi Hasan Kolcuoğlu"
+                  alt={portraitAlt}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
@@ -294,7 +289,7 @@ Tarihin, ustalığın ve lezzetin metrelerce uzandığı bu serüvene hoş geldi
                   >
                     Hasan Kolcuoğlu
                   </p>
-                  <p className="text-sm mt-2" style={{ color: 'var(--color-muted)' }}>Metrelik Kebabın Üstadı</p>
+                  <p className="text-sm mt-2" style={{ color: 'var(--color-muted)' }}>{t.portraitCaption}</p>
                 </div>
                 {/* Decorative corner */}
                 <div
@@ -316,7 +311,7 @@ Tarihin, ustalığın ve lezzetin metrelerce uzandığı bu serüvene hoş geldi
               }}
             >
               <p className="font-serif text-3xl font-bold text-white" style={{ fontFamily: 'var(--font-serif)' }}>1910</p>
-              <p className="text-xs text-white opacity-80 mt-0.5">Kuruluş Yılı</p>
+              <p className="text-xs text-white opacity-80 mt-0.5">{t.founded}</p>
             </div>
           </div>
         </FadeIn>
@@ -326,7 +321,7 @@ Tarihin, ustalığın ve lezzetin metrelerce uzandığı bu serüvene hoş geldi
 }
 
 // ─── Featured Menu Section ────────────────────────────────────────────────────
-function FeaturedMenuSection() {
+export function FeaturedMenuSection({ t, menuHref }: { t: HomeText['featured']; menuHref: string }) {
   return (
     <section className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-surface)' }}>
       {/* Background gradient fire effect */}
@@ -342,7 +337,7 @@ function FeaturedMenuSection() {
 
       <div className="relative z-10" style={{ maxWidth: '1152px', margin: '0 auto', width: '100%' }}>
         <FadeIn className="text-center mb-16">
-          <p className="section-label mb-4">Öne Çıkanlar</p>
+          <p className="section-label mb-4">{t.label}</p>
           <h2
             className="font-serif"
             style={{
@@ -351,7 +346,7 @@ function FeaturedMenuSection() {
               color: 'var(--color-cream)',
             }}
           >
-            İmza Lezzetimiz
+            {t.title}
           </h2>
           <div className="gold-line mt-6 mx-auto" style={{ width: '60px' }} />
         </FadeIn>
@@ -363,7 +358,7 @@ function FeaturedMenuSection() {
               style={{ background: 'var(--color-charcoal)', border: '1px solid var(--color-border)' }}
               whileHover={{ y: -6, transition: { duration: 0.3 } }}
             >
-              <Link href="/menu">
+              <Link href={menuHref}>
                 <div
                   className="relative aspect-[16/9] w-full flex items-center justify-center overflow-hidden"
                   style={{ background: 'var(--color-surface)' }}
@@ -372,7 +367,7 @@ function FeaturedMenuSection() {
                       the head that competed with the h1's CSS/fonts on slow mobile connections) */}
                   <Image 
                     src="/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg" 
-                    alt="Kolcuoğlu Özel Menü" 
+                    alt={t.imageAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, 80vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -414,11 +409,11 @@ function FeaturedMenuSection() {
                         fontFamily: 'var(--font-serif)',
                       }}
                     >
-                      Özel Menü
+                      {t.menuName}
                     </span>
                   </h3>
                   <p className="text-sm md:text-base max-w-2xl mx-auto" style={{ color: 'var(--color-muted)' }}>
-                    6 Çeşit Meze, Özel Salatalar, Pastırmalı Humus, Fındık Lahmacun ve Metrelik Kebap eşliğinde eşsiz bir gastronomi şöleni.
+                    {t.text}
                   </p>
                 </div>
               </Link>
@@ -427,7 +422,7 @@ function FeaturedMenuSection() {
         </div>
 
         <FadeIn className="text-center mt-12" delay={0.3}>
-          <Link href="/menu">
+          <Link href={menuHref}>
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -441,7 +436,7 @@ function FeaturedMenuSection() {
                 borderRadius: '2px',
               }}
             >
-              Tüm Menüyü Gör
+              {t.viewAll}
             </motion.button>
           </Link>
         </FadeIn>
@@ -451,17 +446,27 @@ function FeaturedMenuSection() {
 }
 
 // ─── Atmosphere Section ───────────────────────────────────────────────────────
-function AtmosphereSection() {
+const ATMOSPHERE_IMAGES = [
+  '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg',
+  '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg',
+  '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg',
+  '/images/kolcuoglu-florya-tatli-ikrami.jpg',
+] as const
+
+export function AtmosphereSection({
+  t,
+  alts,
+  galleryHref,
+}: {
+  t: HomeText['atmosphere']
+  alts: Record<(typeof ATMOSPHERE_IMAGES)[number], string>
+  galleryHref: string
+}) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], ['-10%', '10%'])
 
-  const galleryImages = [
-    { src: '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg', alt: 'Kolcuoğlu Florya deniz manzaralı teras' },
-    { src: '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg', alt: 'Kolcuoğlu Florya deniz manzaralı yemek salonu' },
-    { src: '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg', alt: 'Kolcuoğlu Florya iç mekan tasarımı' },
-    { src: '/images/kolcuoglu-florya-tatli-ikrami.jpg', alt: 'Kolcuoğlu Florya tatlı ikramı' },
-  ]
+  const galleryImages = ATMOSPHERE_IMAGES.map((src) => ({ src, alt: alts[src] }))
 
   return (
     <section ref={ref} className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-charcoal)' }}>
@@ -476,7 +481,7 @@ function AtmosphereSection() {
 
       <div className="relative" style={{ maxWidth: '1152px', margin: '0 auto', width: '100%' }}>
         <FadeIn className="text-center mb-16">
-          <p className="section-label mb-4">Mekan & Atmosfer</p>
+          <p className="section-label mb-4">{t.label}</p>
           <h2
             className="font-serif"
             style={{
@@ -485,8 +490,8 @@ function AtmosphereSection() {
               color: 'var(--color-cream)',
             }}
           >
-            Her Köşede{' '}
-            <span className="text-gradient italic">Ayrı Bir Deneyim</span>
+            {t.titleStart}{' '}
+            <span className="text-gradient italic">{t.titleAccent}</span>
           </h2>
         </FadeIn>
 
@@ -516,7 +521,7 @@ function AtmosphereSection() {
 
         {/* Bottom CTA */}
         <FadeIn className="text-center mt-16" delay={0.4}>
-          <Link href="/galeri">
+          <Link href={galleryHref}>
             <motion.button
               whileHover={{
                 scale: 1.04,
@@ -533,25 +538,11 @@ function AtmosphereSection() {
                 boxShadow: '0 4px 20px rgba(196, 75, 59, 0.3)',
               }}
             >
-              Galeriyi İncele
+              {t.cta}
             </motion.button>
           </Link>
         </FadeIn>
       </div>
     </section>
-  )
-}
-
-// ─── Main Export ─────────────────────────────────────────────────────────────
-export default function HomePage() {
-  return (
-    <>
-      <HeroSection />
-      <WhyUsSection />
-      <AboutSection />
-      <FeaturedMenuSection />
-      <AtmosphereSection />
-      <FaqSection />
-    </>
   )
 }

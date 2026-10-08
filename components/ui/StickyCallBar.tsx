@@ -6,14 +6,24 @@
 
 import { usePathname } from 'next/navigation'
 import { Phone, MessageCircle } from 'lucide-react'
+import type { Dictionary } from '@/i18n/dictionaries/tr'
 
 const PHONE_TEL = 'tel:+905331315401'
-const WHATSAPP = 'https://wa.me/905331315401?text=Merhaba%2C%20rezervasyon%20yapt%C4%B1rmak%20istiyorum.'
 
-export default function StickyCallBar() {
+export default function StickyCallBar({
+  t,
+  whatsappText,
+  reservationPath,
+}: {
+  t: Dictionary['stickyBar']
+  /** WhatsApp'ta hazır gelen mesaj (sayfanın dilinde) */
+  whatsappText: string
+  reservationPath: string
+}) {
   const pathname = usePathname()
   // Rezervasyon formu sayfasında çubuğu gösterme (form kendi CTA'sına sahip)
-  if (pathname?.startsWith('/rezervasyon')) return null
+  if (pathname?.startsWith(reservationPath)) return null
+  const whatsapp = `https://wa.me/905331315401?text=${encodeURIComponent(whatsappText)}`
 
   return (
     <>
@@ -23,7 +33,7 @@ export default function StickyCallBar() {
       <div
         className="md:hidden fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-px bg-neutral-200 border-t border-neutral-200"
         style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
-        aria-label="Hızlı iletişim"
+        aria-label={t.label}
       >
         <a
           href={PHONE_TEL}
@@ -31,10 +41,10 @@ export default function StickyCallBar() {
           className="flex items-center justify-center gap-2 bg-white py-3.5 text-sm font-semibold text-neutral-900 active:bg-neutral-100"
         >
           <Phone className="h-4 w-4" aria-hidden />
-          Rezervasyon İçin Ara
+          {t.call}
         </a>
         <a
-          href={WHATSAPP}
+          href={whatsapp}
           data-konum="alt_cubuk"
           target="_blank"
           rel="noreferrer"
