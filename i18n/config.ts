@@ -1,16 +1,15 @@
 // Languages and localized URLs. Small and client-safe: the navbar's language switch imports it.
 //
 // Turkish is the default language and keeps the original URLs (app/(tr)/…, no prefix).
-// Every other language lives under app/[lang]/… with English slugs (/en/menu, /en/gallery, …).
-// Adding a language: add it to LOCALES and LOCALE_NAMES, write i18n/dictionaries/<lang>.ts and
-// i18n/menu/<lang>.ts, and register both in i18n/index.ts. Pages, sitemap and hreflang follow.
+// Every other language has its own folder, app/<lang>/…, with English slugs (/en/menu, /en/gallery, …).
+// Adding a language: add it to LOCALES, LOCALE_NAMES and OG_LOCALES; write i18n/dictionaries/<lang>.ts,
+// i18n/menu/<lang>.ts and components/privacy/PrivacyBody<Lang>.tsx and register them (i18n/index.ts,
+// i18n/menu/index.ts, components/pages/PrivacyPage.tsx); copy app/en to app/<lang> and edit its lang.ts;
+// add the language name to app/api/reservations/route.ts. Sitemap, hreflang and the switcher follow.
 
 export const LOCALES = ['tr', 'en'] as const
 export type Locale = (typeof LOCALES)[number]
 export const DEFAULT_LOCALE: Locale = 'tr'
-
-/** Languages that live under app/[lang] (everything except Turkish). */
-export const PREFIXED_LOCALES = LOCALES.filter((l): l is Exclude<Locale, 'tr'> => l !== DEFAULT_LOCALE)
 
 export const LOCALE_NAMES: Record<Locale, string> = {
   tr: 'Türkçe',

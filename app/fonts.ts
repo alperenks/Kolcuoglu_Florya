@@ -1,7 +1,7 @@
 import localFont from 'next/font/local'
 import { Inter, Playfair_Display } from 'next/font/google'
 
-// Shared by every root layout (app/(tr)/layout.tsx, app/[lang]/layout.tsx) via RootDocument.
+// Shared by every root layout (app/(tr)/layout.tsx, app/en/layout.tsx, …) via RootDocument.
 
 export const kolcuogluBrand = localFont({
   src: '../public/fonts/kolcuoglu-brand.ttf',

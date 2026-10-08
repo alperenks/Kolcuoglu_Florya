@@ -1,4 +1,4 @@
-// The <html> document shared by every root layout (app/(tr)/layout.tsx and app/[lang]/layout.tsx).
+// The <html> document shared by every root layout (app/(tr)/layout.tsx, app/en/layout.tsx, …).
 // Each language has its own root layout so <html lang> is right in the static HTML; switching
 // language is a full page load, which is fine for a language switch.
 import '@/app/globals.css'

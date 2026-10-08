@@ -110,8 +110,8 @@ export default function Navbar({ lang, t }: { lang: Locale; t: Dictionary['nav']
               </span>
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-8">
+            {/* Desktop Nav (tighter gaps below xl make room for the language switch on tablets and small laptops) */}
+            <nav className="hidden md:flex items-center gap-5 xl:gap-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -135,7 +135,7 @@ export default function Navbar({ lang, t }: { lang: Locale; t: Dictionary['nav']
             </nav>
 
             {/* CTA Button */}
-            <div className="hidden md:flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-3 xl:gap-4">
               <LanguageLinks
                 lang={lang}
                 label={t.language}
