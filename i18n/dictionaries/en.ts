@@ -1,6 +1,6 @@
 // English copy (British spelling). Written as native copy, not a word-for-word translation of tr.ts.
-// Naming conventions: the signature dish is the proper noun "Metrelik Kebap" and "the metre-long kebab"
-// in running text; other dishes keep their Turkish names where English has no real equivalent.
+// Naming conventions: the signature dish is "the Metre Kebab" and the "Özel Menü" is the "Special Menu";
+// other dishes keep their Turkish names where English has no real equivalent.
 
 import type { Dictionary } from './tr'
 
@@ -11,22 +11,22 @@ const en: Dictionary = {
   meta: {
     siteTitle: 'Kolcuoğlu Florya | Seafront Kebab Restaurant in Istanbul',
     siteDescription:
-      'The metre-long kebab, Adana kebab and traditional mezes, cooked over glowing charcoal since 1910. A seafront kebab restaurant in Florya, Istanbul. Reservations: +90 533 131 54 01',
+      'The Metre Kebab, Adana kebab and traditional mezes, cooked over glowing charcoal since 1910. A seafront kebab restaurant in Florya, Istanbul. Reservations: +90 533 131 54 01',
     keywords: ['kolcuoglu', 'kolcuoğlu florya', 'kebab istanbul', 'metre kebab', 'adana kebab', 'florya restaurant', 'seafront restaurant istanbul', 'ocakbasi', 'meze', 'turkish cuisine'],
     ogTitle: 'Kolcuoğlu Florya | Seafront Kebab Restaurant in Istanbul',
     ogDescription: 'A kebab tradition dating back to 1910, now on the Florya seafront in Istanbul.',
-    ogImageAlt: 'The metre-long kebab at Kolcuoğlu Florya',
+    ogImageAlt: 'The Metre Kebab at Kolcuoğlu Florya',
     twitterDescription: 'A seafront kebab restaurant in Florya, Istanbul.',
     restaurantDescription: 'A premium kebab restaurant on the Florya seafront in Istanbul.',
     menu: {
-      title: 'Menu & Prices – Metre-Long Kebab, Adana Kebab and Mezes',
+      title: 'Menu & Prices – Metre Kebab, Adana Kebab and Mezes',
       description:
-        'The Kolcuoğlu Florya menu: the metre-long kebab, Adana kebab, lamb şiş, sarma beyti, mezes, lahmacun, künefe and katmer, with current prices. Florya, Istanbul.',
+        'The Kolcuoğlu Florya menu: the Metre Kebab, Adana kebab, lamb şiş, sarma beyti, mezes, lahmacun, künefe and katmer, with current prices. Florya, Istanbul.',
     },
     gallery: {
       title: 'Gallery',
       description:
-        'Moments from Kolcuoğlu Florya: the metre-long kebab, Adana kebab, the charcoal grill, our sea-view terrace and dining rooms. A kebab restaurant in Florya, Istanbul.',
+        'Moments from Kolcuoğlu Florya: the Metre Kebab, Adana kebab, the charcoal grill, our sea-view terrace and dining rooms. A kebab restaurant in Florya, Istanbul.',
     },
     contact: {
       title: 'Contact',
@@ -36,7 +36,7 @@ const en: Dictionary = {
     corporate: {
       title: 'Corporate Dining & Groups',
       description:
-        'Company dinners, corporate events and group dining in Florya, Istanbul. Gather in our sea-view dining rooms around the metre-long kebab.',
+        'Company dinners, corporate events and group dining in Florya, Istanbul. Gather in our sea-view dining rooms around the Metre Kebab.',
     },
     reservation: {
       title: 'Reservations – Book a Table Online',
@@ -70,7 +70,7 @@ const en: Dictionary = {
     hours: 'Every day: 11:00 – 00:00',
     rights: '© Kolcuoğlu Kebap & Gastronomi. All rights reserved.',
     privacy: 'Privacy Policy',
-    tagline: 'Kolcuoğlu, for everyone.',
+    tagline: 'Kolcuoğlu. Made for Everyone.',
   },
 
   stickyBar: {
@@ -90,7 +90,7 @@ const en: Dictionary = {
   stories: {
     titles: {
       'yedi-nesil': '7 Generations',
-      'metrelik-kebap': 'Metrelik Kebap',
+      'metrelik-kebap': 'Metre Kebab',
       teras: 'The Venue',
     },
     watch: 'Watch the {title} story',
@@ -102,8 +102,8 @@ const en: Dictionary = {
   },
 
   imageAlts: {
-    '/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg': 'The Kolcuoğlu Florya set menu, served with the metre-long kebab',
-    '/images/hasan-kolcuoglu-metrelik-kebap-mucidi.jpeg': 'Hasan Kolcuoğlu, inventor of the metre-long kebab',
+    '/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg': 'The Kolcuoğlu Florya Special Menu, served with the Metre Kebab',
+    '/images/hasan-kolcuoglu-metrelik-kebap-mucidi.jpeg': 'Hasan Kolcuoğlu, inventor of the Metre Kebab',
     '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg': 'Sea-view terrace at Kolcuoğlu Florya',
     '/images/kolcuoglu-florya-restoran-salonu.jpeg': 'Dining room at Kolcuoğlu Florya',
     '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg': 'Sea-view dining room at Kolcuoğlu Florya',
@@ -112,7 +112,7 @@ const en: Dictionary = {
     '/images/kolcuoglu-florya-kebap-sofrasi.jpg': 'A kebab spread with mezes at Kolcuoğlu Florya',
     '/images/kolcuoglu-florya-ocakbasi-keyfi.jpg': 'Dining by the charcoal grill at Kolcuoğlu Florya',
     '/images/florya-en-iyi-kebapci.jpg': 'A kebab feast at Kolcuoğlu, the best kebab house in Florya',
-    '/images/istanbul-metrelik-kebap-kolcuoglu.jpg': 'The metre-long kebab in Istanbul – Kolcuoğlu Florya',
+    '/images/istanbul-metrelik-kebap-kolcuoglu.jpg': 'The Metre Kebab in Istanbul – Kolcuoğlu Florya',
     '/images/kolcuoglu-kebap-florya-istanbul.jpg': 'Kolcuoğlu kebab – Florya, Istanbul',
     '/images/kolcuoglu-florya-geleneksel-lezzetler.jpg': 'Traditional Turkish dishes at Kolcuoğlu Florya',
     '/images/kolcuoglu-florya-sicak-mezeler.jpg': 'Hot starters at Kolcuoğlu Florya',
@@ -136,9 +136,9 @@ const en: Dictionary = {
     hero: {
       badge: 'Est. 1910 · Adana',
       titleLine1: '116 Years of Tradition,',
-      titleLine2: 'For Everyone.',
+      titleLine2: 'Made for Everyone.',
       intro:
-        'Adana’s century-old fire now burns on the Florya seafront. Take a seat at our waterfront tables and join us for an unforgettable feast, starring our famous metre-long kebab.',
+        'Adana’s century-old fire now burns on the Florya seafront. Take a seat at our waterfront tables and join us for an unforgettable feast, starring our famous Metre Kebab.',
       exploreMenu: 'View the Menu',
       directions: 'Get Directions',
       book: 'Book a Table',
@@ -154,24 +154,24 @@ const en: Dictionary = {
       titleLine1: 'One Family, One Fire,',
       titleLine2: 'A 116-Year Love Affair',
       paragraph1:
-        'From 1910 to today: seven generations of a kebab legend. It all began in 1910 with a small shop in Adana’s old vegetable market. For seven generations, the secrets of fire and meat have been handed down from parent to child, and we keep them alive with the same passion. The turning point in our story came in 1974, when Hasan Kolcuoğlu, of the fifth generation, invented the Metrelik Kebap: the metre-long kebab that earned its own chapter in Turkish culinary history. Through the vision of Tarkan Kolcuoğlu, of the sixth generation, this one-of-a-kind dish grew into a brand, travelled far beyond Adana and brought the legend of the metre-long kebab to the whole of Türkiye.',
+        'From 1910 to today: seven generations of a kebab legend. It all began in 1910 with a small shop in Adana’s old vegetable market. For seven generations, the secrets of fire and meat have been handed down from parent to child, and we keep them alive with the same passion. The turning point in our story came in 1974, when Hasan Kolcuoğlu, of the fifth generation, invented the Metre Kebab: a kebab a full metre long, which earned its own chapter in Turkish culinary history. Through the vision of Tarkan Kolcuoğlu, of the sixth generation, this one-of-a-kind dish grew into a brand, travelled far beyond Adana and brought the legend of the Metre Kebab to the whole of Türkiye.',
       paragraph2:
         'Today, as the seventh generation, we keep that century-old fire burning bright at Kolcuoğlu Florya. We blend the craft handed down by our grandfathers and our father with the energy of a modern kitchen, and now we lay those same generous, unforgettable tables for you. Welcome to a story where history, craftsmanship and flavour stretch on for metres!',
       badges: {
-        inventor: 'Inventors of the Metrelik Kebap',
+        inventor: 'Inventors of the Metre Kebab',
         family: 'A Seven-Generation Family Tradition',
         location: 'On the Florya Seafront',
         locationDetail: ['Yeşilköy 10 min', 'Ataköy & Bakırköy 15 min'],
       },
-      portraitCaption: 'Master of the Metrelik Kebap',
+      portraitCaption: 'Master of the Metre Kebab',
       founded: 'Founded',
     },
     featured: {
       label: 'Highlights',
       title: 'Our Signature Feast',
-      imageAlt: 'The Kolcuoğlu Set Menu',
-      menuName: 'Set Menu',
-      text: 'Six mezes, our special salads, hummus with pastırma, bite-sized lahmacun and the Metrelik Kebap: an unforgettable feast from start to finish.',
+      imageAlt: 'The Kolcuoğlu Special Menu',
+      menuName: 'Special Menu',
+      text: 'Six mezes, our special salads, hummus with pastırma, bite-sized lahmacun and the Metre Kebab: an unforgettable feast from start to finish.',
       viewAll: 'View the Full Menu',
     },
     atmosphere: {
@@ -203,8 +203,8 @@ const en: Dictionary = {
         link: 'Get directions',
       },
       inventor: {
-        title: 'Inventors of the Metrelik Kebap',
-        text: 'Adana cuisine since 1910. The seventh generation of the family that invented the metre-long kebab, cooking over the same glowing embers.',
+        title: 'Inventors of the Metre Kebab',
+        text: 'Adana cuisine since 1910. The seventh generation of the family that invented the Metre Kebab, cooking over the same glowing embers.',
       },
       meat: {
         title: 'Meat from Adana, Hand-Minced with a Zırh',
@@ -235,8 +235,8 @@ const en: Dictionary = {
         a: 'Yes, we do. Our drinks menu includes rakı, wine, beer and cocktails.',
       },
       {
-        q: 'How does the Kolcuoğlu Set Menu work?',
-        a: 'The set menu is for a minimum of two people and costs ₺1,800 per person.',
+        q: 'How does the Kolcuoğlu Special Menu work?',
+        a: 'The Special Menu is for a minimum of two people and costs ₺1,800 per person.',
       },
       {
         q: 'Is there a charge for valet parking?',
@@ -302,19 +302,19 @@ const en: Dictionary = {
       kokteyller: 'COCKTAILS',
     },
     special: {
-      imageAlt: 'The Kolcuoğlu Set Menu',
-      name: 'Set Menu',
+      imageAlt: 'The Kolcuoğlu Special Menu',
+      name: 'Special Menu',
       sections: [
         { title: 'Mezes', items: 'A Selection of 6 Mezes' },
         { title: 'Salads', items: 'Seasonal Salad · Adana Ezme · Çiğ Köfte' },
         { title: 'Hot Starters', items: 'Hummus with Pastırma · Chicken & Mushroom Sauté · Bite-Sized Lahmacun · Fire-Roasted Aubergine' },
-        { title: 'Main Course', items: 'Metrelik Kebap', note: '(Adana Kebab, Sarma Beyti, Chicken Wings, Chicken Şiş, Ribs)' },
+        { title: 'Main Course', items: 'Metre Kebab', note: '(Adana Kebab, Sarma Beyti, Chicken Wings, Chicken Şiş, Ribs)' },
         { title: 'Fruit & Desserts', items: 'Fruit Platter (6 kinds) · Desserts (3 kinds)' },
         { title: 'Drinks', items: 'Şalgam · Ayran · Fanta · Cola · Fruit Juice', note: '+ Tea & Turkish Coffee on the House' },
       ],
       pricePerPerson: 'Price per Person',
       price: '₺1,800',
-      rules: ['One set menu per guest', 'Minimum 2 guests'],
+      rules: ['One Special Menu per guest', 'Minimum 2 guests'],
     },
   },
 

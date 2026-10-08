@@ -16,7 +16,7 @@ const menuEn: MenuTranslation = {
   weight: (w) => WEIGHT_UNITS.reduce((s, [re, to]) => s.replace(re, to), w),
 
   categories: {
-    'fiks-menu': { name: 'Kolcuoğlu Set Menu', description: 'A complete feast built around the Metrelik Kebap' },
+    'fiks-menu': { name: 'Kolcuoğlu Special Menu', description: 'A complete feast built around the Metre Kebab' },
     mezeler: { name: 'Mezes', description: 'Fresh, regional flavours' },
     salatalar: { name: 'Salads', description: 'Seasonal greens and fresh ingredients' },
     'ara-sicaklar': { name: 'Hot Starters', description: 'Warm dishes to begin with' },
@@ -49,11 +49,11 @@ const menuEn: MenuTranslation = {
   },
 
   items: {
-    // Set menu (structured data only; the page shows the set-menu card)
+    // Special Menu (structured data only; the page shows the special-menu card)
     m1: {
-      name: 'Kolcuoğlu Set Menu',
+      name: 'Kolcuoğlu Special Menu',
       description:
-        '6 mezes, seasonal salad, Adana ezme, çiğ köfte, hummus with pastırma, chicken and mushroom sauté, bite-sized lahmacun, fire-roasted aubergine, Metrelik Kebap (Adana kebab, sarma beyti, chicken wings, chicken şiş, ribs), fruit platter (6 kinds), desserts (3 kinds), a soft drink, tea and coffee.',
+        '6 mezes, seasonal salad, Adana ezme, çiğ köfte, hummus with pastırma, chicken and mushroom sauté, bite-sized lahmacun, fire-roasted aubergine, Metre Kebab (Adana kebab, sarma beyti, chicken wings, chicken şiş, ribs), fruit platter (6 kinds), desserts (3 kinds), a soft drink, tea and coffee.',
     },
 
     // Mezes
@@ -69,19 +69,19 @@ const menuEn: MenuTranslation = {
     m11: { name: 'Mixed Pickles', description: 'Assorted Turkish pickles' },
     m12: { name: 'Melon Plate', description: 'Sweet melon, the classic companion to rakı' },
     m13: { name: 'Turkish White Cheese', description: 'Creamy brined white cheese' },
-    m14: { name: 'Tangy Beetroot' },
+    m14: { name: 'Tangy Beetroot', description: 'Beetroot with a sharp, sour flavour' },
     m15: { description: 'Strained yogurt topped with dried hot chillies sizzled in butter' },
     m16: { name: 'Purslane', description: 'Fresh purslane in garlic yogurt' },
     m17: { name: 'Spicy Muhammara', description: 'Roasted red pepper and walnut dip with pomegranate molasses' },
-    m18: { description: 'Spicy bulgur köfte kneaded with pepper paste' },
-    m19: {},
-    m20: { description: 'Sun-dried aubergines and peppers, stuffed Gaziantep style' },
+    m18: { description: 'Spicy, meat-free bulgur köfte kneaded with pepper paste' },
+    m19: { name: 'Tulum Cheese Butter', description: 'Butter blended with tulum, a sharp, crumbly Turkish cheese' },
+    m20: { description: 'Sun-dried aubergines and peppers stuffed with seasoned rice, Gaziantep style. Meat-free.' },
 
     // Salads
     m21: { name: 'Gavurdağı Salad', description: 'Finely chopped tomatoes, peppers, onion and walnuts with pomegranate molasses' },
     m22: { name: 'Seasonal Salad', description: 'Fresh seasonal greens and vegetables' },
     m23: { name: 'Shepherd’s Salad', description: 'Diced tomatoes, cucumber, peppers and onion with olive oil and lemon' },
-    m24: { name: 'Tablacı Salad' },
+    m24: { name: 'Tablacı Salad', description: 'Finely chopped tomatoes and onion with parsley and sumac, Adana style' },
     m25: { name: 'Rocket Salad' },
     m26: { description: 'Hand-chopped tomatoes, peppers and onion, Adana style' },
 
@@ -95,9 +95,9 @@ const menuEn: MenuTranslation = {
     m33: { name: 'Bite-Sized Lahmacun' },
 
     // Kebabs & grills
-    m34: { description: 'Our signature metre-long kebab. Serves a minimum of two.' },
+    m34: { name: 'Metre Kebab', description: 'Our signature kebab, a full metre long. Serves a minimum of two.' },
     m35: { name: 'Mixed Grill' },
-    m36: { name: 'Adana Kebab', description: 'Spicy hand-minced kebab, grilled on a wide skewer over charcoal' },
+    m36: { name: 'Adana Kebab', description: 'Spicy hand-minced lamb kebab, grilled on a wide skewer over charcoal' },
     m37: { name: 'Urfa Kebab', description: 'Our hand-minced kebab, mild and without chilli' },
     m38: { description: 'Kebab wrapped in thin lavash, sliced and served with tomato sauce and yogurt' },
     m39: { name: 'Alinazik with Şiş', description: 'Smoky aubergine and garlic yogurt, topped with grilled cubes of meat' },
