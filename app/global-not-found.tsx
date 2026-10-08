@@ -44,6 +44,8 @@ export default function GlobalNotFound() {
             Page not found. The page you’re looking for may have moved or never existed.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            {/* Plain links: this page sits outside every root layout, so navigation is a full load anyway */}
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a href="/" className="px-8 py-3.5 text-xs uppercase font-semibold" style={button}>
               Ana Sayfa
             </a>

@@ -19,6 +19,8 @@ export default function RootDocument({ lang, children }: { lang: Locale; childre
   const t = getDictionary(lang)
   return (
     <html lang={lang} className={htmlFontClasses}>
+      {/* This component is the root layout's whole output, so <head> and beforeInteractive belong here */}
+      {/* eslint-disable-next-line @next/next/no-head-element */}
       <head>
         <script
           type="application/ld+json"
@@ -86,6 +88,7 @@ export default function RootDocument({ lang, children }: { lang: Locale; childre
           reservationPath={path(lang, 'reservation')}
         />
         {/* İzin varsayılanı etiket yüklenmeden önce ayarlanmalı (Consent Mode v2) */}
+        {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
         <Script
           id="gtag-consent-default"
           strategy="beforeInteractive"
