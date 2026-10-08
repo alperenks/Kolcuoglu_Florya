@@ -83,7 +83,6 @@ const tr = {
     decline: 'Reddet',
     accept: 'Kabul et',
   },
-  cookiePreference: 'Çerez tercihimi değiştir',
 
   stories: {
     titles: {
@@ -365,6 +364,12 @@ const tr = {
     ctaLabel: 'Talepleriniz İçin Bize Ulaşın',
     bookOnline: 'Online Rezervasyon',
     whatsapp: 'WhatsApp Destek',
+  },
+
+  privacy: {
+    label: 'KVKK Aydınlatma Metni',
+    title: 'Gizlilik ve Kişisel Veriler',
+    updated: 'Son güncelleme: 7 Ekim 2026',
   },
 
   reservation: {

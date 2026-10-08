@@ -8,7 +8,7 @@ import { Menu, X, Sun, Moon, Phone } from 'lucide-react'
 import { LOCALES, LOCALE_NAMES, pageFromPathname, path, type Locale, type PageKey } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/dictionaries/tr'
 
-const NAV_PAGES: PageKey[] = ['home', 'menu', 'gallery', 'corporate', 'contact']
+const NAV_PAGES = ['home', 'menu', 'gallery', 'corporate', 'contact'] as const satisfies PageKey[]
 
 // Links to the same page in the other languages. A plain <a> (not next/link): each language has its
 // own root layout, so the switch is a full page load anyway, and next/link would prefetch the other

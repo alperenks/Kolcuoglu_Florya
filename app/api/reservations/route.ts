@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import { isLocale } from '@/i18n/config'
+
+// Formun gönderildiği dil, e-postada Türkçe adıyla (personel müşteriye o dilde dönsün diye)
+const DIL_ADLARI: Record<string, string> = { tr: 'Türkçe', en: 'İngilizce' }
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,6 +16,9 @@ export async function POST(request: NextRequest) {
     } = body
 
     const tableType = body.tableType || 'standart'
+    // Yalnızca bilinen dil kodları (e-posta HTML'ine serbest metin girmesin)
+    const dil = typeof body.lang === 'string' && isLocale(body.lang) ? body.lang : 'tr'
+    const yabanciDil = dil !== 'tr' ? DIL_ADLARI[dil] ?? dil : null
 
     // Validate required fields
     if (!date || !time || !guests || !firstName || !lastName || !email || !phone) {
@@ -61,7 +68,7 @@ export async function POST(request: NextRequest) {
         const mailOptions = {
           from: `"Kolcuoğlu Rezervasyon" <${smtpUser}>`,
           to: recipientEmail,
-          subject: `Yeni Rezervasyon / Teklif Talebi - ${firstName} ${lastName}`,
+          subject: `${yabanciDil ? `[${dil.toUpperCase()}] ` : ''}Yeni Rezervasyon / Teklif Talebi - ${firstName} ${lastName}`,
           text: `
             Yeni bir grup rezervasyonu / fiyat teklifi talebi alındı:
 
@@ -71,7 +78,8 @@ export async function POST(request: NextRequest) {
             Kişi Sayısı: ${guests}
             E-posta: ${email}
             Telefon: ${phone}
-            Özel İstekler: ${notes || 'Belirtilmedi'}
+            Özel İstekler: ${notes || 'Belirtilmedi'}${yabanciDil ? `
+            Dil: ${yabanciDil} (müşteriye ${yabanciDil} yanıt verin)` : ''}
           `,
           html: `
             <div style="font-family: sans-serif; padding: 20px; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 5px; background-color: #ffffff; color: #333333;">
@@ -100,7 +108,11 @@ export async function POST(request: NextRequest) {
                 <tr>
                   <td style="padding: 10px; border-bottom: 1px solid #f0f0f0; font-weight: bold; color: #555555;">Özel İstekler:</td>
                   <td style="padding: 10px; border-bottom: 1px solid #f0f0f0; font-style: italic;">${notes || 'Belirtilmedi'}</td>
-                </tr>
+                </tr>${yabanciDil ? `
+                <tr>
+                  <td style="padding: 10px; border-bottom: 1px solid #f0f0f0; font-weight: bold; color: #555555;">Dil:</td>
+                  <td style="padding: 10px; border-bottom: 1px solid #f0f0f0;"><strong>${yabanciDil}</strong> (müşteriye ${yabanciDil} yanıt verin)</td>
+                </tr>` : ''}
               </table>
               <div style="margin-top: 25px; font-size: 11px; color: #888; text-align: center; border-top: 1px solid #f0f0f0; padding-top: 15px;">
                 Bu e-posta Kolcuoğlu Kebap & Gastronomi web sitesinden otomatik olarak gönderilmiştir.

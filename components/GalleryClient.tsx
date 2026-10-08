@@ -4,39 +4,17 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
+import type { Dictionary } from '@/i18n/dictionaries/tr'
 
-// Gerçek restoran görselleri (SEO uyumlu adlandırılmış + betimleyici alt metinler)
-const allImages = [
-  { src: '/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg', alt: 'Kolcuoğlu Florya özel menü – metrelik kebap sunumu' },
-  { src: '/images/hasan-kolcuoglu-metrelik-kebap-mucidi.jpeg', alt: 'Metrelik kebabın mucidi Hasan Kolcuoğlu' },
-  { src: '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg', alt: 'Kolcuoğlu Florya deniz manzaralı teras' },
-  { src: '/images/kolcuoglu-florya-restoran-salonu.jpeg', alt: 'Kolcuoğlu Florya restoran salonu' },
-  { src: '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg', alt: 'Kolcuoğlu Florya deniz manzaralı yemek salonu' },
-  { src: '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg', alt: 'Kolcuoğlu Florya iç mekan tasarımı' },
-  { src: '/images/kolcuoglu-florya-adana-kebap.jpg', alt: 'Kolcuoğlu Florya Adana kebap' },
-  { src: '/images/kolcuoglu-florya-kebap-sofrasi.jpg', alt: 'Kolcuoğlu Florya kebap sofrası ve mezeler' },
-  { src: '/images/kolcuoglu-florya-ocakbasi-keyfi.jpg', alt: 'Kolcuoğlu Florya ocakbaşı keyfi' },
-  { src: '/images/florya-en-iyi-kebapci.jpg', alt: "Florya'nın en iyi kebapçısı Kolcuoğlu'nda kebap sofrası" },
-  { src: '/images/istanbul-metrelik-kebap-kolcuoglu.jpg', alt: "İstanbul'da metrelik kebap – Kolcuoğlu Florya" },
-  { src: '/images/kolcuoglu-kebap-florya-istanbul.jpg', alt: 'Kolcuoğlu kebap – Florya, İstanbul' },
-  { src: '/images/kolcuoglu-florya-geleneksel-lezzetler.jpg', alt: 'Kolcuoğlu Florya geleneksel Türk lezzetleri' },
-  { src: '/images/kolcuoglu-florya-sicak-mezeler.jpg', alt: 'Kolcuoğlu Florya sıcak mezeler' },
-  { src: '/images/kolcuoglu-florya-kuzu-sis.jpg', alt: 'Kolcuoğlu Florya kuzu şiş' },
-  { src: '/images/kolcuoglu-florya-kunefe-tatlisi.jpg', alt: 'Kolcuoğlu Florya künefe tatlısı' },
-  { src: '/images/kolcuoglu-florya-katmer-tatlisi.jpg', alt: 'Kolcuoğlu Florya katmer tatlısı' },
-  { src: '/images/kolcuoglu-florya-ayran-salgam.jpg', alt: 'Kolcuoğlu Florya ayran ve şalgam' },
-  { src: '/images/kolcuoglu-florya-lahmacun-pide.jpg', alt: 'Kolcuoğlu Florya lahmacun ve pide' },
-  { src: '/images/kolcuoglu-florya-vip-salon.jpg', alt: 'Kolcuoğlu Florya VIP salon' },
-  { src: '/images/kolcuoglu-florya-ocakbasi-ustasi.jpg', alt: 'Kolcuoğlu Florya ocakbaşı ustası kebap pişirirken' },
-  { src: '/images/kolcuoglu-florya-lezzet-duragi.jpg', alt: 'Kolcuoğlu Florya lezzet durağı' },
-  { src: '/images/kolcuoglu-florya-ozel-davetler.jpg', alt: 'Kolcuoğlu Florya özel davet ve organizasyonlar' },
-  { src: '/images/kolcuoglu-florya-denize-sifir-kebap.jpg', alt: 'Denize sıfır kebap keyfi – Kolcuoğlu Florya' },
-  { src: '/images/kolcuoglu-florya-kuzu-pirzola.jpg', alt: 'Kolcuoğlu Florya kuzu pirzola' },
-  { src: '/images/kolcuoglu-florya-soguk-mezeler.jpg', alt: 'Kolcuoğlu Florya soğuk mezeler' },
-  { src: '/images/kolcuoglu-florya-sofra-duzeni.jpg', alt: 'Kolcuoğlu Florya sofra düzeni' },
-]
 
-export default function GalleryClient() {
+// Gerçek restoran görselleri (SEO uyumlu adlandırılmış + betimleyici alt metinler, sayfanın dilinde)
+export default function GalleryClient({
+  images: allImages,
+  t,
+}: {
+  images: { src: string; alt: string }[]
+  t: Dictionary['gallery']
+}) {
   const [visibleCount, setVisibleCount] = useState(8)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
@@ -104,7 +82,7 @@ export default function GalleryClient() {
               animate={{ y: [0, 6, 0] }}
               transition={{ y: { duration: 2, repeat: Infinity, ease: 'easeInOut' } }}
               onClick={handleLoadMore}
-              aria-label="Daha fazla görsel yükle"
+              aria-label={t.loadMore}
             >
               <ArrowDown size={24} />
             </motion.div>
@@ -125,7 +103,7 @@ export default function GalleryClient() {
           >
             {/* Kapat Butonu */}
             <div className="absolute top-6 right-6 md:top-8 md:right-8 text-xs tracking-widest uppercase transition-colors" style={{ color: 'var(--color-muted)' }}>
-              Kapat (ESC) ✕
+              {t.close}
             </div>
             
             <motion.div
@@ -137,7 +115,7 @@ export default function GalleryClient() {
             >
               <Image
                 src={selectedImage}
-                alt={allImages.find((img) => img.src === selectedImage)?.alt ?? 'Kolcuoğlu Florya galeri görseli'}
+                alt={allImages.find((img) => img.src === selectedImage)?.alt ?? t.fallbackAlt}
                 fill
                 sizes="100vw"
                 className="object-contain"

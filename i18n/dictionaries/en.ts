@@ -86,7 +86,6 @@ const en: Dictionary = {
     decline: 'Decline',
     accept: 'Accept',
   },
-  cookiePreference: 'Change my cookie preferences',
 
   stories: {
     titles: {
@@ -362,6 +361,12 @@ const en: Dictionary = {
     ctaLabel: 'Get in Touch to Plan Your Event',
     bookOnline: 'Book Online',
     whatsapp: 'WhatsApp Us',
+  },
+
+  privacy: {
+    label: 'Privacy Notice (KVKK)',
+    title: 'Privacy and Personal Data',
+    updated: 'Last updated: 7 October 2026',
   },
 
   reservation: {

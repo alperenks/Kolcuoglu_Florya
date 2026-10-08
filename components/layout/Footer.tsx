@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Instagram, MapPin, Phone, Clock, MessageCircle } from 'lucide-react'
 import { getDictionary, path, type Locale, type PageKey } from '@/i18n'
 
-const FOOTER_PAGES: PageKey[] = ['menu', 'gallery', 'corporate', 'contact']
+const FOOTER_PAGES = ['menu', 'gallery', 'corporate', 'contact'] as const satisfies PageKey[]
 
 export default function Footer({ lang }: { lang: Locale }) {
   const t = getDictionary(lang)
