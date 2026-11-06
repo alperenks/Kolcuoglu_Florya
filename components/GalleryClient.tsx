@@ -58,7 +58,7 @@ export default function GalleryClient({ groups, t }: { groups: Group[]; t: Dicti
                         setOpenId(isOpen ? null : g.id)
                       }}
                       className="px-5 py-2 text-xs tracking-widest uppercase font-semibold"
-                      style={{ background: 'var(--color-card-inner-bg)', color: 'var(--color-cream)', border: '1px solid rgba(163,33,36,0.3)', borderRadius: '2px' }}
+                      style={{ background: 'transparent', color: '#fff', border: '2px solid var(--color-terracotta)', borderRadius: '2px' }}
                     >
                       {isOpen ? t.showLess : t.showMore}
                     </button>

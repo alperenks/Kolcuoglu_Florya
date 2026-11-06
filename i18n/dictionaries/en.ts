@@ -362,7 +362,7 @@ const en: Dictionary = {
   },
 
   corporate: {
-    title: 'CORPORATE EVENTS',
+    title: 'Corporate Events',
     intro:
       'Year-end dinner, team get-together, promotion celebration or business lunch: we host up to 500 guests in our dining rooms right on the Florya shore.',
     rating: 'Our tables are rated 4.9 stars on Google Maps, and guest satisfaction always comes first.',
@@ -384,13 +384,28 @@ const en: Dictionary = {
     menuPrice: '1800 TL',
     menuPriceNote: 'Per person · VAT included · 2026 price',
     menuImageAlt: 'The Kolcuoğlu Special Menu, served with the Metre Kebab',
-    menuItems: [
-      '6 kinds of meze and seasonal salads',
-      'Hot starters, including hazelnut lahmacun',
-      'Metre Kebab: Adana, sarma beyti, wings, chicken skewer, lamb skewer or ribs',
-      'Fruit platter and 3 desserts',
-      '1 soft drink; unlimited water, tea and coffee',
+    menuSections: [
+      {
+        title: 'Starters',
+        groups: [
+          { label: 'Meze', text: '6 kinds' },
+          { label: 'Salads', text: 'Seasonal salad, Adana ezme, raw köfte, sumac onion, green plate' },
+          { label: 'Hot Starters', text: 'Humus with pastırma, chicken and mushroom sauté, smoked eggplant' },
+        ],
+      },
+      {
+        title: 'Main Course',
+        groups: [{ label: '', text: 'Metre Kebab — Adana, Sarma Beyti, wings, chicken skewer + lamb skewer or ribs' }],
+      },
+      {
+        title: 'Fruit, Dessert and Drinks',
+        groups: [
+          { label: 'Fruit and Desserts', text: 'Fruit platter (5 kinds), dessert (3 kinds)' },
+          { label: 'Drinks', text: '1 soft drink (şalgam, ayran, Fanta, cola, fruit juice), unlimited water, tea and coffee' },
+        ],
+      },
     ],
+    alcoholNote: 'Please contact us for menus with alcohol.',
   },
 
   privacy: {

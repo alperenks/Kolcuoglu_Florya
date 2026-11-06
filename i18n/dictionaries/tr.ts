@@ -365,7 +365,7 @@ const tr = {
   },
 
   corporate: {
-    title: 'KURUMSAL ORGANİZASYONLAR',
+    title: 'Kurumsal Organizasyonlar',
     intro:
       'Yıl sonu yemeği, ekip buluşması, terfi kutlaması ya da toplantı yemeği: Florya sahilinde, denize sıfır salonlarımızda 500 kişiye kadar ağırlıyoruz.',
     rating: "Google Haritalar'da 4,9 yıldız alan sofralarımızda misafir memnuniyeti her şeyden önce gelir.",
@@ -387,13 +387,28 @@ const tr = {
     menuPrice: '1800 TL',
     menuPriceNote: 'Kişi başı · KDV dahil · 2026 fiyatı',
     menuImageAlt: 'Metrelik kebap ile servis edilen Kolcuoğlu Spesiyal Menü',
-    menuItems: [
-      '6 çeşit meze ve mevsim salatalar',
-      'Fındık lahmacun dahil ara sıcaklar',
-      'Metrelik kebap: Adana, sarma beyti, kanat, tavuk şiş, kuzu şiş ya da kaburga',
-      'Serpme meyve ve 3 çeşit tatlı',
-      '1 meşrubat; sınırsız su, çay ve kahve',
+    menuSections: [
+      {
+        title: 'Başlangıçlar',
+        groups: [
+          { label: 'Mezeler', text: '6 Çeşit' },
+          { label: 'Salatalar', text: 'Mevsim Salata, Adana Ezme, Çiğ Köfte, Sumaklı Soğan, Yeşillik Tabağı' },
+          { label: 'Ara Sıcaklar', text: 'Pastırmalı Humus, Tavuk Mantar Sote, Patlıcan Söğürtme' },
+        ],
+      },
+      {
+        title: 'Ana Yemek',
+        groups: [{ label: '', text: 'Metrelik Kebap — Adana, Sarma Beyti, Kanat, Tavuk Şiş + Kuzu Şiş veya Kaburga' }],
+      },
+      {
+        title: 'Meyve, Tatlı ve İçecekler',
+        groups: [
+          { label: 'Meyve ve Tatlılar', text: 'Serpme Meyve (5 Çeşit), Tatlı (3 Çeşit)' },
+          { label: 'İçecekler', text: '1 Meşrubat (Şalgam, Ayran, Fanta, Kola, Meyve Suyu), Sınırsız Su, Çay ve Kahve' },
+        ],
+      },
     ],
+    alcoholNote: 'Alkollü menüler için iletişime geçiniz.',
   },
 
   privacy: {

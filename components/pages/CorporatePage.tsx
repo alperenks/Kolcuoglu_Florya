@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { CheckCircle2, ChevronDown, MessageSquare } from 'lucide-react'
+import { ChevronDown, MessageSquare } from 'lucide-react'
 import { getDictionary, path, type Locale } from '@/i18n'
 
 function Buttons({ lang, t }: { lang: Locale; t: ReturnType<typeof getDictionary>['corporate'] }) {
@@ -110,16 +110,23 @@ export default function CorporatePage({ lang }: { lang: Locale }) {
               {t.menuPrice}
             </p>
             <p className="text-xs uppercase tracking-widest" style={{ color: 'var(--color-muted)' }}>{t.menuPriceNote}</p>
-            <ul className="space-y-3">
-              {t.menuItems.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-sm" style={{ color: 'var(--color-text-desc)' }}>
-                  <CheckCircle2 size={16} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--color-copper)' }} />
-                  <span>{item}</span>
-                </li>
+            <div className="space-y-5">
+              {t.menuSections.map((sec) => (
+                <div key={sec.title} className="space-y-2">
+                  <h3 className="font-serif text-xl" style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-cream)' }}>{sec.title}</h3>
+                  {sec.groups.map((g, i) => (
+                    <p key={i} className="text-sm" style={{ color: 'var(--color-text-desc)' }}>
+                      {g.label && <span className="uppercase tracking-wider text-xs font-semibold" style={{ color: 'var(--color-copper)' }}>{g.label}: </span>}
+                      {g.text}
+                    </p>
+                  ))}
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
+
+        <p className="text-sm text-center -mt-8" style={{ color: 'var(--color-muted)' }}>{t.alcoholNote}</p>
 
         {/* 7. Second buttons */}
         <Buttons lang={lang} t={t} />
