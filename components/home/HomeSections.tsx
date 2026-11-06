@@ -447,10 +447,10 @@ export function FeaturedMenuSection({ t, menuHref }: { t: HomeText['featured']; 
 
 // ─── Atmosphere Section ───────────────────────────────────────────────────────
 const ATMOSPHERE_IMAGES = [
-  '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg',
-  '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg',
-  '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg',
-  '/images/kolcuoglu-florya-tatli-ikrami.jpg',
+  '/images/kolcuoglu-florya-gun-batimi-deniz-manzarasi.jpg',
+  '/images/kolcuoglu-florya-1-kat-salon-deniz-manzarasi.jpg',
+  '/images/kolcuoglu-florya-2-kat-teras-deniz-manzarasi.jpg',
+  '/images/kolcuoglu-florya-1-kat-dag-duvari-lambalar.jpg',
 ] as const
 
 export function AtmosphereSection({

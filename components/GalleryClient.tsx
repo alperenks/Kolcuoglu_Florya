@@ -3,24 +3,16 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowDown } from 'lucide-react'
 import type { Dictionary } from '@/i18n/dictionaries/tr'
 
 
-// Gerçek restoran görselleri (SEO uyumlu adlandırılmış + betimleyici alt metinler, sayfanın dilinde)
-export default function GalleryClient({
-  images: allImages,
-  t,
-}: {
-  images: { src: string; alt: string }[]
-  t: Dictionary['gallery']
-}) {
-  const [visibleCount, setVisibleCount] = useState(8)
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+type Img = { src: string; alt: string }
+type Group = { id: string; title: string; images: Img[] }
 
-  const handleLoadMore = () => {
-    setVisibleCount(prev => Math.min(prev + 4, allImages.length))
-  }
+// Three group cards (one cover photo each); "show more" opens the group's photos below the cards
+export default function GalleryClient({ groups, t }: { groups: Group[]; t: Dictionary['gallery'] }) {
+  const [openId, setOpenId] = useState<string | null>(null)
+  const [selectedImage, setSelectedImage] = useState<Img | null>(null)
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -30,63 +22,77 @@ export default function GalleryClient({
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  const visibleImages = allImages.slice(0, visibleCount)
-  const hasMore = visibleCount < allImages.length
+  const open = groups.find((g) => g.id === openId) ?? null
 
   return (
     <>
       <section className="py-16 px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" style={{ maxWidth: '1280px', margin: '0 auto', width: '100%' }}>
-          <AnimatePresence>
-            {visibleImages.map((img, i) => (
-              <motion.div
-                key={img.src + i}
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, delay: (i % 4) * 0.1 }}
-                layout
-                onClick={() => setSelectedImage(img.src)}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4" style={{ maxWidth: '1280px', margin: '0 auto', width: '100%' }}>
+          {groups.map((g) => {
+            const hasMore = g.images.length > 1
+            const isOpen = g.id === openId
+            return (
+              <div
+                key={g.id}
                 className="aspect-square relative overflow-hidden rounded-sm group cursor-pointer"
                 style={{ border: '1px solid var(--color-border)' }}
+                onClick={() => setSelectedImage(g.images[0])}
               >
                 <Image
-                  src={img.src}
-                  alt={img.alt}
+                  src={g.images[0].src}
+                  alt={g.images[0].alt}
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-              </motion.div>
-            ))}
-          </AnimatePresence>
+                <div
+                  className="absolute inset-x-0 bottom-0 p-5 flex flex-col items-center gap-3 text-center"
+                  style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.85), transparent)' }}
+                >
+                  <h2 className="font-serif text-2xl" style={{ fontFamily: 'var(--font-serif)', color: '#fff' }}>{g.title}</h2>
+                  {hasMore && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setOpenId(isOpen ? null : g.id)
+                      }}
+                      className="px-5 py-2 text-xs tracking-widest uppercase font-semibold"
+                      style={{ background: 'var(--color-card-inner-bg)', color: 'var(--color-cream)', border: '1px solid rgba(163,33,36,0.3)', borderRadius: '2px' }}
+                    >
+                      {isOpen ? t.showLess : t.showMore}
+                    </button>
+                  )}
+                </div>
+              </div>
+            )
+          })}
         </div>
 
-        {/* Load More Button */}
-        {hasMore && (
-          <motion.div 
-            className="flex justify-center mt-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            <motion.div
-              className="w-16 h-16 rounded-full flex items-center justify-center cursor-pointer"
-              style={{
-                background: 'var(--color-card-inner-bg)',
-                border: '1px solid rgba(163,33,36,0.3)',
-                color: 'var(--color-gold)'
-              }}
-              whileHover={{ scale: 1.1, background: 'rgba(163,33,36,0.1)' }}
-              whileTap={{ scale: 0.95 }}
-              animate={{ y: [0, 6, 0] }}
-              transition={{ y: { duration: 2, repeat: Infinity, ease: 'easeInOut' } }}
-              onClick={handleLoadMore}
-              aria-label={t.loadMore}
-            >
-              <ArrowDown size={24} />
-            </motion.div>
-          </motion.div>
+        {open && (
+          <div className="mt-12" style={{ maxWidth: '1280px', margin: '3rem auto 0', width: '100%' }}>
+            <h3 className="font-serif text-2xl text-center mb-6" style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-cream)' }}>
+              {open.title}
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {open.images.map((img) => (
+                <div
+                  key={img.src}
+                  onClick={() => setSelectedImage(img)}
+                  className="aspect-square relative overflow-hidden rounded-sm group cursor-pointer"
+                  style={{ border: '1px solid var(--color-border)' }}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         )}
       </section>
 
@@ -101,11 +107,9 @@ export default function GalleryClient({
             className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
             style={{ background: 'rgba(10,10,10,0.95)' }}
           >
-            {/* Kapat Butonu */}
             <div className="absolute top-6 right-6 md:top-8 md:right-8 text-xs tracking-widest uppercase transition-colors" style={{ color: 'var(--color-muted)' }}>
               {t.close}
             </div>
-            
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -114,8 +118,8 @@ export default function GalleryClient({
               className="relative w-full h-full max-w-7xl max-h-[85vh] cursor-default"
             >
               <Image
-                src={selectedImage}
-                alt={allImages.find((img) => img.src === selectedImage)?.alt ?? t.fallbackAlt}
+                src={selectedImage.src}
+                alt={selectedImage.alt || t.fallbackAlt}
                 fill
                 sizes="100vw"
                 className="object-contain"
@@ -129,4 +133,3 @@ export default function GalleryClient({
     </>
   )
 }
-

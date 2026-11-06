@@ -35,8 +35,8 @@ export default function RootDocument({ lang, children }: { lang: Locale; childre
               url: 'https://www.kolcuogluflorya.com',
               image: [
                 'https://www.kolcuogluflorya.com/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg',
-                'https://www.kolcuogluflorya.com/images/kolcuoglu-florya-restoran-salonu.jpeg',
-                'https://www.kolcuogluflorya.com/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg',
+                'https://www.kolcuogluflorya.com/images/kolcuoglu-florya-1-kat-salon-deniz-manzarasi.jpg',
+                'https://www.kolcuogluflorya.com/images/kolcuoglu-florya-2-kat-teras-deniz-manzarasi.jpg',
               ],
               hasMap: 'https://maps.app.goo.gl/2vAwEAAYAtk6AncA7',
               sameAs: [

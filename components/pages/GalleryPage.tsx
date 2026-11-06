@@ -1,14 +1,28 @@
 import GalleryClient from '@/components/GalleryClient'
 import { getDictionary, type Locale } from '@/i18n'
 
-// Gallery order; alt texts come from the dictionary (imageAlts)
-const GALLERY_IMAGES = [
+// Gallery groups; alt texts come from the dictionary (imageAlts)
+const RESTAURANT_IMAGES = [
+  '/images/kolcuoglu-florya-gun-batimi-deniz-manzarasi.jpg',
+  '/images/kolcuoglu-florya-dis-cephe-gunduz.jpg',
+  '/images/kolcuoglu-florya-giris-denize-bakis.jpg',
+  '/images/kolcuoglu-florya-giris-lobisi.jpg',
+  '/images/kolcuoglu-florya-giris-lobisi-asansor-merdiven.jpg',
+  '/images/kolcuoglu-florya-1-kat-asansor-holu-deniz.jpg',
+  '/images/kolcuoglu-florya-1-kat-salon.jpg',
+  '/images/kolcuoglu-florya-1-kat-dag-duvari-lambalar.jpg',
+  '/images/kolcuoglu-florya-1-kat-salon-deniz-manzarasi.jpg',
+  '/images/kolcuoglu-florya-1-kat-salon-duvar-sanati.jpg',
+  '/images/kolcuoglu-florya-1-kat-lavabo.jpg',
+  '/images/kolcuoglu-florya-2-kat-asansor-holu-deniz.jpg',
+  '/images/kolcuoglu-florya-2-kat-salon.jpg',
+  '/images/kolcuoglu-florya-2-kat-teras-salon.jpg',
+  '/images/kolcuoglu-florya-2-kat-teras-deniz-manzarasi.jpg',
+  '/images/kolcuoglu-florya-dis-cephe-aksam.jpg',
+] as const
+
+const PRODUCT_IMAGES = [
   '/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg',
-  '/images/hasan-kolcuoglu-metrelik-kebap-mucidi.jpeg',
-  '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg',
-  '/images/kolcuoglu-florya-restoran-salonu.jpeg',
-  '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg',
-  '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg',
   '/images/kolcuoglu-florya-adana-kebap.jpg',
   '/images/kolcuoglu-florya-kebap-sofrasi.jpg',
   '/images/kolcuoglu-florya-ocakbasi-keyfi.jpg',
@@ -32,10 +46,18 @@ const GALLERY_IMAGES = [
   '/images/kolcuoglu-florya-sofra-duzeni.jpg',
 ] as const
 
+const HISTORY_IMAGES = ['/images/hasan-kolcuoglu-metrelik-kebap-mucidi.jpeg'] as const
+
 export default function GalleryPage({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang)
   const t = dict.gallery
-  const images = GALLERY_IMAGES.map((src) => ({ src, alt: dict.imageAlts[src] }))
+  const toImages = (list: readonly (keyof typeof dict.imageAlts)[]) =>
+    list.map((src) => ({ src: src as string, alt: dict.imageAlts[src] }))
+  const groups = [
+    { id: 'restaurant', title: t.groupRestaurant, images: toImages(RESTAURANT_IMAGES) },
+    { id: 'products', title: t.groupProducts, images: toImages(PRODUCT_IMAGES) },
+    { id: 'history', title: t.groupHistory, images: toImages(HISTORY_IMAGES) },
+  ]
   return (
     <div style={{ background: 'var(--color-antracite)', paddingTop: '80px', minHeight: '100vh' }}>
       {/* Header */}
@@ -67,7 +89,7 @@ export default function GalleryPage({ lang }: { lang: Locale }) {
       </section>
 
       {/* Dynamic Grid Layout */}
-      <GalleryClient images={images} t={t} />
+      <GalleryClient groups={groups} t={t} />
     </div>
   )
 }

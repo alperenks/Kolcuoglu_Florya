@@ -60,18 +60,18 @@ const STORIES_DATA: StoryGroup[] = [
   },
   {
     id: 'teras',
-    thumbnail: '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg',
+    thumbnail: '/images/kolcuoglu-florya-2-kat-teras-deniz-manzarasi.jpg',
     items: [
       {
         id: 'tr-1',
         type: 'image',
-        url: '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg',
+        url: '/images/kolcuoglu-florya-2-kat-teras-deniz-manzarasi.jpg',
         duration: 5000,
       },
       {
         id: 'tr-2',
         type: 'image',
-        url: '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg',
+        url: '/images/kolcuoglu-florya-1-kat-salon-deniz-manzarasi.jpg',
         duration: 5000,
       },
     ],
