@@ -348,22 +348,35 @@ const tr = {
   },
 
   corporate: {
-    label: 'Kurumsal Lezzet & Organizasyon',
-    title: 'Şirket Yemekleri',
+    title: 'KURUMSAL ORGANİZASYONLAR',
     intro:
-      "İş toplantıları, kutlamalar veya özel şirket organizasyonlarınız için Kolcuoğlu Florya'nın eşsiz menüleri ve şık salonları emrinizde.",
-    heading: 'Profesyonel ve Şık Toplantılar',
-    body:
-      'Kolcuoğlu Florya olarak, şirket yemekleriniz ve kurumsal organizasyonlarınızda tüm detayları sizin yerinize biz üstleniyoruz. Masaların özenli tasarımından, nesillerdir aktarılan lezzetlerin zamanlamasına ve misafirlerinizin kusursuz şekilde karşılanmasına kadar her şeyi profesyonel ekibimize bırakın. Siz sadece işinize ve ekibinizle geçireceğiniz keyifli anlara odaklanın; geriye kalan her detayı biz sizin için düşünüp mükemmel şekilde organize edelim.',
-    benefits: [
-      'Özel Masa Düzeni ve Süsleme Seçenekleri',
-      'Tercihinize Göre Alkollü veya Alkolsüz Menü Teklifleri',
-      'Vale ve Servis Ücreti Yok',
-      'Şirket/Grup Yemeklerinde Yılların Deneyimi',
+      'Yıl sonu yemeği, ekip buluşması, terfi kutlaması ya da toplantı yemeği: Florya sahilinde, denize sıfır salonlarımızda 500 kişiye kadar ağırlıyoruz.',
+    rating: "Google Haritalar'da 4,9 yıldız alan sofralarımızda misafir memnuniyeti her şeyden önce gelir.",
+    quote: 'Teklif Talebi',
+    whatsapp: 'WhatsApp ile Yazın',
+    scrollToMenu: 'Menümüzü Görmek İçin Kaydırın',
+    gallery: [
+      { src: '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg', alt: 'Kolcuoğlu Florya deniz manzaralı yemek salonu' },
+      { src: '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg', alt: 'Kolcuoğlu Florya deniz manzaralı teras' },
+      { src: '/images/kolcuoglu-florya-restoran-salonu.jpeg', alt: 'Kolcuoğlu Florya restoran salonu' },
+      { src: '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg', alt: 'Kolcuoğlu Florya iç mekan tasarımı' },
     ],
-    ctaLabel: 'Talepleriniz İçin Bize Ulaşın',
-    bookOnline: 'Online Rezervasyon',
-    whatsapp: 'WhatsApp Destek',
+    storyTitle: 'Kebabın Yüz Yıllık Tadı',
+    story: [
+      "Metrelik kebabın mucidi Kolcuoğlu ailesi, 1910'dan bu yana Adana mutfağını aynı kor ateşte yaşatıyor. Kolcuoğlu Florya, bu markanın kendi restoranıdır.",
+      "Adana'dan gelen etle, orijinal zırh kıymasıyla ve ailenin kuşaktan kuşağa aktardığı tarifle hazırladığımız kebabı Florya sahilinde, şirketinizin sofrasına getiriyoruz.",
+    ],
+    menuLabel: 'Kolcuoğlu Spesiyal Menü',
+    menuPrice: '1800 TL',
+    menuPriceNote: 'Kişi başı · KDV dahil · 2026 fiyatı',
+    menuImageAlt: 'Metrelik kebap ile servis edilen Kolcuoğlu Spesiyal Menü',
+    menuItems: [
+      '6 çeşit meze ve mevsim salatalar',
+      'Fındık lahmacun dahil ara sıcaklar',
+      'Metrelik kebap: Adana, sarma beyti, kanat, tavuk şiş, kuzu şiş ya da kaburga',
+      'Serpme meyve ve 3 çeşit tatlı',
+      '1 meşrubat; sınırsız su, çay ve kahve',
+    ],
   },
 
   privacy: {

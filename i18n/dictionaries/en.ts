@@ -345,22 +345,35 @@ const en: Dictionary = {
   },
 
   corporate: {
-    label: 'Corporate Dining & Events',
-    title: 'Corporate Dining',
+    title: 'CORPORATE EVENTS',
     intro:
-      'For business meetings, celebrations and private company events, Kolcuoğlu Florya’s exceptional menus and elegant dining rooms are at your service.',
-    heading: 'Professional, Elegant Gatherings',
-    body:
-      'At Kolcuoğlu Florya, we take care of every detail of your company dinners and corporate events. From the careful styling of each table to the timing of dishes passed down through generations and a flawless welcome for your guests, you can leave it all to our professional team. You focus on your business and on enjoying time with your colleagues; we’ll think of everything else and make sure it runs perfectly.',
-    benefits: [
-      'Custom Table Layouts and Decoration Options',
-      'Menus with or without Alcohol, as You Prefer',
-      'No Valet or Service Charge',
-      'Years of Experience in Company and Group Dining',
+      'Year-end dinner, team get-together, promotion celebration or business lunch: we host up to 500 guests in our dining rooms right on the Florya shore.',
+    rating: 'Our tables are rated 4.9 stars on Google Maps, and guest satisfaction always comes first.',
+    quote: 'Request a Quote',
+    whatsapp: 'Message on WhatsApp',
+    scrollToMenu: 'Scroll to See Our Menu',
+    gallery: [
+      { src: '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg', alt: 'Kolcuoğlu Florya dining room with a sea view' },
+      { src: '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg', alt: 'Kolcuoğlu Florya terrace with a sea view' },
+      { src: '/images/kolcuoglu-florya-restoran-salonu.jpeg', alt: 'Kolcuoğlu Florya dining hall' },
+      { src: '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg', alt: 'Kolcuoğlu Florya interior design' },
     ],
-    ctaLabel: 'Get in Touch to Plan Your Event',
-    bookOnline: 'Book Online',
-    whatsapp: 'WhatsApp Us',
+    storyTitle: 'A Hundred Years of Kebab Flavor',
+    story: [
+      'The Kolcuoğlu family, inventors of the Metre Kebab, has kept Adana cuisine alive over the same hot coals since 1910. Kolcuoğlu Florya is this brand’s own restaurant.',
+      'We bring kebab made with meat from Adana, original hand-chopped mince and a recipe passed down through generations to your company’s table on the Florya shore.',
+    ],
+    menuLabel: 'Kolcuoğlu Special Menu',
+    menuPrice: '1800 TL',
+    menuPriceNote: 'Per person · VAT included · 2026 price',
+    menuImageAlt: 'The Kolcuoğlu Special Menu, served with the Metre Kebab',
+    menuItems: [
+      '6 kinds of meze and seasonal salads',
+      'Hot starters, including hazelnut lahmacun',
+      'Metre Kebab: Adana, sarma beyti, wings, chicken skewer, lamb skewer or ribs',
+      'Fruit platter and 3 desserts',
+      '1 soft drink; unlimited water, tea and coffee',
+    ],
   },
 
   privacy: {
