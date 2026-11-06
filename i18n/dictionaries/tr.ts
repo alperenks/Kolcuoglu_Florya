@@ -387,6 +387,11 @@ const tr = {
     menuPrice: '1800 TL',
     menuPriceNote: 'Kişi başı · KDV dahil · 2026 fiyatı',
     menuImageAlt: 'Metrelik kebap ile servis edilen Kolcuoğlu Spesiyal Menü',
+    menuThumbs: [
+      { src: '/images/kolcuoglu-florya-lezzet-duragi.jpg', alt: 'Spesiyal Menü mezeleri' },
+      { src: '/images/kolcuoglu-florya-sofra-duzeni.jpg', alt: 'Spesiyal Menü salataları' },
+      { src: '/images/kolcuoglu-florya-geleneksel-lezzetler.jpg', alt: 'Spesiyal Menü tatlısı' },
+    ],
     menuSections: [
       {
         title: 'Başlangıçlar',

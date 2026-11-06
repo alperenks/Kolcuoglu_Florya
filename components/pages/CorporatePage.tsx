@@ -95,14 +95,23 @@ export default function CorporatePage({ lang }: { lang: Locale }) {
 
         {/* 6. Menu */}
         <div id="menu" className="grid md:grid-cols-2 gap-8 md:gap-12 w-full items-center" style={{ scrollMarginTop: '100px' }}>
-          <div className="relative w-full overflow-hidden rounded-sm" style={{ aspectRatio: '4 / 3' }}>
-            <Image
-              src="/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg"
-              alt={t.menuImageAlt}
-              fill
-              sizes="(min-width: 768px) 560px, 100vw"
-              style={{ objectFit: 'cover' }}
-            />
+          <div className="flex gap-3 w-full mx-auto" style={{ maxWidth: '420px' }}>
+            <div className="relative flex-1 overflow-hidden rounded-sm" style={{ aspectRatio: '3 / 4' }}>
+              <Image
+                src="/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg"
+                alt={t.menuImageAlt}
+                fill
+                sizes="(min-width: 768px) 260px, 60vw"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+            <div className="flex flex-col gap-3" style={{ width: 'calc((100% * 4 - 120px) / 13)' }}>
+              {t.menuThumbs.map((img) => (
+                <div key={img.src} className="relative w-full overflow-hidden rounded-sm" style={{ aspectRatio: '1 / 1' }}>
+                  <Image src={img.src} alt={img.alt} fill sizes="110px" style={{ objectFit: 'cover' }} />
+                </div>
+              ))}
+            </div>
           </div>
           <div className="space-y-5">
             <p className="text-xs uppercase tracking-widest font-semibold" style={{ color: 'var(--color-gold)' }}>{t.menuLabel}</p>

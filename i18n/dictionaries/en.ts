@@ -384,6 +384,11 @@ const en: Dictionary = {
     menuPrice: '1800 TL',
     menuPriceNote: 'Per person · VAT included · 2026 price',
     menuImageAlt: 'The Kolcuoğlu Special Menu, served with the Metre Kebab',
+    menuThumbs: [
+      { src: '/images/kolcuoglu-florya-lezzet-duragi.jpg', alt: 'Special Menu meze' },
+      { src: '/images/kolcuoglu-florya-sofra-duzeni.jpg', alt: 'Special Menu salads' },
+      { src: '/images/kolcuoglu-florya-geleneksel-lezzetler.jpg', alt: 'Special Menu dessert' },
+    ],
     menuSections: [
       {
         title: 'Starters',
