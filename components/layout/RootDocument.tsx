@@ -11,6 +11,7 @@ import Footer from '@/components/layout/Footer'
 import GoogleTag, { GTAG_CONSENT_DEFAULT_SNIPPET } from '@/components/analytics/GoogleTag'
 import ConversionTracker from '@/components/analytics/ConversionTracker'
 import ConsentBanner from '@/components/analytics/ConsentBanner'
+import Olcum from '@/components/analytics/Olcum'
 import StickyCallBar from '@/components/ui/StickyCallBar'
 import { getDictionary, path, type Locale } from '@/i18n'
 import { SITE_URL } from '@/i18n/metadata'
@@ -96,6 +97,7 @@ export default function RootDocument({ lang, children }: { lang: Locale; childre
         />
         <GoogleTag />
         <ConversionTracker />
+        <Olcum />
         <ConsentBanner t={t.consent} privacyHref={path(lang, 'privacy')} />
       </body>
     </html>

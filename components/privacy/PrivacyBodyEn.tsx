@@ -42,9 +42,17 @@ export default function PrivacyBodyEn() {
             answer your questions (KVKK Art. 5(2)(c), and Art. 5(2)(f), legitimate interest).
           </li>
           <li>
-            <Vurgu>Site usage measurement:</Vurgu> we use Vercel Web Analytics and Speed Insights to measure
-            which pages are visited and how fast the site loads. This measurement uses no cookies and does not
-            identify you; we only see aggregate information such as country and device type.
+            <Vurgu>Site usage measurement:</Vurgu> we use our own measurement system, Vercel Web Analytics and
+            Speed Insights to measure which pages are visited, how long people stay and how far they scroll,
+            where visits come from (such as Google search, Instagram or an ad), taps on the call, WhatsApp and map
+            links, on the menu, gallery and stories, how far people get in the reservation form, and how fast the
+            site loads. We see general information such as device type, operating system, browser, country and
+            city. This measurement uses no cookies, stores nothing on your device and does not identify you: we
+            do not collect your name, your phone number or what you type in the form, and we do not store your IP
+            address. Your IP address and browser details are used only for a moment to create a one-way code that
+            tells visits on the same day apart; the key to that code is deleted the next day, so you cannot be
+            followed from one day to the next. Because it uses no cookies, this measurement does not depend on
+            your cookie choice.
           </li>
           <li>
             <Vurgu>Site usage analysis (Google Analytics):</Vurgu> if you click <Vurgu>Accept</Vurgu> on the
@@ -68,6 +76,7 @@ export default function PrivacyBodyEn() {
         <p>We never sell your data or pass it on to others for advertising. To run our service, we use these providers:</p>
         <Liste>
           <li><Vurgu>Vercel Inc.</Vurgu> (website hosting and usage measurement)</li>
+          <li><Vurgu>Upstash, Inc.</Vurgu> (temporary storage of site usage measurement records)</li>
           <li><Vurgu>Google LLC</Vurgu> (email, site analytics, ad measurement, Google Maps)</li>
           <li><Vurgu>Meta Platforms</Vurgu> (when you contact us via WhatsApp, Instagram or Facebook)</li>
         </Liste>
@@ -81,8 +90,9 @@ export default function PrivacyBodyEn() {
         <p>
           We keep your reservation and contact details for no more than 1 year after your request has been
           completed. Records we are legally required to keep (such as invoices) are kept for the period set by
-          the relevant legislation. When that period ends, the data is deleted or anonymised. Google keeps Google
-          Analytics data for up to 14 months.
+          the relevant legislation. When that period ends, the data is deleted or anonymised. We keep site usage
+          measurement records on our own server for up to 24 months. Google keeps Google Analytics data for up to
+          14 months.
         </p>
       </Bolum>
 

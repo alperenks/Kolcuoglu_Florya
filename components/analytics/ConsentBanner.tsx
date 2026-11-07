@@ -7,6 +7,7 @@ import { useEffect, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 import { CONSENT_STORAGE_KEY } from './GoogleTag'
 import { ga4Event } from './ga4'
+import { olay } from './olay'
 import type { Dictionary } from '@/i18n/dictionaries/tr'
 
 type Choice = 'granted' | 'denied'
@@ -67,9 +68,11 @@ export default function ConsentBanner({ t, privacyHref }: { t: Dictionary['conse
 
   useEffect(() => {
     if (choice === 'granted' || choice === 'denied') applyConsent(choice)
+    if (choice === 'unset') olay('bant', null, { deger: 'gosterildi' })
   }, [choice])
 
   const choose = (value: Choice) => {
+    olay('bant', null, { deger: value === 'granted' ? 'kabul' : 'ret' })
     memoryChoice = value
     try {
       window.localStorage.setItem(STORAGE_KEY, value)

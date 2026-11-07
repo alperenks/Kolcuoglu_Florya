@@ -18,7 +18,7 @@ function LanguageLinks({ lang, label, className, style }: { lang: Locale; label:
   return (
     <nav aria-label={label} className="flex items-center gap-2">
       {LOCALES.filter((l) => l !== lang).map((l) => (
-        <a key={l} href={path(l, page)} hrefLang={l} lang={l} aria-label={LOCALE_NAMES[l]} className={className} style={style}>
+        <a key={l} href={path(l, page)} hrefLang={l} lang={l} aria-label={LOCALE_NAMES[l]} className={className} style={style} data-olay="dil" data-deger={l}>
           {l.toUpperCase()}
         </a>
       ))}
@@ -146,6 +146,7 @@ export default function Navbar({ lang, t }: { lang: Locale; t: Dictionary['nav']
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={toggleTheme}
+                data-olay="tema"
                 className="p-2.5 rounded-sm transition-all duration-300 flex items-center justify-center border"
                 style={{
                   background: 'var(--color-card-inner-bg)',
@@ -188,6 +189,7 @@ export default function Navbar({ lang, t }: { lang: Locale; t: Dictionary['nav']
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={toggleTheme}
+                data-olay="tema"
                 className="p-2 rounded-sm transition-all duration-300 flex items-center justify-center border"
                 style={{
                   background: 'var(--color-card-inner-bg)',
