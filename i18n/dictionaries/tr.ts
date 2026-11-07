@@ -101,12 +101,24 @@ const tr = {
 
   // Galeri ve ana sayfadaki görsellerin alt metinleri (dosya yoluna göre)
   imageAlts: {
+    '/images/kolcuoglu-florya-gun-batimi-deniz-manzarasi.jpg': "Kolcuoğlu Florya'dan gün batımında deniz manzarası",
+    '/images/kolcuoglu-florya-dis-cephe-gunduz.jpg': 'Kolcuoğlu Florya dış cephe (gündüz)',
+    '/images/kolcuoglu-florya-giris-denize-bakis.jpg': 'Kolcuoğlu Florya girişinden denize bakış',
+    '/images/kolcuoglu-florya-giris-lobisi.jpg': 'Kolcuoğlu Florya giriş lobisi',
+    '/images/kolcuoglu-florya-giris-lobisi-asansor-merdiven.jpg': 'Kolcuoğlu Florya giriş lobisi, asansör ve merdiven',
+    '/images/kolcuoglu-florya-1-kat-asansor-holu-deniz.jpg': 'Kolcuoğlu Florya 1. kat asansör holü ve deniz manzarası',
+    '/images/kolcuoglu-florya-1-kat-salon.jpg': 'Kolcuoğlu Florya 1. kat salonu',
+    '/images/kolcuoglu-florya-1-kat-dag-duvari-lambalar.jpg': 'Kolcuoğlu Florya 1. kat salonu, dağ desenli duvar ve lambalar',
+    '/images/kolcuoglu-florya-1-kat-salon-deniz-manzarasi.jpg': 'Kolcuoğlu Florya 1. kat deniz manzaralı salon',
+    '/images/kolcuoglu-florya-1-kat-salon-duvar-sanati.jpg': 'Kolcuoğlu Florya 1. kat salonu, duvar sanatı ve deniz manzarası',
+    '/images/kolcuoglu-florya-1-kat-lavabo.jpg': 'Kolcuoğlu Florya 1. kat lavabo',
+    '/images/kolcuoglu-florya-2-kat-asansor-holu-deniz.jpg': 'Kolcuoğlu Florya 2. kat asansör holü ve deniz manzarası',
+    '/images/kolcuoglu-florya-2-kat-salon.jpg': 'Kolcuoğlu Florya 2. kat salonu',
+    '/images/kolcuoglu-florya-2-kat-teras-salon.jpg': 'Kolcuoğlu Florya 2. kat teras salonu',
+    '/images/kolcuoglu-florya-2-kat-teras-deniz-manzarasi.jpg': 'Kolcuoğlu Florya 2. kat deniz manzaralı teras',
+    '/images/kolcuoglu-florya-dis-cephe-aksam.jpg': 'Kolcuoğlu Florya dış cephe (akşam)',
     '/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg': 'Kolcuoğlu Florya özel menü – metrelik kebap sunumu',
     '/images/hasan-kolcuoglu-metrelik-kebap-mucidi.jpeg': 'Metrelik kebabın mucidi Hasan Kolcuoğlu',
-    '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg': 'Kolcuoğlu Florya deniz manzaralı teras',
-    '/images/kolcuoglu-florya-restoran-salonu.jpeg': 'Kolcuoğlu Florya restoran salonu',
-    '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg': 'Kolcuoğlu Florya deniz manzaralı yemek salonu',
-    '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg': 'Kolcuoğlu Florya iç mekan tasarımı',
     '/images/kolcuoglu-florya-adana-kebap.jpg': 'Kolcuoğlu Florya Adana kebap',
     '/images/kolcuoglu-florya-kebap-sofrasi.jpg': 'Kolcuoğlu Florya kebap sofrası ve mezeler',
     '/images/kolcuoglu-florya-ocakbasi-keyfi.jpg': 'Kolcuoğlu Florya ocakbaşı keyfi',
@@ -324,6 +336,11 @@ const tr = {
     title: 'Galeri',
     intro:
       "Kolcuoğlu Florya'nın eşsiz ambiyansını ve enfes lezzetlerini keşfedin. (Müşteri fotoğrafları buraya eklenecektir)",
+    groupRestaurant: 'Restoranımız',
+    groupProducts: 'Ürünlerimiz',
+    groupHistory: 'Kolcuoğlu Tarihi',
+    showMore: 'Daha fazla göster',
+    showLess: 'Daha az göster',
     loadMore: 'Daha fazla görsel yükle',
     close: 'Kapat (ESC) ✕',
     fallbackAlt: 'Kolcuoğlu Florya galeri görseli',
@@ -348,22 +365,55 @@ const tr = {
   },
 
   corporate: {
-    label: 'Kurumsal Lezzet & Organizasyon',
-    title: 'Şirket Yemekleri',
+    title: 'Kurumsal Organizasyonlar',
     intro:
-      "İş toplantıları, kutlamalar veya özel şirket organizasyonlarınız için Kolcuoğlu Florya'nın eşsiz menüleri ve şık salonları emrinizde.",
-    heading: 'Profesyonel ve Şık Toplantılar',
-    body:
-      'Kolcuoğlu Florya olarak, şirket yemekleriniz ve kurumsal organizasyonlarınızda tüm detayları sizin yerinize biz üstleniyoruz. Masaların özenli tasarımından, nesillerdir aktarılan lezzetlerin zamanlamasına ve misafirlerinizin kusursuz şekilde karşılanmasına kadar her şeyi profesyonel ekibimize bırakın. Siz sadece işinize ve ekibinizle geçireceğiniz keyifli anlara odaklanın; geriye kalan her detayı biz sizin için düşünüp mükemmel şekilde organize edelim.',
-    benefits: [
-      'Özel Masa Düzeni ve Süsleme Seçenekleri',
-      'Tercihinize Göre Alkollü veya Alkolsüz Menü Teklifleri',
-      'Vale ve Servis Ücreti Yok',
-      'Şirket/Grup Yemeklerinde Yılların Deneyimi',
+      'Yıl sonu yemeği, ekip buluşması, terfi kutlaması ya da toplantı yemeği: Florya sahilinde, denize sıfır salonlarımızda 500 kişiye kadar ağırlıyoruz.',
+    rating: "Google Haritalar'da 4,9 yıldız alan sofralarımızda misafir memnuniyeti her şeyden önce gelir.",
+    quote: 'Teklif Talebi',
+    whatsapp: 'WhatsApp ile Yazın',
+    scrollToMenu: 'Menümüzü Görmek İçin Kaydırın',
+    gallery: [
+      { src: '/images/kolcuoglu-florya-gun-batimi-deniz-manzarasi.jpg', alt: "Kolcuoğlu Florya'dan gün batımında deniz manzarası" },
+      { src: '/images/kolcuoglu-florya-1-kat-salon-deniz-manzarasi.jpg', alt: "Kolcuoğlu Florya 1. kat deniz manzaralı salon" },
+      { src: '/images/kolcuoglu-florya-2-kat-teras-deniz-manzarasi.jpg', alt: "Kolcuoğlu Florya 2. kat deniz manzaralı teras" },
+      { src: '/images/kolcuoglu-florya-2-kat-teras-salon.jpg', alt: "Kolcuoğlu Florya 2. kat teras salonu" },
     ],
-    ctaLabel: 'Talepleriniz İçin Bize Ulaşın',
-    bookOnline: 'Online Rezervasyon',
-    whatsapp: 'WhatsApp Destek',
+    storyTitle: 'Kebabın Yüz Yıllık Tadı',
+    story: [
+      "Metrelik kebabın mucidi Kolcuoğlu ailesi, 1910'dan bu yana Adana mutfağını aynı kor ateşte yaşatıyor. Kolcuoğlu Florya, bu markanın kendi restoranıdır.",
+      "Adana'dan gelen etle, orijinal zırh kıymasıyla ve ailenin kuşaktan kuşağa aktardığı tarifle hazırladığımız kebabı Florya sahilinde, şirketinizin sofrasına getiriyoruz.",
+    ],
+    menuLabel: 'Kolcuoğlu Spesiyal Menü',
+    menuPrice: '1800 TL',
+    menuPriceNote: 'Kişi başı · KDV dahil · 2026 fiyatı',
+    menuImageAlt: 'Metrelik kebap ile servis edilen Kolcuoğlu Spesiyal Menü',
+    menuThumbs: [
+      { src: '/images/kolcuoglu-florya-lezzet-duragi.jpg', alt: 'Spesiyal Menü mezeleri' },
+      { src: '/images/kolcuoglu-florya-sofra-duzeni.jpg', alt: 'Spesiyal Menü salataları' },
+      { src: '/images/kolcuoglu-florya-geleneksel-lezzetler.jpg', alt: 'Spesiyal Menü tatlısı' },
+    ],
+    menuSections: [
+      {
+        title: 'Başlangıçlar',
+        groups: [
+          { label: 'Mezeler', text: '6 Çeşit' },
+          { label: 'Salatalar', text: 'Mevsim Salata, Adana Ezme, Çiğ Köfte, Sumaklı Soğan, Yeşillik Tabağı' },
+          { label: 'Ara Sıcaklar', text: 'Pastırmalı Humus, Tavuk Mantar Sote, Patlıcan Söğürtme' },
+        ],
+      },
+      {
+        title: 'Ana Yemek',
+        groups: [{ label: '', text: 'Metrelik Kebap — Adana, Sarma Beyti, Kanat, Tavuk Şiş + Kuzu Şiş veya Kaburga' }],
+      },
+      {
+        title: 'Meyve, Tatlı ve İçecekler',
+        groups: [
+          { label: 'Meyve ve Tatlılar', text: 'Serpme Meyve (5 Çeşit), Tatlı (3 Çeşit)' },
+          { label: 'İçecekler', text: '1 Meşrubat (Şalgam, Ayran, Fanta, Kola, Meyve Suyu), Sınırsız Su, Çay ve Kahve' },
+        ],
+      },
+    ],
+    alcoholNote: 'Alkollü menüler için iletişime geçiniz.',
   },
 
   privacy: {

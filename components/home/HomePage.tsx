@@ -17,10 +17,10 @@ export default function HomePage({ lang }: { lang: Locale }) {
       <AtmosphereSection
         t={t.home.atmosphere}
         alts={{
-          '/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg': alts['/images/kolcuoglu-florya-deniz-manzarali-teras.jpeg'],
-          '/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg': alts['/images/kolcuoglu-florya-deniz-manzarali-salonu.jpeg'],
-          '/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg': alts['/images/kolcuoglu-florya-ic-mekan-tasarimi.jpeg'],
-          '/images/kolcuoglu-florya-tatli-ikrami.jpg': alts['/images/kolcuoglu-florya-tatli-ikrami.jpg'],
+          '/images/kolcuoglu-florya-gun-batimi-deniz-manzarasi.jpg': alts['/images/kolcuoglu-florya-gun-batimi-deniz-manzarasi.jpg'],
+          '/images/kolcuoglu-florya-1-kat-salon-deniz-manzarasi.jpg': alts['/images/kolcuoglu-florya-1-kat-salon-deniz-manzarasi.jpg'],
+          '/images/kolcuoglu-florya-2-kat-teras-deniz-manzarasi.jpg': alts['/images/kolcuoglu-florya-2-kat-teras-deniz-manzarasi.jpg'],
+          '/images/kolcuoglu-florya-1-kat-dag-duvari-lambalar.jpg': alts['/images/kolcuoglu-florya-1-kat-dag-duvari-lambalar.jpg'],
         }}
         galleryHref={path(lang, 'gallery')}
       />

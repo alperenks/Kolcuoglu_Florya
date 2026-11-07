@@ -1,119 +1,145 @@
-import { CheckCircle2, MessageSquare } from 'lucide-react'
+import Image from 'next/image'
+import { ChevronDown, MessageSquare } from 'lucide-react'
 import { getDictionary, path, type Locale } from '@/i18n'
+
+function Buttons({ lang, t }: { lang: Locale; t: ReturnType<typeof getDictionary>['corporate'] }) {
+  return (
+    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
+      <a
+        href={path(lang, 'reservation')}
+        className="w-full sm:w-[240px] flex justify-center items-center gap-2 py-4 px-6 text-sm tracking-widest uppercase font-semibold transition-transform hover:scale-[1.01] whitespace-nowrap text-center"
+        style={{
+          background: 'linear-gradient(135deg, var(--color-terracotta), var(--color-copper))',
+          color: 'white',
+          borderRadius: '2px',
+          border: 'none',
+          boxShadow: '0 4px 20px rgba(196, 75, 59, 0.3)',
+          height: '56px',
+        }}
+      >
+        {t.quote}
+      </a>
+      <a
+        href="https://wa.me/905331315401"
+        data-konum="sirket_yemekleri"
+        target="_blank" rel="noreferrer"
+        className="w-full sm:w-[240px] flex justify-center items-center gap-2 py-4 px-6 text-sm tracking-widest uppercase font-semibold transition-all hover:bg-[var(--color-card-inner-bg)]/80 whitespace-nowrap text-center"
+        style={{
+          background: 'var(--color-card-inner-bg)',
+          color: 'var(--color-cream)',
+          borderRadius: '2px',
+          border: '1px solid rgba(163,33,36,0.2)',
+          height: '56px',
+        }}
+      >
+        <MessageSquare size={16} />
+        {t.whatsapp}
+      </a>
+    </div>
+  )
+}
 
 export default function CorporatePage({ lang }: { lang: Locale }) {
   const t = getDictionary(lang).corporate
   return (
     <div style={{ background: 'var(--color-antracite)', paddingTop: '80px', minHeight: '100vh' }}>
-      {/* Header */}
-      <section
-        className="py-20 px-6 text-center relative overflow-hidden"
-        style={{ background: 'var(--color-antracite)' }}
-      >
+      {/* 1-3. Title, description, rating, buttons, scroll-to-menu */}
+      <section className="pt-20 pb-12 px-6 text-center relative overflow-hidden" style={{ background: 'var(--color-antracite)' }}>
         <div
           className="absolute inset-0 opacity-30"
           style={{ background: 'radial-gradient(ellipse at center, rgba(184,115,51,0.2) 0%, transparent 65%)' }}
         />
-        <div className="relative z-10">
-          <p className="section-label mb-4">{t.label}</p>
+        <div className="relative z-10 flex flex-col items-center gap-6">
           <h1
-            className="font-serif mb-4"
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-              color: 'var(--color-cream)',
-            }}
+            className="font-serif"
+            style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.25rem, 6vw, 4rem)', color: 'var(--color-cream)' }}
           >
             {t.title}
           </h1>
-          <p className="text-base" style={{ color: 'var(--color-muted)', maxWidth: '600px', margin: '0 auto', width: '100%' }}>
-            {t.intro}
-          </p>
-          <div className="gold-line mt-8 mx-auto" style={{ width: '60px' }} />
+          <div className="space-y-4" style={{ maxWidth: '640px' }}>
+            <p className="text-base" style={{ color: 'var(--color-muted)' }}>{t.intro}</p>
+            <p className="text-base" style={{ color: 'var(--color-muted)' }}>{t.rating}</p>
+          </div>
+          <div className="gold-line" style={{ width: '60px' }} />
+          <Buttons lang={lang} t={t} />
+          <a
+            href="#menu"
+            className="flex flex-col items-center gap-1 text-xs uppercase tracking-widest font-semibold"
+            style={{ color: 'var(--color-gold)' }}
+          >
+            {t.scrollToMenu}
+            <ChevronDown size={20} />
+          </a>
         </div>
       </section>
 
-      {/* Content */}
-      <section className="pb-24 px-6 animate-fade-in">
-        <div 
-          className="flex flex-col items-center space-y-12 animate-fade-in" 
-          style={{ maxWidth: '1152px', margin: '0 auto', width: '100%' }}
-        >
-          {/* Title - Remains Centered */}
-          <div className="text-center max-w-2xl">
-            <h2 
-              className="font-serif text-3xl md:text-4xl leading-tight" 
-              style={{ color: 'var(--color-cream)', fontFamily: 'var(--font-serif)' }}
-            >
-              {t.heading}
-            </h2>
-          </div>
-
-          {/* 2-Column Layout (Paragraph Left, Checklist Right on Desktop) */}
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 w-full items-start text-left">
-            {/* Left Column: Paragraph (With left alignment) */}
-            <div className="space-y-4">
-              <p className="text-base leading-relaxed" style={{ color: 'var(--color-text-desc)', textAlign: 'justify' }}>
-                {t.body}
-              </p>
+      <div className="px-6 pb-24 flex flex-col items-center space-y-16" style={{ maxWidth: '1152px', margin: '0 auto', width: '100%' }}>
+        {/* 4. Photos: 2 rows of 2 */}
+        <div className="grid grid-cols-2 gap-3 md:gap-4 w-full" style={{ maxWidth: '760px' }}>
+          {t.gallery.map((img) => (
+            <div key={img.src} className="relative overflow-hidden rounded-sm" style={{ aspectRatio: '3 / 2' }}>
+              <Image src={img.src} alt={img.alt} fill sizes="(min-width: 768px) 380px, 50vw" style={{ objectFit: 'cover' }} />
             </div>
+          ))}
+        </div>
 
-            {/* Right Column: Benefits List */}
-            <div className="w-full bg-white/2 p-6 rounded-sm border border-white/5">
-              <ul className="space-y-4">
-                {t.benefits.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-sm" style={{ color: 'var(--color-muted)' }}>
-                    <CheckCircle2 size={18} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--color-copper)' }} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+        {/* 5. Story */}
+        <div className="text-center space-y-5" style={{ maxWidth: '640px' }}>
+          <h2 className="font-serif text-3xl md:text-4xl" style={{ color: 'var(--color-cream)', fontFamily: 'var(--font-serif)' }}>
+            {t.storyTitle}
+          </h2>
+          {t.story.map((p, i) => (
+            <p key={i} className="text-base leading-relaxed" style={{ color: 'var(--color-text-desc)' }}>{p}</p>
+          ))}
+        </div>
+
+        {/* 6. Menu */}
+        <div id="menu" className="grid md:grid-cols-2 gap-8 md:gap-12 w-full items-center" style={{ scrollMarginTop: '100px' }}>
+          <div className="flex gap-3 w-full mx-auto" style={{ maxWidth: '420px' }}>
+            <div className="relative flex-1 overflow-hidden rounded-sm" style={{ aspectRatio: '3 / 4' }}>
+              <Image
+                src="/images/kolcuoglu-florya-ozel-menu-metrelik-kebap.jpg"
+                alt={t.menuImageAlt}
+                fill
+                sizes="(min-width: 768px) 260px, 60vw"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+            <div className="flex flex-col gap-3" style={{ width: 'calc((100% * 4 - 120px) / 13)' }}>
+              {t.menuThumbs.map((img) => (
+                <div key={img.src} className="relative w-full overflow-hidden rounded-sm" style={{ aspectRatio: '1 / 1' }}>
+                  <Image src={img.src} alt={img.alt} fill sizes="110px" style={{ objectFit: 'cover' }} />
+                </div>
+              ))}
             </div>
           </div>
-
-          {/* Call to Action Container */}
-          <div className="pt-8 border-t w-full max-w-lg mx-auto text-center space-y-6" style={{ borderColor: 'var(--color-border)' }}>
-            <p className="text-xs uppercase tracking-widest font-semibold" style={{ color: 'var(--color-gold)' }}>
-              {t.ctaLabel}
+          <div className="space-y-5">
+            <p className="text-xs uppercase tracking-widest font-semibold" style={{ color: 'var(--color-gold)' }}>{t.menuLabel}</p>
+            <p className="font-serif" style={{ fontFamily: 'var(--font-serif)', fontSize: '2.75rem', color: 'var(--color-cream)', lineHeight: 1 }}>
+              {t.menuPrice}
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
-              <a
-                href={path(lang, 'reservation')}
-                className="w-full sm:w-[240px] flex justify-center items-center gap-2 py-4 px-6 text-sm tracking-widest uppercase font-semibold transition-transform hover:scale-[1.01] whitespace-nowrap text-center"
-                style={{
-                  background: 'linear-gradient(135deg, var(--color-terracotta), var(--color-copper))',
-                  color: 'white',
-                  borderRadius: '2px',
-                  border: 'none',
-                  boxShadow: '0 4px 20px rgba(196, 75, 59, 0.3)',
-                  height: '56px',
-                }}
-              >
-                <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1" />
-                {t.bookOnline}
-              </a>
-
-              <a
-                href="https://wa.me/905331315401"
-                data-konum="sirket_yemekleri"
-                target="_blank" rel="noreferrer"
-                className="w-full sm:w-[240px] flex justify-center items-center gap-2 py-4 px-6 text-sm tracking-widest uppercase font-semibold transition-all hover:bg-[var(--color-card-inner-bg)]/80 whitespace-nowrap text-center"
-                style={{
-                  background: 'var(--color-card-inner-bg)',
-                  color: 'var(--color-cream)',
-                  borderRadius: '2px',
-                  border: '1px solid rgba(163,33,36,0.2)',
-                  height: '56px',
-                }}
-              >
-                <MessageSquare size={16} />
-                {t.whatsapp}
-              </a>
+            <p className="text-xs uppercase tracking-widest" style={{ color: 'var(--color-muted)' }}>{t.menuPriceNote}</p>
+            <div className="space-y-5">
+              {t.menuSections.map((sec) => (
+                <div key={sec.title} className="space-y-2">
+                  <h3 className="font-serif text-xl" style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-cream)' }}>{sec.title}</h3>
+                  {sec.groups.map((g, i) => (
+                    <p key={i} className="text-sm" style={{ color: 'var(--color-text-desc)' }}>
+                      {g.label && <span className="uppercase tracking-wider text-xs font-semibold" style={{ color: 'var(--color-copper)' }}>{g.label}: </span>}
+                      {g.text}
+                    </p>
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </section>
+
+        <p className="text-sm text-center -mt-8" style={{ color: 'var(--color-muted)' }}>{t.alcoholNote}</p>
+
+        {/* 7. Second buttons */}
+        <Buttons lang={lang} t={t} />
+      </div>
     </div>
   )
 }
