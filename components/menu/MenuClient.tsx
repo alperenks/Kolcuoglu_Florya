@@ -78,6 +78,8 @@ export default function MenuClient({ items: menuItems, t, lang }: { items: MenuE
           /* Sub-accordion for alcoholic items with variants */
           <button
             onClick={() => toggleItem(item.id)}
+            data-olay={isItemOpen ? undefined : 'menu'}
+            data-deger={item.id}
             className="w-full text-left focus:outline-none block"
           >
             <div className="flex items-end justify-between py-1 text-sm cursor-pointer hover:text-amber-400 transition-colors duration-200">
@@ -179,6 +181,8 @@ export default function MenuClient({ items: menuItems, t, lang }: { items: MenuE
         {/* Accordion Header Button */}
         <button
           onClick={() => toggleCategory(slug)}
+          data-olay={isOpen ? undefined : 'menu'}
+          data-deger={slug}
           className="w-full py-4 px-6 flex items-center justify-between transition-colors duration-300 hover:bg-[var(--color-card-inner-bg)] text-left"
           style={{
             background: 'var(--color-card-inner-bg)',

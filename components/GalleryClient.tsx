@@ -37,6 +37,8 @@ export default function GalleryClient({ groups, t }: { groups: Group[]; t: Dicti
                 className="aspect-square relative overflow-hidden rounded-sm group cursor-pointer"
                 style={{ border: '1px solid var(--color-border)' }}
                 onClick={() => setSelectedImage(g.images[0])}
+                data-olay="galeri"
+                data-deger={g.id}
               >
                 <Image
                   src={g.images[0].src}
@@ -57,6 +59,8 @@ export default function GalleryClient({ groups, t }: { groups: Group[]; t: Dicti
                         e.stopPropagation()
                         setOpenId(isOpen ? null : g.id)
                       }}
+                      data-olay="galeri"
+                      data-deger={`${g.id}:${isOpen ? 'kapat' : 'daha-fazla'}`}
                       className="px-5 py-2 text-xs tracking-widest uppercase font-semibold"
                       style={{ background: 'transparent', color: '#fff', border: '2px solid var(--color-terracotta)', borderRadius: '2px' }}
                     >
@@ -79,6 +83,8 @@ export default function GalleryClient({ groups, t }: { groups: Group[]; t: Dicti
                 <div
                   key={img.src}
                   onClick={() => setSelectedImage(img)}
+                  data-olay="galeri"
+                  data-deger={`${open.id}:foto`}
                   className="aspect-square relative overflow-hidden rounded-sm group cursor-pointer"
                   style={{ border: '1px solid var(--color-border)' }}
                 >

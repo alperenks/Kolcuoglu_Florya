@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ga4Event } from '@/components/analytics/ga4'
+import { olay } from '@/components/analytics/olay'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -444,7 +445,7 @@ export default function ReservationClient({ t, lang }: { t: T; lang: Locale }) {
                       <Step1
                         t={t}
                         data={formData}
-                        onNext={(d) => { updateData(d); setStep(2); ga4Event('reservation_step', { step: 1 }) }}
+                        onNext={(d) => { updateData(d); setStep(2); ga4Event('reservation_step', { step: 1 }); olay('form', null, { adim: 1 }) }}
                       />
                     )}
                     {step === 2 && (
@@ -460,11 +461,17 @@ export default function ReservationClient({ t, lang }: { t: T; lang: Locale }) {
                               headers: { 'Content-Type': 'application/json' },
                               body: JSON.stringify({ ...updated, lang }),
                             })
-                            if (res.ok) ga4Event('generate_lead', { form_name: 'rezervasyon', party_size: Number(updated.guests) || 0 })
-                            else ga4Event('reservation_error', { form_name: 'rezervasyon', error_type: `http_${res.status}` })
+                            if (res.ok) {
+                              ga4Event('generate_lead', { form_name: 'rezervasyon', party_size: Number(updated.guests) || 0 })
+                              olay('form', null, { sonuc: 'gonderildi', kisi: Number(updated.guests) || 0 })
+                            } else {
+                              ga4Event('reservation_error', { form_name: 'rezervasyon', error_type: `http_${res.status}` })
+                              olay('form', null, { sonuc: 'hata', hata: `http_${res.status}` })
+                            }
                           } catch (err) {
                             console.error('Submission error:', err)
                             ga4Event('reservation_error', { form_name: 'rezervasyon', error_type: 'network' })
+                            olay('form', null, { sonuc: 'hata', hata: 'ag' })
                           }
                           setCompleted(true)
                         }}

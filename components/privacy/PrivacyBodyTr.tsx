@@ -1,6 +1,7 @@
 // KVKK aydınlatma metni (Türkçe, bağlayıcı metin). Diğer diller: PrivacyBody<Dil>.tsx.
 // Keep in sync with: reservation form (components/pages/ReservationClient.tsx, app/api/reservations),
-// Google tag and consent banner (components/analytics/*), Vercel Analytics / Speed Insights
+// Google tag and consent banner (components/analytics/*), Vercel Analytics / Speed Insights,
+// own cookieless measurement (components/analytics/Olcum.tsx, olay.ts, app/api/olay)
 // (components/layout/RootDocument.tsx) — and with the translations next to this file.
 import CerezTercihi from '@/components/ui/CerezTercihi'
 import { ADRES, Bolum, EPOSTA, Liste, MERSIS, TELEFON, UNVAN, Vurgu } from './parts'
@@ -40,9 +41,16 @@ export default function PrivacyBodyTr() {
             m.5/2-c ve m.5/2-f, meşru menfaat).
           </li>
           <li>
-            <Vurgu>Site kullanım ölçümü:</Vurgu> Vercel Web Analytics ve Speed Insights ile hangi sayfaların
-            ziyaret edildiğini ve sitenin hızını ölçeriz. Bu ölçüm çerez kullanmaz ve sizi tanımlamaz; ülke ve
-            cihaz türü gibi toplu bilgiler görürüz.
+            <Vurgu>Site kullanım ölçümü:</Vurgu> kendi ölçüm sistemimiz, Vercel Web Analytics ve Speed Insights
+            ile hangi sayfaların ziyaret edildiğini, sayfalarda ne kadar kalındığını ve ne kadar kaydırıldığını,
+            siteye nereden gelindiğini (Google araması, Instagram, reklam gibi), Ara, WhatsApp ve harita
+            bağlantılarına, menüye, galeriye ve hikâyelere dokunulmasını, rezervasyon formunun hangi adımına
+            gelindiğini ve sitenin hızını ölçeriz. Cihaz türü, işletim sistemi, tarayıcı, ülke ve şehir gibi genel
+            bilgileri görürüz. Bu ölçüm çerez kullanmaz, cihazınıza bir şey yazmaz ve sizi tanımlamaz: adınız,
+            telefonunuz ve formda yazdıklarınız alınmaz, IP adresiniz saklanmaz. IP adresiniz ve tarayıcı bilginiz
+            yalnız aynı gün içindeki ziyaretleri ayırt eden tek yönlü bir kod üretmek için anlık kullanılır; kodun
+            anahtarı ertesi gün silinir, bu yüzden günler arasında izlenmezsiniz. Çerez kullanmadığı için bu ölçüm
+            çerez tercihinize bağlı değildir.
           </li>
           <li>
             <Vurgu>Site kullanım analizi (Google Analytics):</Vurgu>{' '}çerez bildiriminde{' '}
@@ -66,6 +74,7 @@ export default function PrivacyBodyTr() {
         <p>Verilerinizi satmayız ve reklam amacıyla başkalarına vermeyiz. Hizmeti sunabilmek için şu sağlayıcıları kullanırız:</p>
         <Liste>
           <li><Vurgu>Vercel Inc.</Vurgu> (sitenin barındırılması ve kullanım ölçümü)</li>
+          <li><Vurgu>Upstash, Inc.</Vurgu> (site kullanım ölçümü kayıtlarının geçici olarak tutulması)</li>
           <li><Vurgu>Google LLC</Vurgu> (e-posta altyapısı, site analizi, reklam ölçümü, Google Haritalar)</li>
           <li><Vurgu>Meta Platforms</Vurgu> (WhatsApp, Instagram ve Facebook üzerinden bize yazdığınızda)</li>
         </Liste>
@@ -79,8 +88,8 @@ export default function PrivacyBodyTr() {
         <p>
           Rezervasyon ve iletişim bilgilerinizi talebiniz sonuçlandıktan sonra en fazla 1 yıl saklarız; yasal
           saklama yükümlülüğü olan kayıtlar (ör. fatura) ilgili mevzuattaki süre boyunca tutulur. Süre dolunca
-          veriler silinir veya anonim hâle getirilir. Google Analytics verileri Google&apos;da en fazla 14 ay
-          saklanır.
+          veriler silinir veya anonim hâle getirilir. Site kullanım ölçümü kayıtları kendi sunucumuzda en fazla 24
+          ay saklanır. Google Analytics verileri Google&apos;da en fazla 14 ay saklanır.
         </p>
       </Bolum>
 

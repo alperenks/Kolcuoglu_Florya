@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { hikayeAcildi, hikayeKapandi } from '@/components/analytics/olay'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
@@ -144,6 +145,7 @@ export default function StorySystem({ t }: { t: Dictionary['stories'] }) {
   }
 
   const openStory = (index: number) => {
+    hikayeAcildi(STORIES_DATA[index].id)
     setActiveStoryIndex(index)
     setActiveSlideIndex(0)
     setIsViewerOpen(true)
@@ -151,6 +153,7 @@ export default function StorySystem({ t }: { t: Dictionary['stories'] }) {
   }
 
   const closeViewer = () => {
+    hikayeKapandi()
     setIsViewerOpen(false)
     setActiveStoryIndex(null)
     setActiveSlideIndex(0)
