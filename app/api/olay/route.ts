@@ -132,7 +132,19 @@ function konumBilgisi(request: NextRequest) {
   } catch {
     sehir = ''
   }
-  return { ...(ulke ? { ulke } : {}), ...(sehir ? { sehir } : {}) }
+  // IP'den yaklaşık konum: ham enlem-boylam saklanmaz, yalnız ~1 km'lik karenin ortası (3 hane) yazılır.
+  // Mobil hatta IP konumu çoğu zaman gerçek yerden uzaktır; Panel bunu "yaklaşık" diye gösterir.
+  const enlem = Number(request.headers.get('x-vercel-ip-latitude'))
+  const boylam = Number(request.headers.get('x-vercel-ip-longitude'))
+  let kare = ''
+  if (ulke === 'TR' && Number.isFinite(enlem) && Number.isFinite(boylam) && (enlem || boylam)) {
+    const adimEnlem = 0.009 // ≈ 1 km
+    const e = (Math.floor(enlem / adimEnlem) + 0.5) * adimEnlem
+    const adimBoylam = adimEnlem / Math.cos((e * Math.PI) / 180) // karenin kendi enleminden: aynı kare hep aynı çıkar
+    const b = (Math.floor(boylam / adimBoylam) + 0.5) * adimBoylam
+    kare = `${e.toFixed(3)},${b.toFixed(3)}`
+  }
+  return { ...(ulke ? { ulke } : {}), ...(sehir ? { sehir } : {}), ...(kare ? { kare } : {}) }
 }
 
 export async function POST(request: NextRequest) {
